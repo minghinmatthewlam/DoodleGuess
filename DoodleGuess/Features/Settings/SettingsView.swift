@@ -14,7 +14,9 @@ struct SettingsView: View {
                 Button(role: .destructive) {
                     Task {
                         if let me = auth.currentUser?.id {
-                            try? await pairing.disconnect(currentUserId: me)
+                            if let newCode = try? await pairing.disconnect(currentUserId: me) {
+                                auth.updateLocalInviteCode(newCode)
+                            }
                         }
                     }
                 } label: {

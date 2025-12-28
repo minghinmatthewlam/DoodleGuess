@@ -144,8 +144,11 @@ final class PairingService: ObservableObject {
             }
     }
 
-    func disconnect(currentUserId: String) async throws {
-        guard let partnerId = partner?.id else { return }
+    /// Disconnects from partner and returns the new invite code.
+    /// Caller should update AuthService.currentUser with the new invite code.
+    @discardableResult
+    func disconnect(currentUserId: String) async throws -> String {
+        guard let partnerId = partner?.id else { return "" }
 
         isLoading = true
         defer { isLoading = false }
@@ -179,10 +182,15 @@ final class PairingService: ObservableObject {
         // Create a fresh pair doc for the current user's new code so it's immediately shareable.
         let newPairRef = db.collection("pairs").document(myNewCode)
         let newPair = Pair(id: myNewCode, code: myNewCode, user1Id: currentUserId, user2Id: nil, createdAt: Date())
-        try? newPairRef.setData(from: newPair)
+        try? await newPairRef.setData(from: newPair)
+
+        return myNewCode
     }
 
-    deinit { partnerListener?.remove() }
+    func stopListening() {
+        partnerListener?.remove()
+        partnerListener = nil
+    }
 }
 
 enum PairingError: LocalizedError {

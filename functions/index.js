@@ -13,6 +13,12 @@ exports.onNewDrawing = functions.firestore
     const recipientId = drawing.toUserId;
     const senderId = drawing.fromUserId;
 
+    // Validate required fields
+    if (!recipientId || !senderId) {
+      console.error('Missing required fields - recipientId:', recipientId, 'senderId:', senderId);
+      return null;
+    }
+
     // Get recipient's device token
     const recipientDoc = await admin.firestore().collection('users').doc(recipientId).get();
     if (!recipientDoc.exists) {
@@ -57,6 +63,19 @@ exports.onNewDrawing = functions.firestore
       console.log('Push notification sent to:', recipientId);
     } catch (error) {
       console.error('Error sending push notification:', error);
+
+      // Handle stale/invalid tokens by removing them
+      if (error.code === 'messaging/registration-token-not-registered' ||
+          error.code === 'messaging/invalid-registration-token') {
+        console.log('Removing stale device token for user:', recipientId);
+        try {
+          await admin.firestore().collection('users').doc(recipientId).update({
+            deviceToken: admin.firestore.FieldValue.delete()
+          });
+        } catch (updateError) {
+          console.error('Failed to remove stale token:', updateError);
+        }
+      }
     }
 
     return null;

@@ -106,8 +106,31 @@ final class AuthService: ObservableObject {
         isAuthenticated = false
     }
 
-    deinit {
-        if let authListener { Auth.auth().removeStateDidChangeListener(authListener) }
+    /// Updates the local user's invite code (called after disconnect)
+    func updateLocalInviteCode(_ newCode: String) {
+        currentUser?.inviteCode = newCode
+        currentUser?.partnerId = nil
+        currentUser?.pairId = nil
+    }
+
+    /// Reloads the current user from Firestore
+    func reloadCurrentUser() async {
+        guard let userId = currentUser?.id else { return }
+        do {
+            let snap = try await db.collection("users").document(userId).getDocument()
+            if let user = try? snap.data(as: AppUser.self) {
+                self.currentUser = user
+            }
+        } catch {
+            print("reloadCurrentUser failed: \(error)")
+        }
+    }
+
+    func stopListening() {
+        if let authListener {
+            Auth.auth().removeStateDidChangeListener(authListener)
+            self.authListener = nil
+        }
         NotificationCenter.default.removeObserver(self)
     }
 }
