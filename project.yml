@@ -1,0 +1,63 @@
+name: DoodleGuess
+options:
+  bundleIdPrefix: com.example
+  deploymentTarget:
+    iOS: "16.0"
+settings:
+  base:
+    SWIFT_VERSION: 5.9
+
+targets:
+  DoodleGuess:
+    type: application
+    platform: iOS
+    sources:
+      - App
+      - Features
+      - Models
+      - Services
+      - Shared
+    info:
+      path: App/Info.plist
+      properties:
+        CFBundleDisplayName: DoodleGuess
+        LSRequiresIPhoneOS: true
+        UIApplicationSceneManifest:
+          UIApplicationSupportsMultipleScenes: false
+        UILaunchScreen: {}
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.example.doodleguess
+        PRODUCT_NAME: DoodleGuess
+    dependencies:
+      - target: DoodleWidget
+        embed: true
+
+  DoodleWidget:
+    type: app-extension
+    platform: iOS
+    sources:
+      - DoodleWidget
+      - Shared
+    info:
+      path: DoodleWidget/Info.plist
+      properties:
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.widgetkit-extension
+          NSExtensionAttributes:
+            NSExtensionWidgetKind: DoodleWidget
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.example.doodleguess.widget
+        PRODUCT_NAME: DoodleWidget
+
+  DoodleGuessTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - DoodleGuessTests
+    info:
+      path: DoodleGuessTests/Info.plist
+      properties: {}
+    dependencies:
+      - target: DoodleGuess

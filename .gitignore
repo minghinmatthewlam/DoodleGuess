@@ -39,6 +39,9 @@ GoogleService-Info.plist
 .idea/
 *.iml
 
+# Local tools
+tools/xcodegen/
+
 # Environment / Secrets
 .env
 .env.*

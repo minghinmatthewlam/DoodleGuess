@@ -1,0 +1,580 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0DF2D2B4D2B714689D6BF371 /* SharedStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64703828EBF5877BA857AD6 /* SharedStorage.swift */; };
+		19DB7BE1EECD8B99D22B74DE /* DoodleWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915E77D9D92D373F51FC3A36 /* DoodleWidget.swift */; };
+		1D5DC731A260A8809A4D2BA7 /* SharedStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C4B97ADD86B255C247ACFB /* SharedStorageTests.swift */; };
+		2225ED7F7CCCCA048222234D /* DoodleGuessApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F54801630557C3A0DFCE90 /* DoodleGuessApp.swift */; };
+		22846415D362CFCBB615A337 /* DoodleWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 1ECE7392F68D897F5ED59E34 /* DoodleWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		2E9DA8EF7F9E5F8B632339E6 /* CanvasViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381DCF567C1FA890077A39F4 /* CanvasViewModel.swift */; };
+		4708403D214B4C29CA037C4C /* CanvasViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4679FBC69E35A7E854C24F /* CanvasViewModelTests.swift */; };
+		74ED99A8F769BB1BD7A3C26F /* SharedModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E30C4A6CE05CC407C11B518 /* SharedModels.swift */; };
+		77BC2646DADD9326966F3159 /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5457DD7D526FA1F33159EDB3 /* AppUser.swift */; };
+		78CC13BF17FB10D000377C69 /* InviteCodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BAD6882144D7127E63779FF /* InviteCodeTests.swift */; };
+		88E7FD4D40259DE7F701D183 /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA48C5876654563743ABFED1 /* AppGroup.swift */; };
+		997753D78818D786705857CA /* SharedStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64703828EBF5877BA857AD6 /* SharedStorage.swift */; };
+		A04A0769651AD1A1AAA82B09 /* InviteCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AAD484C7C680261C0429B10 /* InviteCode.swift */; };
+		A0DBA05C5468FFD3F07E1381 /* SharedModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E30C4A6CE05CC407C11B518 /* SharedModels.swift */; };
+		B564098514090DDE88B25096 /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA48C5876654563743ABFED1 /* AppGroup.swift */; };
+		F5CA29E8DEE085EB19919044 /* InviteCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AAD484C7C680261C0429B10 /* InviteCode.swift */; };
+		F907317B0281E6C27C3B4348 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A30085F8E28EB3E0AA77D8 /* ContentView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		08498E91EDE6B24D46375ABF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4A677AEF6E44CDAF2420341A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B4A5EEA68206876A42C429CC;
+			remoteInfo = DoodleGuess;
+		};
+		133D1DBFDDA1549E703120BE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4A677AEF6E44CDAF2420341A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3CCFEAF93D7DD09B6B1FE9C8;
+			remoteInfo = DoodleWidget;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		9A6DF9390DB36C63A843F38F /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				22846415D362CFCBB615A337 /* DoodleWidget.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		1ECE7392F68D897F5ED59E34 /* DoodleWidget.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = DoodleWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		381DCF567C1FA890077A39F4 /* CanvasViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasViewModel.swift; sourceTree = "<group>"; };
+		3BAD6882144D7127E63779FF /* InviteCodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteCodeTests.swift; sourceTree = "<group>"; };
+		46F54801630557C3A0DFCE90 /* DoodleGuessApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoodleGuessApp.swift; sourceTree = "<group>"; };
+		4E30C4A6CE05CC407C11B518 /* SharedModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedModels.swift; sourceTree = "<group>"; };
+		5457DD7D526FA1F33159EDB3 /* AppUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUser.swift; sourceTree = "<group>"; };
+		5AAD484C7C680261C0429B10 /* InviteCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteCode.swift; sourceTree = "<group>"; };
+		74FD0D8426B5527419E171E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		7B4679FBC69E35A7E854C24F /* CanvasViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasViewModelTests.swift; sourceTree = "<group>"; };
+		915E77D9D92D373F51FC3A36 /* DoodleWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoodleWidget.swift; sourceTree = "<group>"; };
+		9CA4480ADF95A21B201907AB /* DoodleGuessTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = DoodleGuessTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A64703828EBF5877BA857AD6 /* SharedStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedStorage.swift; sourceTree = "<group>"; };
+		B82F897584DA07F6D81C9D9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		BC0D14AB518FDF987FF09AD7 /* DoodleGuess.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = DoodleGuess.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C5233C963571E4A74B5E4261 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		C9A30085F8E28EB3E0AA77D8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		D0C4B97ADD86B255C247ACFB /* SharedStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedStorageTests.swift; sourceTree = "<group>"; };
+		EA48C5876654563743ABFED1 /* AppGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGroup.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		3DF08E85296512835AEADF8E /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				CD7B3634376DF441B9BFF25C /* Canvas */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		45880DB461D966455E675AD2 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				C9A30085F8E28EB3E0AA77D8 /* ContentView.swift */,
+				46F54801630557C3A0DFCE90 /* DoodleGuessApp.swift */,
+				C5233C963571E4A74B5E4261 /* Info.plist */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		5D5D0E5D6D0BA757B177E5F5 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				EA48C5876654563743ABFED1 /* AppGroup.swift */,
+				5AAD484C7C680261C0429B10 /* InviteCode.swift */,
+				4E30C4A6CE05CC407C11B518 /* SharedModels.swift */,
+				A64703828EBF5877BA857AD6 /* SharedStorage.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		5FC17D9856663CD6DA2ED260 /* DoodleGuessTests */ = {
+			isa = PBXGroup;
+			children = (
+				7B4679FBC69E35A7E854C24F /* CanvasViewModelTests.swift */,
+				74FD0D8426B5527419E171E2 /* Info.plist */,
+				3BAD6882144D7127E63779FF /* InviteCodeTests.swift */,
+				D0C4B97ADD86B255C247ACFB /* SharedStorageTests.swift */,
+			);
+			path = DoodleGuessTests;
+			sourceTree = "<group>";
+		};
+		861FE4F0ECA0A1E890D72DDF /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		8F3659E56ED3616B1CDF9598 /* DoodleWidget */ = {
+			isa = PBXGroup;
+			children = (
+				915E77D9D92D373F51FC3A36 /* DoodleWidget.swift */,
+				B82F897584DA07F6D81C9D9D /* Info.plist */,
+			);
+			path = DoodleWidget;
+			sourceTree = "<group>";
+		};
+		9CB503C585F4C006D9CB2469 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5457DD7D526FA1F33159EDB3 /* AppUser.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A49AB2467CF03EEE1A128BB7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BC0D14AB518FDF987FF09AD7 /* DoodleGuess.app */,
+				9CA4480ADF95A21B201907AB /* DoodleGuessTests.xctest */,
+				1ECE7392F68D897F5ED59E34 /* DoodleWidget.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CD7B3634376DF441B9BFF25C /* Canvas */ = {
+			isa = PBXGroup;
+			children = (
+				381DCF567C1FA890077A39F4 /* CanvasViewModel.swift */,
+			);
+			path = Canvas;
+			sourceTree = "<group>";
+		};
+		FE34C037C5CBF385322601C4 = {
+			isa = PBXGroup;
+			children = (
+				45880DB461D966455E675AD2 /* App */,
+				5FC17D9856663CD6DA2ED260 /* DoodleGuessTests */,
+				8F3659E56ED3616B1CDF9598 /* DoodleWidget */,
+				3DF08E85296512835AEADF8E /* Features */,
+				9CB503C585F4C006D9CB2469 /* Models */,
+				861FE4F0ECA0A1E890D72DDF /* Services */,
+				5D5D0E5D6D0BA757B177E5F5 /* Shared */,
+				A49AB2467CF03EEE1A128BB7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3CCFEAF93D7DD09B6B1FE9C8 /* DoodleWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FBAC0BEE185752BC766A685E /* Build configuration list for PBXNativeTarget "DoodleWidget" */;
+			buildPhases = (
+				0314A3115639B64F62295843 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DoodleWidget;
+			packageProductDependencies = (
+			);
+			productName = DoodleWidget;
+			productReference = 1ECE7392F68D897F5ED59E34 /* DoodleWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		B4A5EEA68206876A42C429CC /* DoodleGuess */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8C2BF254A1983BC385953DC3 /* Build configuration list for PBXNativeTarget "DoodleGuess" */;
+			buildPhases = (
+				1E84AC1213F95B93B34E38D0 /* Sources */,
+				9A6DF9390DB36C63A843F38F /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D0F3520F9A8F9A8441293B27 /* PBXTargetDependency */,
+			);
+			name = DoodleGuess;
+			packageProductDependencies = (
+			);
+			productName = DoodleGuess;
+			productReference = BC0D14AB518FDF987FF09AD7 /* DoodleGuess.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F90F990079024E9C6DAD188F /* DoodleGuessTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 46EDA656FBB1F6A68F4B592C /* Build configuration list for PBXNativeTarget "DoodleGuessTests" */;
+			buildPhases = (
+				254FBEDD40B22558DBE42971 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A5B92F461BF6D8FBD504CE75 /* PBXTargetDependency */,
+			);
+			name = DoodleGuessTests;
+			packageProductDependencies = (
+			);
+			productName = DoodleGuessTests;
+			productReference = 9CA4480ADF95A21B201907AB /* DoodleGuessTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4A677AEF6E44CDAF2420341A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+			};
+			buildConfigurationList = 238FEA4535DA5AE7661FD337 /* Build configuration list for PBXProject "DoodleGuess" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = FE34C037C5CBF385322601C4;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B4A5EEA68206876A42C429CC /* DoodleGuess */,
+				F90F990079024E9C6DAD188F /* DoodleGuessTests */,
+				3CCFEAF93D7DD09B6B1FE9C8 /* DoodleWidget */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0314A3115639B64F62295843 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				88E7FD4D40259DE7F701D183 /* AppGroup.swift in Sources */,
+				19DB7BE1EECD8B99D22B74DE /* DoodleWidget.swift in Sources */,
+				F5CA29E8DEE085EB19919044 /* InviteCode.swift in Sources */,
+				A0DBA05C5468FFD3F07E1381 /* SharedModels.swift in Sources */,
+				997753D78818D786705857CA /* SharedStorage.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1E84AC1213F95B93B34E38D0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B564098514090DDE88B25096 /* AppGroup.swift in Sources */,
+				77BC2646DADD9326966F3159 /* AppUser.swift in Sources */,
+				2E9DA8EF7F9E5F8B632339E6 /* CanvasViewModel.swift in Sources */,
+				F907317B0281E6C27C3B4348 /* ContentView.swift in Sources */,
+				2225ED7F7CCCCA048222234D /* DoodleGuessApp.swift in Sources */,
+				A04A0769651AD1A1AAA82B09 /* InviteCode.swift in Sources */,
+				74ED99A8F769BB1BD7A3C26F /* SharedModels.swift in Sources */,
+				0DF2D2B4D2B714689D6BF371 /* SharedStorage.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		254FBEDD40B22558DBE42971 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4708403D214B4C29CA037C4C /* CanvasViewModelTests.swift in Sources */,
+				78CC13BF17FB10D000377C69 /* InviteCodeTests.swift in Sources */,
+				1D5DC731A260A8809A4D2BA7 /* SharedStorageTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A5B92F461BF6D8FBD504CE75 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B4A5EEA68206876A42C429CC /* DoodleGuess */;
+			targetProxy = 08498E91EDE6B24D46375ABF /* PBXContainerItemProxy */;
+		};
+		D0F3520F9A8F9A8441293B27 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3CCFEAF93D7DD09B6B1FE9C8 /* DoodleWidget */;
+			targetProxy = 133D1DBFDDA1549E703120BE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		7AB17E6CE7710ED6CAFAE720 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
+		863F5ECDD569EC2EFFB317D6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = App/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.doodleguess;
+				PRODUCT_NAME = DoodleGuess;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		8FCA5C23D069691C4E740C0E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Debug;
+		};
+		9AD80EDBE180DC3AC717F275 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = DoodleWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.doodleguess.widget;
+				PRODUCT_NAME = DoodleWidget;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A703D029BCE90DD90A0204EA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = DoodleWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.doodleguess.widget;
+				PRODUCT_NAME = DoodleWidget;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		B4316037810272CAF8650953 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = DoodleGuessTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.DoodleGuessTests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DoodleGuess.app/DoodleGuess";
+			};
+			name = Release;
+		};
+		D1DEAAC08861E4FEAA8F478C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = DoodleGuessTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.DoodleGuessTests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DoodleGuess.app/DoodleGuess";
+			};
+			name = Debug;
+		};
+		E6B93691ACF5BD99285385E3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = App/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.doodleguess;
+				PRODUCT_NAME = DoodleGuess;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		238FEA4535DA5AE7661FD337 /* Build configuration list for PBXProject "DoodleGuess" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8FCA5C23D069691C4E740C0E /* Debug */,
+				7AB17E6CE7710ED6CAFAE720 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		46EDA656FBB1F6A68F4B592C /* Build configuration list for PBXNativeTarget "DoodleGuessTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D1DEAAC08861E4FEAA8F478C /* Debug */,
+				B4316037810272CAF8650953 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		8C2BF254A1983BC385953DC3 /* Build configuration list for PBXNativeTarget "DoodleGuess" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E6B93691ACF5BD99285385E3 /* Debug */,
+				863F5ECDD569EC2EFFB317D6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		FBAC0BEE185752BC766A685E /* Build configuration list for PBXNativeTarget "DoodleWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9AD80EDBE180DC3AC717F275 /* Debug */,
+				A703D029BCE90DD90A0204EA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4A677AEF6E44CDAF2420341A /* Project object */;
+}
