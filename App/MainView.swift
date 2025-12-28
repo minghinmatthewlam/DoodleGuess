@@ -1,8 +1,7 @@
 import SwiftUI
 
 struct MainView: View {
-    @EnvironmentObject var deepLink: DeepLinkRouter
-    @EnvironmentObject var drawings: DrawingService
+    @EnvironmentObject var app: AppState
 
     var body: some View {
         NavigationStack {
@@ -13,10 +12,10 @@ struct MainView: View {
             }
             .navigationTitle("Doodle Guess")
             .navigationDestination(isPresented: Binding(
-                get: { deepLink.drawingId != nil },
-                set: { if !$0 { deepLink.drawingId = nil } }
+                get: { app.deepLink.drawingId != nil },
+                set: { if !$0 { app.deepLink.drawingId = nil } }
             )) {
-                DrawingDetailView(drawingId: deepLink.drawingId)
+                DrawingDetailView(drawingId: app.deepLink.drawingId)
             }
         }
     }

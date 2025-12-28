@@ -2,7 +2,7 @@ import PencilKit
 import SwiftUI
 
 struct DrawingDetailView: View {
-    @EnvironmentObject var drawings: DrawingService
+    @EnvironmentObject var app: AppState
 
     let drawing: DrawingRecord?
     let drawingId: String?
@@ -31,7 +31,7 @@ struct DrawingDetailView: View {
             if let drawing {
                 activeDrawing = drawing
             } else if let drawingId {
-                let fetched = await drawings.fetchDrawing(byId: drawingId)
+                let fetched = await app.drawings.fetchDrawing(byId: drawingId)
                 resolvedDrawing = fetched
                 activeDrawing = fetched
             } else {

@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct WelcomeView: View {
-    @EnvironmentObject var auth: AuthService
+    @EnvironmentObject var app: AppState
     @State private var isSigningIn = false
 
     var body: some View {
@@ -27,7 +27,7 @@ struct WelcomeView: View {
             Button {
                 Task {
                     isSigningIn = true
-                    try? await auth.signInAnonymously()
+                    try? await app.auth.signInAnonymously()
                     isSigningIn = false
                 }
             } label: {

@@ -1,20 +1,19 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @EnvironmentObject var auth: AuthService
-    @EnvironmentObject var pairing: PairingService
+    @EnvironmentObject var app: AppState
 
     var body: some View {
         Form {
             Section("Partner") {
-                Text(pairing.partner?.name ?? "Not connected")
+                Text(app.pairing.partner?.name ?? "Not connected")
             }
 
             Section {
                 Button(role: .destructive) {
                     Task {
-                        if let me = auth.currentUser?.id {
-                            try? await pairing.disconnect(currentUserId: me)
+                        if let me = app.auth.currentUser?.id {
+                            try? await app.pairing.disconnect(currentUserId: me)
                         }
                     }
                 } label: {

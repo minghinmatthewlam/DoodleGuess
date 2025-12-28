@@ -1,13 +1,12 @@
 import SwiftUI
 
 struct HistoryView: View {
-    @EnvironmentObject var auth: AuthService
-    @EnvironmentObject var drawings: DrawingService
+    @EnvironmentObject var app: AppState
 
     var body: some View {
         List {
             Section("Received") {
-                ForEach(drawings.receivedDrawings) { d in
+                ForEach(app.drawings.receivedDrawings) { d in
                     NavigationLink {
                         DrawingDetailView(drawing: d, drawingId: d.id)
                     } label: {
@@ -18,7 +17,7 @@ struct HistoryView: View {
             }
 
             Section("Sent") {
-                ForEach(drawings.sentDrawings) { d in
+                ForEach(app.drawings.sentDrawings) { d in
                     NavigationLink {
                         DrawingDetailView(drawing: d, drawingId: d.id)
                     } label: {
@@ -29,8 +28,8 @@ struct HistoryView: View {
             }
         }
         .task {
-            if let me = auth.currentUser?.id {
-                await drawings.loadSentDrawings(userId: me)
+            if let me = app.auth.currentUser?.id {
+                await app.drawings.loadSentDrawings(userId: me)
             }
         }
         .navigationTitle("History")

@@ -1,8 +1,7 @@
 import SwiftUI
 
 struct PairingView: View {
-    @EnvironmentObject var auth: AuthService
-    @EnvironmentObject var pairing: PairingService
+    @EnvironmentObject var app: AppState
 
     @State private var showingJoinSheet = false
 
@@ -15,12 +14,12 @@ struct PairingView: View {
                     Text("Your Pair Code")
                         .font(.headline)
 
-                    Text(auth.currentUser?.inviteCode ?? "------")
+                    Text(app.auth.currentUser?.inviteCode ?? "------")
                         .font(.system(size: 48, weight: .bold, design: .monospaced))
                         .tracking(8)
 
                     Button {
-                        UIPasteboard.general.string = auth.currentUser?.inviteCode
+                        UIPasteboard.general.string = app.auth.currentUser?.inviteCode
                     } label: {
                         Label("Copy Code", systemImage: "doc.on.doc")
                     }
@@ -52,7 +51,7 @@ struct PairingView: View {
             .sheet(isPresented: $showingJoinSheet) {
                 JoinPairSheet()
             }
-            .onChange(of: pairing.isPaired) { _, isPaired in
+            .onChange(of: app.pairing.isPaired) { _, isPaired in
                 if isPaired {
                     (UIApplication.shared.delegate as? AppDelegate)?.requestPushPermissions()
                 }
@@ -62,8 +61,7 @@ struct PairingView: View {
 }
 
 struct JoinPairSheet: View {
-    @EnvironmentObject var auth: AuthService
-    @EnvironmentObject var pairing: PairingService
+    @EnvironmentObject var app: AppState
     @Environment(\.dismiss) var dismiss
 
     @State private var code = ""
@@ -85,18 +83,18 @@ struct JoinPairSheet: View {
                         code = InviteCode.normalize(newValue)
                     }
 
-                if let err = pairing.error {
+                if let err = app.pairing.error {
                     Text(err).foregroundColor(.red).font(.caption)
                 }
 
                 Button {
                     Task {
-                        guard let me = auth.currentUser?.id else { return }
-                        try? await pairing.joinWithCode(code, currentUserId: me)
-                        if pairing.isPaired { dismiss() }
+                        guard let me = app.auth.currentUser?.id else { return }
+                        try? await app.pairing.joinWithCode(code, currentUserId: me)
+                        if app.pairing.isPaired { dismiss() }
                     }
                 } label: {
-                    if pairing.isLoading {
+                    if app.pairing.isLoading {
                         ProgressView().frame(maxWidth: .infinity)
                     } else {
                         Text("Connect")
@@ -105,7 +103,7 @@ struct JoinPairSheet: View {
                     }
                 }
                 .buttonStyle(.borderedProminent)
-                .disabled(code.count != InviteCode.length || pairing.isLoading)
+                .disabled(code.count != InviteCode.length || app.pairing.isLoading)
 
                 Spacer()
             }

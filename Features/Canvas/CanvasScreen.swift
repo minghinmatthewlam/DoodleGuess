@@ -2,9 +2,7 @@ import PencilKit
 import SwiftUI
 
 struct CanvasScreen: View {
-    @EnvironmentObject var auth: AuthService
-    @EnvironmentObject var pairing: PairingService
-    @EnvironmentObject var drawings: DrawingService
+    @EnvironmentObject var app: AppState
 
     @StateObject private var vm = CanvasViewModel()
 
@@ -25,13 +23,13 @@ struct CanvasScreen: View {
                 Button {
                     Task { await send() }
                 } label: {
-                    if drawings.isSending {
+                    if app.drawings.isSending {
                         ProgressView()
                     } else {
                         Text("Send").fontWeight(.semibold)
                     }
                 }
-                .disabled(drawings.isSending || !vm.hasDrawing)
+                .disabled(app.drawings.isSending || !vm.hasDrawing)
             }
         }
         .alert("Sent!", isPresented: $showingSent) {
@@ -50,15 +48,15 @@ struct CanvasScreen: View {
     }
 
     private func send() async {
-        guard let me = auth.currentUser?.id else {
+        guard let me = app.auth.currentUser?.id else {
             sendError = "Not signed in."
             return
         }
-        guard let partnerId = pairing.partner?.id else {
+        guard let partnerId = app.pairing.partner?.id else {
             sendError = "Not connected to a partner."
             return
         }
-        guard let pairId = auth.currentUser?.pairId ?? pairing.partner?.pairId ?? auth.currentUser?.pairId else {
+        guard let pairId = app.auth.currentUser?.pairId ?? app.pairing.partner?.pairId ?? app.auth.currentUser?.pairId else {
             sendError = "Missing pair information."
             return
         }
@@ -67,7 +65,7 @@ struct CanvasScreen: View {
         let rendered = vm.renderSquareImage(side: 512)
 
         do {
-            try await drawings.sendDrawing(
+            try await app.drawings.sendDrawing(
                 pkDrawing: pk,
                 renderedImage: rendered,
                 fromUserId: me,

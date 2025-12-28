@@ -8,10 +8,7 @@ import SwiftUI
 struct DoodleGuessApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
-    @StateObject private var auth = AuthService()
-    @StateObject private var pairing = PairingService()
-    @StateObject private var drawings = DrawingService()
-    @StateObject private var deepLink = DeepLinkRouter()
+    @StateObject private var appState = AppState()
 
     init() {
         #if canImport(FirebaseCore)
@@ -24,10 +21,7 @@ struct DoodleGuessApp: App {
     var body: some Scene {
         WindowGroup {
             RootView()
-                .environmentObject(auth)
-                .environmentObject(pairing)
-                .environmentObject(drawings)
-                .environmentObject(deepLink)
+                .environmentObject(appState)
         }
     }
 }
