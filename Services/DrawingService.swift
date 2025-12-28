@@ -149,7 +149,7 @@ final class DrawingService: ObservableObject {
     }
 
     private func renderSquareForWidget(drawing: PKDrawing) -> UIImage {
-        let side: CGFloat = 512
+        let side: CGFloat = 480
         if drawing.strokes.isEmpty {
             return UIGraphicsImageRenderer(size: CGSize(width: side, height: side)).image { ctx in
                 UIColor.white.setFill()
@@ -243,7 +243,7 @@ final class DrawingService: ObservableObject {
     }
 
     private func renderSquareForWidget(drawing: PKDrawing) -> UIImage {
-        let side: CGFloat = 512
+        let side: CGFloat = 480
         if drawing.strokes.isEmpty {
             return UIGraphicsImageRenderer(size: CGSize(width: side, height: side)).image { ctx in
                 UIColor.white.setFill()
