@@ -1,7 +1,7 @@
 import Foundation
 
 enum AppGroup {
-    static let id = "group.com.example.doodleguess"
+    static let id = "group.com.matthewlam.doodleguess"
 
     // Override for tests to avoid requiring App Group entitlements.
     static var overrideURL: URL?
