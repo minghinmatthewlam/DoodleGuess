@@ -22,6 +22,16 @@ struct RootView: View {
         .onOpenURL { url in
             deepLink.handle(url: url)
         }
+        .onChange(of: pairing.isPaired) { _, isPaired in
+            if isPaired {
+                startListeningIfPossible()
+            } else {
+                drawings.stopListeningForDrawings()
+            }
+        }
+        .onChange(of: pairing.partner?.name) { _, _ in
+            startListeningIfPossible()
+        }
     }
 
     private func initialSetup() async {
@@ -36,9 +46,17 @@ struct RootView: View {
                 await pairing.checkPairingStatus(currentUserId: myId)
             }
 
-            if pairing.isPaired, let myId = auth.currentUser?.id, let partnerName = pairing.partner?.name {
-                drawings.startListeningForDrawings(userId: myId, partnerName: partnerName)
-            }
+            startListeningIfPossible()
         }
+    }
+
+    private func startListeningIfPossible() {
+        guard pairing.isPaired,
+              let myId = auth.currentUser?.id,
+              let partnerName = pairing.partner?.name else {
+            return
+        }
+
+        drawings.startListeningForDrawings(userId: myId, partnerName: partnerName)
     }
 }

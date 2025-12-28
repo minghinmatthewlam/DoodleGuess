@@ -85,6 +85,13 @@ final class DrawingService: ObservableObject {
             }
     }
 
+    func stopListeningForDrawings() {
+        listener?.remove()
+        listener = nil
+        receivedDrawings = []
+        latestReceivedDrawing = nil
+    }
+
     func loadSentDrawings(userId: String) async {
         do {
             let snap = try await db.collection("drawings")
@@ -95,6 +102,16 @@ final class DrawingService: ObservableObject {
             self.sentDrawings = snap.documents.compactMap { try? $0.data(as: DrawingRecord.self) }
         } catch {
             print("loadSentDrawings error: \(error)")
+        }
+    }
+
+    func fetchDrawing(byId drawingId: String) async -> DrawingRecord? {
+        do {
+            let snap = try await db.collection("drawings").document(drawingId).getDocument()
+            return try snap.data(as: DrawingRecord.self)
+        } catch {
+            print("fetchDrawing error: \(error)")
+            return nil
         }
     }
 
@@ -204,8 +221,17 @@ final class DrawingService: ObservableObject {
         // No-op without Firebase.
     }
 
+    func stopListeningForDrawings() {
+        receivedDrawings = []
+        latestReceivedDrawing = nil
+    }
+
     func loadSentDrawings(userId: String) async {
         // No-op without Firebase.
+    }
+
+    func fetchDrawing(byId drawingId: String) async -> DrawingRecord? {
+        receivedDrawings.first { $0.id == drawingId }
     }
 
     func updateWidgetFromDrawing(_ drawing: DrawingRecord, partnerName: String) async {

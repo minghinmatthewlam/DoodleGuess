@@ -6,6 +6,10 @@ options:
 settings:
   base:
     SWIFT_VERSION: 5.9
+packages:
+  Firebase:
+    url: https://github.com/firebase/firebase-ios-sdk
+    from: 10.0.0
 
 targets:
   DoodleGuess:
@@ -39,6 +43,18 @@ targets:
     dependencies:
       - target: DoodleWidget
         embed: true
+      - package: Firebase
+        product: FirebaseAuth
+      - package: Firebase
+        product: FirebaseFirestore
+      - package: Firebase
+        product: FirebaseFirestoreSwift
+      - package: Firebase
+        product: FirebaseMessaging
+      - package: Firebase
+        product: FirebaseFunctions
+      - package: Firebase
+        product: FirebaseStorage
 
   DoodleWidget:
     type: app-extension

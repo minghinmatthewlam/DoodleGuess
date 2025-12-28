@@ -2,9 +2,12 @@ import SwiftUI
 import PencilKit
 
 struct DrawingDetailView: View {
+    @EnvironmentObject var drawings: DrawingService
+
     let drawing: DrawingRecord?
     let drawingId: String?
 
+    @State private var resolvedDrawing: DrawingRecord?
     @State private var image: UIImage?
 
     init(drawing: DrawingRecord? = nil, drawingId: String? = nil) {
@@ -24,18 +27,29 @@ struct DrawingDetailView: View {
             }
         }
         .task {
-            guard let drawing else { return }
+            let activeDrawing: DrawingRecord?
+            if let drawing {
+                activeDrawing = drawing
+            } else if let drawingId {
+                let fetched = await drawings.fetchDrawing(byId: drawingId)
+                resolvedDrawing = fetched
+                activeDrawing = fetched
+            } else {
+                activeDrawing = nil
+            }
 
-            if let bytes = drawing.drawingBytes, let pk = try? PKDrawing(data: bytes) {
+            guard let activeDrawing else { return }
+
+            if let bytes = activeDrawing.drawingBytes, let pk = try? PKDrawing(data: bytes) {
                 image = renderFull(drawing: pk)
-            } else if let url = drawing.imageUrl {
+            } else if let url = activeDrawing.imageUrl {
                 image = await download(url)
             }
         }
         .navigationTitle("Drawing")
         .navigationBarTitleDisplayMode(.inline)
         .overlay {
-            if drawing == nil {
+            if drawing == nil && resolvedDrawing == nil {
                 Text("Open the app to load this drawing")
                     .font(.footnote)
                     .foregroundColor(.secondary)
