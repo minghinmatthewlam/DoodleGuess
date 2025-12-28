@@ -1,0 +1,54 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Users collection
+    match /users/{userId} {
+      // Users can read/write their own document
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+
+      // Allow reading partner's document (for name display) - must be actual partner
+      allow read: if request.auth != null && (
+        // User is reading their own doc
+        request.auth.uid == userId ||
+        // User is the partner of this user (check their own doc's partnerId)
+        exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.partnerId == userId
+      );
+    }
+
+    // Pairs collection
+    match /pairs/{pairId} {
+      // Anyone authenticated can read pairs (to check if code exists)
+      allow read: if request.auth != null;
+
+      // Anyone authenticated can create a pair (for their own invite code)
+      allow create: if request.auth != null &&
+        request.resource.data.user1Id == request.auth.uid;
+
+      // Only participants can update, and user2 can only set themselves
+      allow update: if request.auth != null && (
+        // user1 (pair owner) can update
+        resource.data.user1Id == request.auth.uid ||
+        // existing user2 can update
+        resource.data.user2Id == request.auth.uid ||
+        // someone joining an open pair - must set themselves as user2
+        (resource.data.user2Id == null &&
+         request.resource.data.user2Id == request.auth.uid)
+      );
+    }
+
+    // Drawings collection
+    match /drawings/{drawingId} {
+      // Only sender or recipient can read
+      allow read: if request.auth != null && (
+        resource.data.fromUserId == request.auth.uid ||
+        resource.data.toUserId == request.auth.uid
+      );
+
+      // Authenticated users can create drawings - must be from themselves
+      allow create: if request.auth != null &&
+        request.resource.data.fromUserId == request.auth.uid;
+    }
+  }
+}

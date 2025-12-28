@@ -1,0 +1,102 @@
+name: DoodleGuess
+options:
+  bundleIdPrefix: com.matthewlam
+  deploymentTarget:
+    iOS: "16.0"
+  xcodeVersion: "15.0"
+  generateEmptyDirectories: true
+
+settings:
+  base:
+    SWIFT_VERSION: "5.9"
+    TARGETED_DEVICE_FAMILY: "1,2"
+
+packages:
+  Firebase:
+    url: https://github.com/firebase/firebase-ios-sdk
+    majorVersion: 11.0.0
+
+targets:
+  DoodleGuess:
+    type: application
+    platform: iOS
+    sources:
+      - path: DoodleGuess
+        excludes:
+          - "**/.DS_Store"
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.matthewlam.doodleguess
+        INFOPLIST_FILE: DoodleGuess/Info.plist
+        CODE_SIGN_ENTITLEMENTS: DoodleGuess/DoodleGuess.entitlements
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+    entitlements:
+      path: DoodleGuess/DoodleGuess.entitlements
+      properties:
+        aps-environment: development
+        com.apple.security.application-groups:
+          - group.com.matthewlam.doodleguess
+    dependencies:
+      - package: Firebase
+        product: FirebaseAuth
+      - package: Firebase
+        product: FirebaseFirestore
+      - package: Firebase
+        product: FirebaseFirestoreSwift
+      - package: Firebase
+        product: FirebaseMessaging
+      - package: Firebase
+        product: FirebaseStorage
+      - target: DoodleWidget
+        embed: true
+    info:
+      path: DoodleGuess/Info.plist
+      properties:
+        CFBundleDisplayName: Doodle Guess
+        CFBundleShortVersionString: "1.0"
+        CFBundleVersion: "1"
+        UILaunchScreen:
+          UIColorName: ""
+          UIImageName: ""
+        UIApplicationSceneManifest:
+          UIApplicationSupportsMultipleScenes: false
+          UISceneConfigurations: {}
+        UIBackgroundModes:
+          - remote-notification
+        CFBundleURLTypes:
+          - CFBundleURLSchemes:
+              - doodleguess
+            CFBundleURLName: com.matthewlam.doodleguess
+
+  DoodleWidget:
+    type: app-extension
+    platform: iOS
+    product: DoodleWidget
+    sources:
+      - path: DoodleWidget
+        excludes:
+          - "**/.DS_Store"
+      - path: DoodleGuess/Shared
+        excludes:
+          - "**/.DS_Store"
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.matthewlam.doodleguess.widget
+        INFOPLIST_FILE: DoodleWidget/Info.plist
+        CODE_SIGN_ENTITLEMENTS: DoodleWidget/DoodleWidget.entitlements
+        ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME: WidgetBackground
+        SKIP_INSTALL: true
+        LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks"
+    entitlements:
+      path: DoodleWidget/DoodleWidget.entitlements
+      properties:
+        com.apple.security.application-groups:
+          - group.com.matthewlam.doodleguess
+    info:
+      path: DoodleWidget/Info.plist
+      properties:
+        CFBundleDisplayName: Doodle Widget
+        CFBundleShortVersionString: "1.0"
+        CFBundleVersion: "1"
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.widgetkit-extension

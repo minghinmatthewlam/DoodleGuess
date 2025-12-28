@@ -1,0 +1,674 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		04D8EBF2BF3E6A919A60EF68 /* SharedModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0604C4B14737DE323D287C /* SharedModels.swift */; };
+		0834E6B8E28D9B0F7D9FDF14 /* DoodleWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678819EA688C652052C90E5B /* DoodleWidgetBundle.swift */; };
+		084FDE1597E2AAED9211265A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB8BEF10B308EE44F6A408DE /* GoogleService-Info.plist */; };
+		0B970192D0F70B5F003557A5 /* CanvasViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B5C1BCF71C4BE8C471B0FC /* CanvasViewModel.swift */; };
+		0FC7809FC842BFF0AF6D4677 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = EE9B00C5944F4CBAD3F33FE3 /* FirebaseMessaging */; };
+		12BD47355C6D22EB64AF5200 /* CanvasScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50180C3B962F3B9E6D80A4B4 /* CanvasScreen.swift */; };
+		160B510DBFC44203D4194980 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 440C5BEF991060AA44AAAD03 /* FirebaseAuth */; };
+		19DB7BE1EECD8B99D22B74DE /* DoodleWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915E77D9D92D373F51FC3A36 /* DoodleWidget.swift */; };
+		1B571B44B4AA3600DD0E2894 /* DrawingRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A7F19936633C12BAEB87A7 /* DrawingRecord.swift */; };
+		1EAB8F199C7CAE546C39332E /* SharedModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0604C4B14737DE323D287C /* SharedModels.swift */; };
+		22846415D362CFCBB615A337 /* DoodleWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 1ECE7392F68D897F5ED59E34 /* DoodleWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		2318CCEF7F24B139654E8379 /* DrawingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031CD269DA4F3697A6F7EED2 /* DrawingDetailView.swift */; };
+		248E76F1FF93726DAB2CFB40 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48789A228AA0AD363C47C2F0 /* AuthService.swift */; };
+		276F35B442C25A4457BB3361 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8A1F06E1BA8A2A16A7CDFF8 /* Assets.xcassets */; };
+		29E6E48BBF8288732F519B53 /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1A42B089C28A15318FBC70 /* AppUser.swift */; };
+		307539A5C2ED4D253B0D836C /* SharedStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA929BAD2D0D95B9CEA1CBBB /* SharedStorage.swift */; };
+		30989DA0C40609C8B61FEDAA /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = FF96C33A3DA7E40EDC34EACB /* FirebaseFirestore */; };
+		3C68F4CB7003E93712A001AB /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4406DFC0B9C2089FF089E31A /* Provider.swift */; };
+		4BCEAE907BD246550DA27871 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C287DDC00843A96F58BF9E /* WelcomeView.swift */; };
+		57CC04CAB302C93F1B6A1F2C /* CanvasToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D30AD9F9DFE21106C43FAF /* CanvasToolbar.swift */; };
+		5C92A57EEEFB4C06B9555257 /* Pair.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10E9EFCB2D19B47425B94BB /* Pair.swift */; };
+		651E1C313917E6C6DA1CDA71 /* SharedStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA929BAD2D0D95B9CEA1CBBB /* SharedStorage.swift */; };
+		68C1D216DEE3735591883628 /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2B854397A6176E16B5171B /* AppGroup.swift */; };
+		8779C15B41804E431223374C /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 140103FDE5A4EF89765B1979 /* FirebaseFirestoreSwift */; };
+		90CE97C5A155941ADE596C1A /* PencilKitCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0A2155795DE5E7BCBFAD86 /* PencilKitCanvasView.swift */; };
+		A4FA07EC82F9F8F23188DA68 /* PairingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B88D947769EFCB871518EC3 /* PairingService.swift */; };
+		AE38F19CD352F2A6ADDC55C6 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06BED39B766B3B725CFFEC2 /* HistoryView.swift */; };
+		AE52FE612AAF349A360769DE /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 77F2EC09FCC759069606FCEC /* FirebaseStorage */; };
+		AEA43A401FE622CA08541CD6 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59EEA34661BB38662B80B6A /* SettingsView.swift */; };
+		B5294A87CE4DCFC662CB6C38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8C570C3FD357FD1D7B9458 /* AppDelegate.swift */; };
+		BA17FD5E67E42D3DC01388C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E1FAF64D76C42E66AD8F595 /* Assets.xcassets */; };
+		C2CF7CEC2F399DC510E955F3 /* DrawingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE3ED65EE9982F9AB6529D2 /* DrawingService.swift */; };
+		C7635C00F56AB62B79A781C2 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBD28E4A426C505760EBBF2 /* RootView.swift */; };
+		E168B0394D96F4A7664763FE /* DoodleGuessApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E9AA25B29A54A53F14F593 /* DoodleGuessApp.swift */; };
+		E742202EA0CCCF582B9B7752 /* WidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785281E55F56C30BEFCC4899 /* WidgetView.swift */; };
+		EF086440CC4A8DF23ED0C4FF /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDC3112B8DB8F5B14703A22 /* MainView.swift */; };
+		F1434348B10D059DAC9487F4 /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2B854397A6176E16B5171B /* AppGroup.swift */; };
+		F967EC8854D55434343007BF /* PairingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB7EB487815385036BFFBD3 /* PairingView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		133D1DBFDDA1549E703120BE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4A677AEF6E44CDAF2420341A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3CCFEAF93D7DD09B6B1FE9C8;
+			remoteInfo = DoodleWidget;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		9A6DF9390DB36C63A843F38F /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				22846415D362CFCBB615A337 /* DoodleWidget.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		031CD269DA4F3697A6F7EED2 /* DrawingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingDetailView.swift; sourceTree = "<group>"; };
+		0CDC3112B8DB8F5B14703A22 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		0DB7EB487815385036BFFBD3 /* PairingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairingView.swift; sourceTree = "<group>"; };
+		1B2B854397A6176E16B5171B /* AppGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGroup.swift; sourceTree = "<group>"; };
+		1ECE7392F68D897F5ED59E34 /* DoodleWidget.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = DoodleWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		2023CABF59FB0EF84C8ECAC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		4406DFC0B9C2089FF089E31A /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
+		48789A228AA0AD363C47C2F0 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		4A0A2155795DE5E7BCBFAD86 /* PencilKitCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PencilKitCanvasView.swift; sourceTree = "<group>"; };
+		4B1A42B089C28A15318FBC70 /* AppUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUser.swift; sourceTree = "<group>"; };
+		4F15498CA62BA93090B340DC /* DoodleGuess.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DoodleGuess.entitlements; sourceTree = "<group>"; };
+		50180C3B962F3B9E6D80A4B4 /* CanvasScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasScreen.swift; sourceTree = "<group>"; };
+		529B5417CDC1AF25060B940A /* DoodleWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DoodleWidget.entitlements; sourceTree = "<group>"; };
+		57D30AD9F9DFE21106C43FAF /* CanvasToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasToolbar.swift; sourceTree = "<group>"; };
+		5B88D947769EFCB871518EC3 /* PairingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairingService.swift; sourceTree = "<group>"; };
+		678819EA688C652052C90E5B /* DoodleWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoodleWidgetBundle.swift; sourceTree = "<group>"; };
+		71A7F19936633C12BAEB87A7 /* DrawingRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingRecord.swift; sourceTree = "<group>"; };
+		785281E55F56C30BEFCC4899 /* WidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetView.swift; sourceTree = "<group>"; };
+		8BBD28E4A426C505760EBBF2 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		915E77D9D92D373F51FC3A36 /* DoodleWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoodleWidget.swift; sourceTree = "<group>"; };
+		99B5C1BCF71C4BE8C471B0FC /* CanvasViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasViewModel.swift; sourceTree = "<group>"; };
+		9E1FAF64D76C42E66AD8F595 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A4C287DDC00843A96F58BF9E /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		B82F897584DA07F6D81C9D9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		BC0D14AB518FDF987FF09AD7 /* DoodleGuess.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = DoodleGuess.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CCE3ED65EE9982F9AB6529D2 /* DrawingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingService.swift; sourceTree = "<group>"; };
+		D06BED39B766B3B725CFFEC2 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		D8A1F06E1BA8A2A16A7CDFF8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DB8BEF10B308EE44F6A408DE /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DD8C570C3FD357FD1D7B9458 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E10E9EFCB2D19B47425B94BB /* Pair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pair.swift; sourceTree = "<group>"; };
+		E59EEA34661BB38662B80B6A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		F6E9AA25B29A54A53F14F593 /* DoodleGuessApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoodleGuessApp.swift; sourceTree = "<group>"; };
+		FA929BAD2D0D95B9CEA1CBBB /* SharedStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedStorage.swift; sourceTree = "<group>"; };
+		FF0604C4B14737DE323D287C /* SharedModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedModels.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7F598095090FF76CC4CC97E6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				160B510DBFC44203D4194980 /* FirebaseAuth in Frameworks */,
+				30989DA0C40609C8B61FEDAA /* FirebaseFirestore in Frameworks */,
+				8779C15B41804E431223374C /* FirebaseFirestoreSwift in Frameworks */,
+				0FC7809FC842BFF0AF6D4677 /* FirebaseMessaging in Frameworks */,
+				AE52FE612AAF349A360769DE /* FirebaseStorage in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1522817B36DA0AACB981AE84 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				DD8C570C3FD357FD1D7B9458 /* AppDelegate.swift */,
+				F6E9AA25B29A54A53F14F593 /* DoodleGuessApp.swift */,
+				0CDC3112B8DB8F5B14703A22 /* MainView.swift */,
+				8BBD28E4A426C505760EBBF2 /* RootView.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		16A59024585BD1836131111C /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				1B2B854397A6176E16B5171B /* AppGroup.swift */,
+				FF0604C4B14737DE323D287C /* SharedModels.swift */,
+				FA929BAD2D0D95B9CEA1CBBB /* SharedStorage.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		17D7673DADFBBE9611A89D09 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4B1A42B089C28A15318FBC70 /* AppUser.swift */,
+				71A7F19936633C12BAEB87A7 /* DrawingRecord.swift */,
+				E10E9EFCB2D19B47425B94BB /* Pair.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		26038CEC3C9694DB5CCA92CB /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				48789A228AA0AD363C47C2F0 /* AuthService.swift */,
+				CCE3ED65EE9982F9AB6529D2 /* DrawingService.swift */,
+				5B88D947769EFCB871518EC3 /* PairingService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		2C7468F5A910CEE79F655EAE /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				D813F38579EC4B39B1073125 /* Canvas */,
+				783D51F82FB39ADDBD7A750E /* History */,
+				60F13D16677F543438FDFDDC /* Onboarding */,
+				BCFEACA756D18043E46D71F3 /* Settings */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		60F13D16677F543438FDFDDC /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				0DB7EB487815385036BFFBD3 /* PairingView.swift */,
+				A4C287DDC00843A96F58BF9E /* WelcomeView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		783D51F82FB39ADDBD7A750E /* History */ = {
+			isa = PBXGroup;
+			children = (
+				031CD269DA4F3697A6F7EED2 /* DrawingDetailView.swift */,
+				D06BED39B766B3B725CFFEC2 /* HistoryView.swift */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
+		8F3659E56ED3616B1CDF9598 /* DoodleWidget */ = {
+			isa = PBXGroup;
+			children = (
+				D8A1F06E1BA8A2A16A7CDFF8 /* Assets.xcassets */,
+				529B5417CDC1AF25060B940A /* DoodleWidget.entitlements */,
+				915E77D9D92D373F51FC3A36 /* DoodleWidget.swift */,
+				678819EA688C652052C90E5B /* DoodleWidgetBundle.swift */,
+				B82F897584DA07F6D81C9D9D /* Info.plist */,
+				4406DFC0B9C2089FF089E31A /* Provider.swift */,
+				785281E55F56C30BEFCC4899 /* WidgetView.swift */,
+			);
+			path = DoodleWidget;
+			sourceTree = "<group>";
+		};
+		A49AB2467CF03EEE1A128BB7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BC0D14AB518FDF987FF09AD7 /* DoodleGuess.app */,
+				1ECE7392F68D897F5ED59E34 /* DoodleWidget.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B65F4EAF65CDDDFBEA9317C0 /* DoodleGuess */ = {
+			isa = PBXGroup;
+			children = (
+				9E1FAF64D76C42E66AD8F595 /* Assets.xcassets */,
+				4F15498CA62BA93090B340DC /* DoodleGuess.entitlements */,
+				DB8BEF10B308EE44F6A408DE /* GoogleService-Info.plist */,
+				2023CABF59FB0EF84C8ECAC8 /* Info.plist */,
+				1522817B36DA0AACB981AE84 /* App */,
+				2C7468F5A910CEE79F655EAE /* Features */,
+				17D7673DADFBBE9611A89D09 /* Models */,
+				26038CEC3C9694DB5CCA92CB /* Services */,
+				16A59024585BD1836131111C /* Shared */,
+			);
+			path = DoodleGuess;
+			sourceTree = "<group>";
+		};
+		BCFEACA756D18043E46D71F3 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				E59EEA34661BB38662B80B6A /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		D813F38579EC4B39B1073125 /* Canvas */ = {
+			isa = PBXGroup;
+			children = (
+				50180C3B962F3B9E6D80A4B4 /* CanvasScreen.swift */,
+				57D30AD9F9DFE21106C43FAF /* CanvasToolbar.swift */,
+				99B5C1BCF71C4BE8C471B0FC /* CanvasViewModel.swift */,
+				4A0A2155795DE5E7BCBFAD86 /* PencilKitCanvasView.swift */,
+			);
+			path = Canvas;
+			sourceTree = "<group>";
+		};
+		FE34C037C5CBF385322601C4 = {
+			isa = PBXGroup;
+			children = (
+				B65F4EAF65CDDDFBEA9317C0 /* DoodleGuess */,
+				8F3659E56ED3616B1CDF9598 /* DoodleWidget */,
+				A49AB2467CF03EEE1A128BB7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3CCFEAF93D7DD09B6B1FE9C8 /* DoodleWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FBAC0BEE185752BC766A685E /* Build configuration list for PBXNativeTarget "DoodleWidget" */;
+			buildPhases = (
+				0314A3115639B64F62295843 /* Sources */,
+				4B4E8D42E48360E3F8BE0238 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DoodleWidget;
+			packageProductDependencies = (
+			);
+			productName = DoodleWidget;
+			productReference = 1ECE7392F68D897F5ED59E34 /* DoodleWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		B4A5EEA68206876A42C429CC /* DoodleGuess */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8C2BF254A1983BC385953DC3 /* Build configuration list for PBXNativeTarget "DoodleGuess" */;
+			buildPhases = (
+				1E84AC1213F95B93B34E38D0 /* Sources */,
+				36DB5C93E8929FF7AE0583AF /* Resources */,
+				7F598095090FF76CC4CC97E6 /* Frameworks */,
+				9A6DF9390DB36C63A843F38F /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D0F3520F9A8F9A8441293B27 /* PBXTargetDependency */,
+			);
+			name = DoodleGuess;
+			packageProductDependencies = (
+				440C5BEF991060AA44AAAD03 /* FirebaseAuth */,
+				FF96C33A3DA7E40EDC34EACB /* FirebaseFirestore */,
+				140103FDE5A4EF89765B1979 /* FirebaseFirestoreSwift */,
+				EE9B00C5944F4CBAD3F33FE3 /* FirebaseMessaging */,
+				77F2EC09FCC759069606FCEC /* FirebaseStorage */,
+			);
+			productName = DoodleGuess;
+			productReference = BC0D14AB518FDF987FF09AD7 /* DoodleGuess.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4A677AEF6E44CDAF2420341A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1500;
+			};
+			buildConfigurationList = 238FEA4535DA5AE7661FD337 /* Build configuration list for PBXProject "DoodleGuess" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = FE34C037C5CBF385322601C4;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				D6928655616C7C45026786A5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
+			preferredProjectObjectVersion = 77;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B4A5EEA68206876A42C429CC /* DoodleGuess */,
+				3CCFEAF93D7DD09B6B1FE9C8 /* DoodleWidget */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		36DB5C93E8929FF7AE0583AF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BA17FD5E67E42D3DC01388C7 /* Assets.xcassets in Resources */,
+				084FDE1597E2AAED9211265A /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4B4E8D42E48360E3F8BE0238 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				276F35B442C25A4457BB3361 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0314A3115639B64F62295843 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F1434348B10D059DAC9487F4 /* AppGroup.swift in Sources */,
+				19DB7BE1EECD8B99D22B74DE /* DoodleWidget.swift in Sources */,
+				0834E6B8E28D9B0F7D9FDF14 /* DoodleWidgetBundle.swift in Sources */,
+				3C68F4CB7003E93712A001AB /* Provider.swift in Sources */,
+				1EAB8F199C7CAE546C39332E /* SharedModels.swift in Sources */,
+				307539A5C2ED4D253B0D836C /* SharedStorage.swift in Sources */,
+				E742202EA0CCCF582B9B7752 /* WidgetView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1E84AC1213F95B93B34E38D0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5294A87CE4DCFC662CB6C38 /* AppDelegate.swift in Sources */,
+				68C1D216DEE3735591883628 /* AppGroup.swift in Sources */,
+				29E6E48BBF8288732F519B53 /* AppUser.swift in Sources */,
+				248E76F1FF93726DAB2CFB40 /* AuthService.swift in Sources */,
+				12BD47355C6D22EB64AF5200 /* CanvasScreen.swift in Sources */,
+				57CC04CAB302C93F1B6A1F2C /* CanvasToolbar.swift in Sources */,
+				0B970192D0F70B5F003557A5 /* CanvasViewModel.swift in Sources */,
+				E168B0394D96F4A7664763FE /* DoodleGuessApp.swift in Sources */,
+				2318CCEF7F24B139654E8379 /* DrawingDetailView.swift in Sources */,
+				1B571B44B4AA3600DD0E2894 /* DrawingRecord.swift in Sources */,
+				C2CF7CEC2F399DC510E955F3 /* DrawingService.swift in Sources */,
+				AE38F19CD352F2A6ADDC55C6 /* HistoryView.swift in Sources */,
+				EF086440CC4A8DF23ED0C4FF /* MainView.swift in Sources */,
+				5C92A57EEEFB4C06B9555257 /* Pair.swift in Sources */,
+				A4FA07EC82F9F8F23188DA68 /* PairingService.swift in Sources */,
+				F967EC8854D55434343007BF /* PairingView.swift in Sources */,
+				90CE97C5A155941ADE596C1A /* PencilKitCanvasView.swift in Sources */,
+				C7635C00F56AB62B79A781C2 /* RootView.swift in Sources */,
+				AEA43A401FE622CA08541CD6 /* SettingsView.swift in Sources */,
+				04D8EBF2BF3E6A919A60EF68 /* SharedModels.swift in Sources */,
+				651E1C313917E6C6DA1CDA71 /* SharedStorage.swift in Sources */,
+				4BCEAE907BD246550DA27871 /* WelcomeView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D0F3520F9A8F9A8441293B27 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3CCFEAF93D7DD09B6B1FE9C8 /* DoodleWidget */;
+			targetProxy = 133D1DBFDDA1549E703120BE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		7AB17E6CE7710ED6CAFAE720 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		863F5ECDD569EC2EFFB317D6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = DoodleGuess/DoodleGuess.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = DoodleGuess/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.matthewlam.doodleguess;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		8FCA5C23D069691C4E740C0E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		9AD80EDBE180DC3AC717F275 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = DoodleWidget/DoodleWidget.entitlements;
+				INFOPLIST_FILE = DoodleWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.matthewlam.doodleguess.widget;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A703D029BCE90DD90A0204EA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = DoodleWidget/DoodleWidget.entitlements;
+				INFOPLIST_FILE = DoodleWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.matthewlam.doodleguess.widget;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		E6B93691ACF5BD99285385E3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = DoodleGuess/DoodleGuess.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = DoodleGuess/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.matthewlam.doodleguess;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		238FEA4535DA5AE7661FD337 /* Build configuration list for PBXProject "DoodleGuess" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8FCA5C23D069691C4E740C0E /* Debug */,
+				7AB17E6CE7710ED6CAFAE720 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		8C2BF254A1983BC385953DC3 /* Build configuration list for PBXNativeTarget "DoodleGuess" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E6B93691ACF5BD99285385E3 /* Debug */,
+				863F5ECDD569EC2EFFB317D6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		FBAC0BEE185752BC766A685E /* Build configuration list for PBXNativeTarget "DoodleWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9AD80EDBE180DC3AC717F275 /* Debug */,
+				A703D029BCE90DD90A0204EA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D6928655616C7C45026786A5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		140103FDE5A4EF89765B1979 /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D6928655616C7C45026786A5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
+		440C5BEF991060AA44AAAD03 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D6928655616C7C45026786A5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		77F2EC09FCC759069606FCEC /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D6928655616C7C45026786A5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+		EE9B00C5944F4CBAD3F33FE3 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D6928655616C7C45026786A5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+		FF96C33A3DA7E40EDC34EACB /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D6928655616C7C45026786A5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 4A677AEF6E44CDAF2420341A /* Project object */;
+}
