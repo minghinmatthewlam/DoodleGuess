@@ -12,29 +12,24 @@ struct DoodleWidgetEntry: TimelineEntry {
 
 struct DoodleWidgetProvider: TimelineProvider {
     func placeholder(in context: Context) -> DoodleWidgetEntry {
-        DoodleWidgetEntry(
-            date: Date(),
-            image: UIImage(named: "starter_doodle") ?? UIImage(),
-            partnerName: "Partner",
-            timestamp: nil,
-            drawingId: nil
-        )
+        loadEntry(family: context.family)
     }
 
     func getSnapshot(in context: Context, completion: @escaping (DoodleWidgetEntry) -> Void) {
-        completion(loadEntry())
+        completion(loadEntry(family: context.family))
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<DoodleWidgetEntry>) -> Void) {
-        let entry = loadEntry()
+        let entry = loadEntry(family: context.family)
         let next = Calendar.current.date(byAdding: .minute, value: 15, to: Date()) ?? Date().addingTimeInterval(900)
         completion(Timeline(entries: [entry], policy: .after(next)))
     }
 
-    private func loadEntry() -> DoodleWidgetEntry {
+    private func loadEntry(family: WidgetFamily) -> DoodleWidgetEntry {
         let (image, metadata) = SharedStorage.loadLatestDrawing()
         let fallback = UIImage(named: "starter_doodle") ?? UIImage()
-        let finalImage = image ?? fallback
+        let baseImage = image ?? fallback
+        let finalImage = resizedImage(baseImage, maxSide: maxSide(for: family))
 
         return DoodleWidgetEntry(
             date: Date(),
@@ -43,6 +38,32 @@ struct DoodleWidgetProvider: TimelineProvider {
             timestamp: metadata?.timestamp,
             drawingId: metadata?.drawingId
         )
+    }
+
+    private func maxSide(for family: WidgetFamily) -> CGFloat {
+        switch family {
+        case .systemSmall:
+            return 360
+        case .systemMedium:
+            return 480
+        default:
+            return 480
+        }
+    }
+
+    private func resizedImage(_ image: UIImage, maxSide: CGFloat) -> UIImage {
+        let size = image.size
+        let maxDimension = max(size.width, size.height)
+        if maxDimension <= maxSide {
+            return image
+        }
+
+        let scale = maxSide / maxDimension
+        let newSize = CGSize(width: size.width * scale, height: size.height * scale)
+
+        return UIGraphicsImageRenderer(size: newSize).image { _ in
+            image.draw(in: CGRect(origin: .zero, size: newSize))
+        }
     }
 }
 
