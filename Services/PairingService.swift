@@ -44,18 +44,35 @@ final class PairingService: ObservableObject {
         let pairRef = db.collection("pairs").document(normalized)
         let meRef = db.collection("users").document(currentUserId)
 
-        try await db.runTransaction { txn, _ in
-            let pairSnap = try txn.getDocument(pairRef)
+        _ = try await db.runTransaction { txn, errorPointer in
+            let pairSnap: DocumentSnapshot
+            do {
+                pairSnap = try txn.getDocument(pairRef)
+            } catch {
+                errorPointer?.pointee = error as NSError
+                return nil
+            }
+
             guard let data = pairSnap.data() else {
-                throw PairingError.invalidCode
+                errorPointer?.pointee = PairingError.invalidCode as NSError
+                return nil
             }
 
             let user1Id = data["user1Id"] as? String ?? ""
             let user2Id = data["user2Id"] as? String
 
-            if user1Id.isEmpty { throw PairingError.invalidCode }
-            if user1Id == currentUserId { throw PairingError.selfPairing }
-            if user2Id != nil { throw PairingError.alreadyPaired }
+            if user1Id.isEmpty {
+                errorPointer?.pointee = PairingError.invalidCode as NSError
+                return nil
+            }
+            if user1Id == currentUserId {
+                errorPointer?.pointee = PairingError.selfPairing as NSError
+                return nil
+            }
+            if user2Id != nil {
+                errorPointer?.pointee = PairingError.alreadyPaired as NSError
+                return nil
+            }
 
             txn.updateData(["user2Id": currentUserId], forDocument: pairRef)
 

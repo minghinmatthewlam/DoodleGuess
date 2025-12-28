@@ -1,5 +1,9 @@
 import Foundation
 
+#if canImport(FirebaseFirestoreSwift)
+import FirebaseFirestoreSwift
+#endif
+
 struct DrawingRecord: Codable, Identifiable {
     @DocumentID var id: String?
     var pairId: String
