@@ -46,6 +46,9 @@ GoogleService-Info.plist
 *.p8
 *.p12
 
+# Private docs
+plan.md
+
 # Archives
 *.ipa
 *.dSYM.zip
