@@ -31,7 +31,7 @@ struct CanvasScreen: View {
                         Text("Send").fontWeight(.semibold)
                     }
                 }
-                .disabled(drawings.isSending || vm.canvasView.drawing.strokes.isEmpty)
+                .disabled(drawings.isSending || !vm.hasDrawing)
             }
         }
         .alert("Sent!", isPresented: $showingSent) {

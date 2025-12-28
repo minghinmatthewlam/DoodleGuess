@@ -9,11 +9,13 @@ final class CanvasViewModel: ObservableObject {
     @Published var selectedColor: UIColor = .black
     @Published var isErasing = false
     @Published var strokeWidth: CGFloat = 8
+    @Published var hasDrawing = false
 
     init() {
         canvasView.drawingPolicy = .anyInput
         canvasView.backgroundColor = .white
         applyTool()
+        updateHasDrawing()
     }
 
     func applyTool() {
@@ -24,11 +26,22 @@ final class CanvasViewModel: ObservableObject {
         }
     }
 
-    func clear() { canvasView.drawing = PKDrawing() }
-    func undo() { canvasView.undoManager?.undo() }
+    func clear() {
+        canvasView.drawing = PKDrawing()
+        updateHasDrawing()
+    }
+
+    func undo() {
+        canvasView.undoManager?.undo()
+        updateHasDrawing()
+    }
 
     func drawingBytes() -> Data {
         canvasView.drawing.dataRepresentation()
+    }
+
+    func updateHasDrawing() {
+        hasDrawing = !canvasView.drawing.strokes.isEmpty
     }
 
     func renderSquareImage(side: CGFloat = 512, background: UIColor = .white) -> UIImage {
