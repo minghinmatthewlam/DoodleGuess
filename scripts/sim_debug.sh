@@ -29,12 +29,12 @@ PY
 
 build_app() {
   local udid="$1"
-  xcodebuild -project "$PROJECT_PATH" -scheme "$SCHEME" -destination "id=$udid" build >/dev/null
+  xcodebuild -project "$PROJECT_PATH" -scheme "$SCHEME" -destination "platform=iOS Simulator,id=$udid" build >/dev/null
 }
 
 app_path() {
   local udid="$1"
-  xcodebuild -project "$PROJECT_PATH" -scheme "$SCHEME" -destination "id=$udid" -showBuildSettings | \
+  xcodebuild -project "$PROJECT_PATH" -scheme "$SCHEME" -destination "platform=iOS Simulator,id=$udid" -showBuildSettings | \
     awk -F ' = ' '/TARGET_BUILD_DIR/ {dir=$2} /FULL_PRODUCT_NAME/ {name=$2} END {print dir"/"name}'
 }
 

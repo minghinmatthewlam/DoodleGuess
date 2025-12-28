@@ -1,0 +1,28 @@
+# SwiftFormat config for DoodleGuess
+# Docs: https://github.com/nicklockwood/SwiftFormat/blob/main/Rules.md
+
+# File options
+--exclude DerivedData,build,.build,Pods
+
+# Format options
+--indent 4
+--indentcase false
+--trimwhitespace always
+--stripunusedargs closure-only
+--maxwidth 120
+--wraparguments before-first
+--wrapparameters before-first
+--wrapcollections before-first
+--closingparen balanced
+
+# Swift version
+--swiftversion 5.9
+
+# Rules to disable (if any cause issues)
+# --disable redundantSelf
+
+# Self preference
+--self remove
+
+# Import sorting
+--importgrouping alpha

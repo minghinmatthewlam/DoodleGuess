@@ -6,7 +6,7 @@ enum InviteCode {
     static let allowedCharacters = Set(alphabet)
 
     static func generate() -> String {
-        String((0..<length).compactMap { _ in alphabet.randomElement() })
+        String((0 ..< length).compactMap { _ in alphabet.randomElement() })
     }
 
     static func normalize(_ raw: String) -> String {

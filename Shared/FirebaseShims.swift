@@ -1,26 +1,26 @@
 import Foundation
 
 #if !canImport(FirebaseFirestoreSwift)
-@propertyWrapper
-struct DocumentID<Value: Codable>: Codable {
-    var wrappedValue: Value
+    @propertyWrapper
+    struct DocumentID<Value: Codable>: Codable {
+        var wrappedValue: Value
 
-    init(wrappedValue: Value) {
-        self.wrappedValue = wrappedValue
-    }
+        init(wrappedValue: Value) {
+            self.wrappedValue = wrappedValue
+        }
 
-    init() where Value: ExpressibleByNilLiteral {
-        self.wrappedValue = nil
-    }
+        init() where Value: ExpressibleByNilLiteral {
+            wrappedValue = nil
+        }
 
-    init(from decoder: Decoder) throws {
-        let container = try decoder.singleValueContainer()
-        self.wrappedValue = try container.decode(Value.self)
-    }
+        init(from decoder: Decoder) throws {
+            let container = try decoder.singleValueContainer()
+            wrappedValue = try container.decode(Value.self)
+        }
 
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.singleValueContainer()
-        try container.encode(wrappedValue)
+        func encode(to encoder: Encoder) throws {
+            var container = encoder.singleValueContainer()
+            try container.encode(wrappedValue)
+        }
     }
-}
 #endif

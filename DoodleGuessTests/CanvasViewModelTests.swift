@@ -1,6 +1,6 @@
-import XCTest
-import PencilKit
 @testable import DoodleGuess
+import PencilKit
+import XCTest
 
 @MainActor
 final class CanvasViewModelTests: XCTestCase {

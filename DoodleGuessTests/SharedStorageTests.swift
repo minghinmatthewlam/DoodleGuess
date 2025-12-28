@@ -1,6 +1,6 @@
-import XCTest
-import UIKit
 @testable import DoodleGuess
+import UIKit
+import XCTest
 
 final class SharedStorageTests: XCTestCase {
     func testSaveAndLoadRoundTripUsingTempDirectory() throws {

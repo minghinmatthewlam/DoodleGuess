@@ -1,5 +1,5 @@
-import SwiftUI
 import PencilKit
+import SwiftUI
 
 struct PencilKitCanvasView: UIViewRepresentable {
     @ObservedObject var vm: CanvasViewModel

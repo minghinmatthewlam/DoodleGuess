@@ -1,3 +1,5 @@
+Read `~/dev/agent-guards/AGENTS.md` for global guidelines.
+
 # Repository Guidelines
 
 ## Project Structure & Module Organization

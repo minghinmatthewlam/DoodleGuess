@@ -1,7 +1,7 @@
 import Foundation
 
 #if canImport(FirebaseFirestoreSwift)
-import FirebaseFirestoreSwift
+    import FirebaseFirestoreSwift
 #endif
 
 struct AppUser: Codable, Identifiable {
@@ -22,7 +22,7 @@ struct AppUser: Codable, Identifiable {
         deviceToken: String?,
         createdAt: Date
     ) {
-        self._id = DocumentID(wrappedValue: id)
+        _id = DocumentID(wrappedValue: id)
         self.name = name
         self.partnerId = partnerId
         self.pairId = pairId

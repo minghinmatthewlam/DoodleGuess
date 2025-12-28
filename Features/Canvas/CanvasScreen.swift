@@ -1,5 +1,5 @@
-import SwiftUI
 import PencilKit
+import SwiftUI
 
 struct CanvasScreen: View {
     @EnvironmentObject var auth: AuthService

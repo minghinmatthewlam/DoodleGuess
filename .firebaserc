@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "doodleguess"
-  }
+    "default": "doodleguess-d8e4d"
+  },
+  "targets": {},
+  "etags": {}
 }

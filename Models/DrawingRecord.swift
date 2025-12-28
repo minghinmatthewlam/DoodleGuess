@@ -1,7 +1,7 @@
 import Foundation
 
 #if canImport(FirebaseFirestoreSwift)
-import FirebaseFirestoreSwift
+    import FirebaseFirestoreSwift
 #endif
 
 struct DrawingRecord: Codable, Identifiable {
@@ -23,7 +23,7 @@ struct DrawingRecord: Codable, Identifiable {
         drawingBytes: Data?,
         imageUrl: String?
     ) {
-        self._id = DocumentID(wrappedValue: id)
+        _id = DocumentID(wrappedValue: id)
         self.pairId = pairId
         self.fromUserId = fromUserId
         self.toUserId = toUserId

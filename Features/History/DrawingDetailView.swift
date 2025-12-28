@@ -1,5 +1,5 @@
-import SwiftUI
 import PencilKit
+import SwiftUI
 
 struct DrawingDetailView: View {
     @EnvironmentObject var drawings: DrawingService
@@ -49,7 +49,7 @@ struct DrawingDetailView: View {
         .navigationTitle("Drawing")
         .navigationBarTitleDisplayMode(.inline)
         .overlay {
-            if drawing == nil && resolvedDrawing == nil {
+            if drawing == nil, resolvedDrawing == nil {
                 Text("Open the app to load this drawing")
                     .font(.footnote)
                     .foregroundColor(.secondary)

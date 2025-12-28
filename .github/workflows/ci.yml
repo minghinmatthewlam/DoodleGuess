@@ -1,0 +1,61 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    name: Format Check
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install SwiftFormat
+        run: brew install swiftformat
+
+      - name: Check format
+        run: swiftformat . --lint
+
+  build-and-test:
+    name: Build & Test
+    runs-on: macos-14
+    needs: lint  # Only run if lint passes
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Select Xcode
+        run: sudo xcode-select -s /Applications/Xcode_15.4.app/Contents/Developer
+
+      - name: Generate Xcode project
+        run: ./scripts/generate_xcodeproj.sh
+
+      - name: Build App
+        run: |
+          xcodebuild -project DoodleGuess.xcodeproj \
+            -scheme DoodleGuess \
+            -destination 'platform=iOS Simulator,name=iPhone 15' \
+            -quiet \
+            build
+
+      - name: Build Widget
+        run: |
+          xcodebuild -project DoodleGuess.xcodeproj \
+            -scheme DoodleWidget \
+            -destination 'platform=iOS Simulator,name=iPhone 15' \
+            -quiet \
+            build
+
+      - name: Run Tests
+        run: |
+          xcodebuild -project DoodleGuess.xcodeproj \
+            -scheme DoodleGuess \
+            -destination 'platform=iOS Simulator,name=iPhone 15' \
+            -quiet \
+            test -only-testing:DoodleGuessTests

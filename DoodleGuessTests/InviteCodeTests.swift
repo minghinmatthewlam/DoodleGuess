@@ -1,11 +1,11 @@
-import XCTest
 @testable import DoodleGuess
+import XCTest
 
 final class InviteCodeTests: XCTestCase {
     func testGenerateInviteCodeUsesAllowedCharacters() {
         let allowed = InviteCode.allowedCharacters
 
-        for _ in 0..<100 {
+        for _ in 0 ..< 100 {
             let code = InviteCode.generate()
             XCTAssertEqual(code.count, InviteCode.length)
             XCTAssertTrue(code.allSatisfy { allowed.contains($0) })

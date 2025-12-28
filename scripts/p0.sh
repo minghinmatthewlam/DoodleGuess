@@ -3,6 +3,18 @@ set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 PROJECT="$ROOT_DIR/DoodleGuess.xcodeproj"
+
+# Fast format check first (fails fast if format issues)
+echo "🔍 Checking format..."
+if command -v swiftformat &> /dev/null; then
+    if ! swiftformat "$ROOT_DIR" --lint --quiet 2>/dev/null; then
+        echo "❌ Format issues found. Run: ./scripts/lint.sh --fix"
+        exit 1
+    fi
+    echo "✓ Format OK"
+else
+    echo "⚠️  swiftformat not installed, skipping format check"
+fi
 DESTINATION="$(python3 - <<'PY'
 import json
 import re

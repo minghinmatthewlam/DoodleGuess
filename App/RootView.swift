@@ -53,7 +53,8 @@ struct RootView: View {
     private func startListeningIfPossible() {
         guard pairing.isPaired,
               let myId = auth.currentUser?.id,
-              let partnerName = pairing.partner?.name else {
+              let partnerName = pairing.partner?.name
+        else {
             return
         }
 

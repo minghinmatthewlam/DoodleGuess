@@ -23,7 +23,10 @@ struct CanvasToolbar: View {
                     Circle()
                         .fill(Color(uiColor: c))
                         .frame(width: 22, height: 22)
-                        .overlay(Circle().stroke(Color.primary.opacity(vm.selectedColor == c ? 0.8 : 0.2), lineWidth: 2))
+                        .overlay(Circle().stroke(
+                            Color.primary.opacity(vm.selectedColor == c ? 0.8 : 0.2),
+                            lineWidth: 2
+                        ))
                 }
             }
 

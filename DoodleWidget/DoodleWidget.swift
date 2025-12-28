@@ -1,6 +1,6 @@
-import WidgetKit
 import SwiftUI
 import UIKit
+import WidgetKit
 
 struct DoodleWidgetEntry: TimelineEntry {
     let date: Date
@@ -43,11 +43,11 @@ struct DoodleWidgetProvider: TimelineProvider {
     private func maxSide(for family: WidgetFamily) -> CGFloat {
         switch family {
         case .systemSmall:
-            return 360
+            360
         case .systemMedium:
-            return 480
+            480
         default:
-            return 480
+            480
         }
     }
 
