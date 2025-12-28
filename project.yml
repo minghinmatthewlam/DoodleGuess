@@ -25,6 +25,8 @@ targets:
           - CFBundleTypeRole: Editor
             CFBundleURLSchemes:
               - doodleguess
+        UIBackgroundModes:
+          - remote-notification
         LSRequiresIPhoneOS: true
         UIApplicationSceneManifest:
           UIApplicationSupportsMultipleScenes: false
@@ -33,6 +35,7 @@ targets:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.matthewlam.doodleguess
         PRODUCT_NAME: DoodleGuess
+        CODE_SIGN_ENTITLEMENTS: App/DoodleGuess.entitlements
     dependencies:
       - target: DoodleWidget
         embed: true
@@ -54,6 +57,7 @@ targets:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.matthewlam.doodleguess.widget
         PRODUCT_NAME: DoodleWidget
+        CODE_SIGN_ENTITLEMENTS: DoodleWidget/DoodleWidget.entitlements
 
   DoodleGuessTests:
     type: bundle.unit-test

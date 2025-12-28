@@ -6,10 +6,26 @@ import UIKit
 final class CanvasViewModel: ObservableObject {
     let canvasView = PKCanvasView()
 
+    @Published var selectedColor: UIColor = .black
+    @Published var isErasing = false
+    @Published var strokeWidth: CGFloat = 8
+
     init() {
         canvasView.drawingPolicy = .anyInput
         canvasView.backgroundColor = .white
+        applyTool()
     }
+
+    func applyTool() {
+        if isErasing {
+            canvasView.tool = PKEraserTool(.vector)
+        } else {
+            canvasView.tool = PKInkingTool(.pen, color: selectedColor, width: strokeWidth)
+        }
+    }
+
+    func clear() { canvasView.drawing = PKDrawing() }
+    func undo() { canvasView.undoManager?.undo() }
 
     func drawingBytes() -> Data {
         canvasView.drawing.dataRepresentation()

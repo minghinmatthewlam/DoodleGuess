@@ -7,23 +7,43 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B5E1C98F355810052B77E7F /* FirebaseShims.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38D1E239CEC69570C069199 /* FirebaseShims.swift */; };
 		0DF2D2B4D2B714689D6BF371 /* SharedStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64703828EBF5877BA857AD6 /* SharedStorage.swift */; };
+		1895678065C3BDA417D7A546 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DAE9486FB103D3BA516AF3 /* WelcomeView.swift */; };
 		19DB7BE1EECD8B99D22B74DE /* DoodleWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915E77D9D92D373F51FC3A36 /* DoodleWidget.swift */; };
 		1D5DC731A260A8809A4D2BA7 /* SharedStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C4B97ADD86B255C247ACFB /* SharedStorageTests.swift */; };
 		2225ED7F7CCCCA048222234D /* DoodleGuessApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F54801630557C3A0DFCE90 /* DoodleGuessApp.swift */; };
 		22846415D362CFCBB615A337 /* DoodleWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 1ECE7392F68D897F5ED59E34 /* DoodleWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		276F35B442C25A4457BB3361 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8A1F06E1BA8A2A16A7CDFF8 /* Assets.xcassets */; };
 		2E9DA8EF7F9E5F8B632339E6 /* CanvasViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381DCF567C1FA890077A39F4 /* CanvasViewModel.swift */; };
 		4708403D214B4C29CA037C4C /* CanvasViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4679FBC69E35A7E854C24F /* CanvasViewModelTests.swift */; };
+		4B37BF5A56E618639F50E451 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94676A7FA0D10D264DFB8EE4 /* AppDelegate.swift */; };
+		689DBABA30ED309C8B857D6F /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328C9AFA649F539C2A78CDB2 /* SettingsView.swift */; };
+		68DE50D73CEB0C8E631354F8 /* DrawingRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3AEA41FB62C22D025664A8 /* DrawingRecord.swift */; };
 		74ED99A8F769BB1BD7A3C26F /* SharedModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E30C4A6CE05CC407C11B518 /* SharedModels.swift */; };
 		77BC2646DADD9326966F3159 /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5457DD7D526FA1F33159EDB3 /* AppUser.swift */; };
 		78CC13BF17FB10D000377C69 /* InviteCodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BAD6882144D7127E63779FF /* InviteCodeTests.swift */; };
+		831B28DCAF82BBA1EC3B917F /* DeepLinkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA84D8EDBA379EE975890BD9 /* DeepLinkRouter.swift */; };
+		8407E1BAA8899BB0F2B9A699 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8603BBB7601986B55DFEA7 /* RootView.swift */; };
 		88E7FD4D40259DE7F701D183 /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA48C5876654563743ABFED1 /* AppGroup.swift */; };
+		8A3E1DB2F6920561789998D3 /* FirebaseShims.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38D1E239CEC69570C069199 /* FirebaseShims.swift */; };
 		997753D78818D786705857CA /* SharedStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64703828EBF5877BA857AD6 /* SharedStorage.swift */; };
+		9A02EBB22BA4DA2B1E9EAAD0 /* CanvasToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B47469CFC7D042BAB272950 /* CanvasToolbar.swift */; };
+		9DEB09974BA64AB242481111 /* DrawingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B62CF54A2B6685CC646A79 /* DrawingDetailView.swift */; };
 		A04A0769651AD1A1AAA82B09 /* InviteCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AAD484C7C680261C0429B10 /* InviteCode.swift */; };
 		A0DBA05C5468FFD3F07E1381 /* SharedModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E30C4A6CE05CC407C11B518 /* SharedModels.swift */; };
+		ABD10B528AB62193FABCC4A8 /* Pair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946B7AC584C47C89C809B341 /* Pair.swift */; };
+		ADCB6C24BDA566C0A4A3C3EE /* PairingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E43A099E7D494AFD005D06 /* PairingService.swift */; };
+		AF80AD5A4C086D694BC084A5 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2756B9EA95489D91A673E4 /* HistoryView.swift */; };
+		AFF65445F918D534B34DEF6F /* CanvasScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B53BCF54C23CBAFEFB19725 /* CanvasScreen.swift */; };
 		B564098514090DDE88B25096 /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA48C5876654563743ABFED1 /* AppGroup.swift */; };
+		C0E44B0CA7CFFF26876C5DF1 /* DrawingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC053921CE8159C046BBF060 /* DrawingService.swift */; };
+		D11275EE7F0A82642C6C1BEA /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBD4461C6E54B071D00B57E /* MainView.swift */; };
+		E8A9B760438FA5457BFDE72E /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC79663418E37C1A254AF20 /* AuthService.swift */; };
+		F043B3E08A8FE4AF81CFAFA8 /* PairingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C08975584CF5A778DD69CC7 /* PairingView.swift */; };
 		F5CA29E8DEE085EB19919044 /* InviteCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AAD484C7C680261C0429B10 /* InviteCode.swift */; };
 		F907317B0281E6C27C3B4348 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A30085F8E28EB3E0AA77D8 /* ContentView.swift */; };
+		FFF560EC36A96FE5E46DF5B6 /* PencilKitCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3B0F34FA073955F226D0B5 /* PencilKitCanvasView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,24 +78,45 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0B8603BBB7601986B55DFEA7 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		0CBD4461C6E54B071D00B57E /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		1B53BCF54C23CBAFEFB19725 /* CanvasScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasScreen.swift; sourceTree = "<group>"; };
 		1ECE7392F68D897F5ED59E34 /* DoodleWidget.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = DoodleWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		3285E3A2B1A214F9BD1FFC78 /* DoodleGuess.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DoodleGuess.entitlements; sourceTree = "<group>"; };
+		328C9AFA649F539C2A78CDB2 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		381DCF567C1FA890077A39F4 /* CanvasViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasViewModel.swift; sourceTree = "<group>"; };
 		3BAD6882144D7127E63779FF /* InviteCodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteCodeTests.swift; sourceTree = "<group>"; };
 		46F54801630557C3A0DFCE90 /* DoodleGuessApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoodleGuessApp.swift; sourceTree = "<group>"; };
+		4D3B0F34FA073955F226D0B5 /* PencilKitCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PencilKitCanvasView.swift; sourceTree = "<group>"; };
 		4E30C4A6CE05CC407C11B518 /* SharedModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedModels.swift; sourceTree = "<group>"; };
+		529B5417CDC1AF25060B940A /* DoodleWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DoodleWidget.entitlements; sourceTree = "<group>"; };
 		5457DD7D526FA1F33159EDB3 /* AppUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUser.swift; sourceTree = "<group>"; };
 		5AAD484C7C680261C0429B10 /* InviteCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteCode.swift; sourceTree = "<group>"; };
+		5B47469CFC7D042BAB272950 /* CanvasToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasToolbar.swift; sourceTree = "<group>"; };
+		5E3AEA41FB62C22D025664A8 /* DrawingRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingRecord.swift; sourceTree = "<group>"; };
+		5F2756B9EA95489D91A673E4 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		74FD0D8426B5527419E171E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		79B62CF54A2B6685CC646A79 /* DrawingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingDetailView.swift; sourceTree = "<group>"; };
 		7B4679FBC69E35A7E854C24F /* CanvasViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasViewModelTests.swift; sourceTree = "<group>"; };
 		915E77D9D92D373F51FC3A36 /* DoodleWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoodleWidget.swift; sourceTree = "<group>"; };
+		94676A7FA0D10D264DFB8EE4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		946B7AC584C47C89C809B341 /* Pair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pair.swift; sourceTree = "<group>"; };
+		9C08975584CF5A778DD69CC7 /* PairingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairingView.swift; sourceTree = "<group>"; };
 		9CA4480ADF95A21B201907AB /* DoodleGuessTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = DoodleGuessTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A64703828EBF5877BA857AD6 /* SharedStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedStorage.swift; sourceTree = "<group>"; };
+		AA84D8EDBA379EE975890BD9 /* DeepLinkRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkRouter.swift; sourceTree = "<group>"; };
 		B82F897584DA07F6D81C9D9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		BC0D14AB518FDF987FF09AD7 /* DoodleGuess.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = DoodleGuess.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C1DAE9486FB103D3BA516AF3 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		C5233C963571E4A74B5E4261 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C9A30085F8E28EB3E0AA77D8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		CC053921CE8159C046BBF060 /* DrawingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingService.swift; sourceTree = "<group>"; };
 		D0C4B97ADD86B255C247ACFB /* SharedStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedStorageTests.swift; sourceTree = "<group>"; };
+		D2E43A099E7D494AFD005D06 /* PairingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairingService.swift; sourceTree = "<group>"; };
+		D38D1E239CEC69570C069199 /* FirebaseShims.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseShims.swift; sourceTree = "<group>"; };
+		D8A1F06E1BA8A2A16A7CDFF8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EA48C5876654563743ABFED1 /* AppGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGroup.swift; sourceTree = "<group>"; };
+		FDC79663418E37C1A254AF20 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -83,6 +124,9 @@
 			isa = PBXGroup;
 			children = (
 				CD7B3634376DF441B9BFF25C /* Canvas */,
+				81EDDC552B297DFBA538A8F9 /* History */,
+				63656296C3D24CC91E91728A /* Onboarding */,
+				7E8D15D404403726556FD8ED /* Settings */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -90,9 +134,14 @@
 		45880DB461D966455E675AD2 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				94676A7FA0D10D264DFB8EE4 /* AppDelegate.swift */,
 				C9A30085F8E28EB3E0AA77D8 /* ContentView.swift */,
+				AA84D8EDBA379EE975890BD9 /* DeepLinkRouter.swift */,
+				3285E3A2B1A214F9BD1FFC78 /* DoodleGuess.entitlements */,
 				46F54801630557C3A0DFCE90 /* DoodleGuessApp.swift */,
 				C5233C963571E4A74B5E4261 /* Info.plist */,
+				0CBD4461C6E54B071D00B57E /* MainView.swift */,
+				0B8603BBB7601986B55DFEA7 /* RootView.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -101,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				EA48C5876654563743ABFED1 /* AppGroup.swift */,
+				D38D1E239CEC69570C069199 /* FirebaseShims.swift */,
 				5AAD484C7C680261C0429B10 /* InviteCode.swift */,
 				4E30C4A6CE05CC407C11B518 /* SharedModels.swift */,
 				A64703828EBF5877BA857AD6 /* SharedStorage.swift */,
@@ -119,9 +169,38 @@
 			path = DoodleGuessTests;
 			sourceTree = "<group>";
 		};
+		63656296C3D24CC91E91728A /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				9C08975584CF5A778DD69CC7 /* PairingView.swift */,
+				C1DAE9486FB103D3BA516AF3 /* WelcomeView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		7E8D15D404403726556FD8ED /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				328C9AFA649F539C2A78CDB2 /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		81EDDC552B297DFBA538A8F9 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				79B62CF54A2B6685CC646A79 /* DrawingDetailView.swift */,
+				5F2756B9EA95489D91A673E4 /* HistoryView.swift */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
 		861FE4F0ECA0A1E890D72DDF /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				FDC79663418E37C1A254AF20 /* AuthService.swift */,
+				CC053921CE8159C046BBF060 /* DrawingService.swift */,
+				D2E43A099E7D494AFD005D06 /* PairingService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -129,6 +208,8 @@
 		8F3659E56ED3616B1CDF9598 /* DoodleWidget */ = {
 			isa = PBXGroup;
 			children = (
+				D8A1F06E1BA8A2A16A7CDFF8 /* Assets.xcassets */,
+				529B5417CDC1AF25060B940A /* DoodleWidget.entitlements */,
 				915E77D9D92D373F51FC3A36 /* DoodleWidget.swift */,
 				B82F897584DA07F6D81C9D9D /* Info.plist */,
 			);
@@ -139,6 +220,8 @@
 			isa = PBXGroup;
 			children = (
 				5457DD7D526FA1F33159EDB3 /* AppUser.swift */,
+				5E3AEA41FB62C22D025664A8 /* DrawingRecord.swift */,
+				946B7AC584C47C89C809B341 /* Pair.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -156,7 +239,10 @@
 		CD7B3634376DF441B9BFF25C /* Canvas */ = {
 			isa = PBXGroup;
 			children = (
+				1B53BCF54C23CBAFEFB19725 /* CanvasScreen.swift */,
+				5B47469CFC7D042BAB272950 /* CanvasToolbar.swift */,
 				381DCF567C1FA890077A39F4 /* CanvasViewModel.swift */,
+				4D3B0F34FA073955F226D0B5 /* PencilKitCanvasView.swift */,
 			);
 			path = Canvas;
 			sourceTree = "<group>";
@@ -183,6 +269,7 @@
 			buildConfigurationList = FBAC0BEE185752BC766A685E /* Build configuration list for PBXNativeTarget "DoodleWidget" */;
 			buildPhases = (
 				0314A3115639B64F62295843 /* Sources */,
+				4B4E8D42E48360E3F8BE0238 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -262,6 +349,17 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		4B4E8D42E48360E3F8BE0238 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				276F35B442C25A4457BB3361 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		0314A3115639B64F62295843 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -269,6 +367,7 @@
 			files = (
 				88E7FD4D40259DE7F701D183 /* AppGroup.swift in Sources */,
 				19DB7BE1EECD8B99D22B74DE /* DoodleWidget.swift in Sources */,
+				0B5E1C98F355810052B77E7F /* FirebaseShims.swift in Sources */,
 				F5CA29E8DEE085EB19919044 /* InviteCode.swift in Sources */,
 				A0DBA05C5468FFD3F07E1381 /* SharedModels.swift in Sources */,
 				997753D78818D786705857CA /* SharedStorage.swift in Sources */,
@@ -279,14 +378,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B37BF5A56E618639F50E451 /* AppDelegate.swift in Sources */,
 				B564098514090DDE88B25096 /* AppGroup.swift in Sources */,
 				77BC2646DADD9326966F3159 /* AppUser.swift in Sources */,
+				E8A9B760438FA5457BFDE72E /* AuthService.swift in Sources */,
+				AFF65445F918D534B34DEF6F /* CanvasScreen.swift in Sources */,
+				9A02EBB22BA4DA2B1E9EAAD0 /* CanvasToolbar.swift in Sources */,
 				2E9DA8EF7F9E5F8B632339E6 /* CanvasViewModel.swift in Sources */,
 				F907317B0281E6C27C3B4348 /* ContentView.swift in Sources */,
+				831B28DCAF82BBA1EC3B917F /* DeepLinkRouter.swift in Sources */,
 				2225ED7F7CCCCA048222234D /* DoodleGuessApp.swift in Sources */,
+				9DEB09974BA64AB242481111 /* DrawingDetailView.swift in Sources */,
+				68DE50D73CEB0C8E631354F8 /* DrawingRecord.swift in Sources */,
+				C0E44B0CA7CFFF26876C5DF1 /* DrawingService.swift in Sources */,
+				8A3E1DB2F6920561789998D3 /* FirebaseShims.swift in Sources */,
+				AF80AD5A4C086D694BC084A5 /* HistoryView.swift in Sources */,
 				A04A0769651AD1A1AAA82B09 /* InviteCode.swift in Sources */,
+				D11275EE7F0A82642C6C1BEA /* MainView.swift in Sources */,
+				ABD10B528AB62193FABCC4A8 /* Pair.swift in Sources */,
+				ADCB6C24BDA566C0A4A3C3EE /* PairingService.swift in Sources */,
+				F043B3E08A8FE4AF81CFAFA8 /* PairingView.swift in Sources */,
+				FFF560EC36A96FE5E46DF5B6 /* PencilKitCanvasView.swift in Sources */,
+				8407E1BAA8899BB0F2B9A699 /* RootView.swift in Sources */,
+				689DBABA30ED309C8B857D6F /* SettingsView.swift in Sources */,
 				74ED99A8F769BB1BD7A3C26F /* SharedModels.swift in Sources */,
 				0DF2D2B4D2B714689D6BF371 /* SharedStorage.swift in Sources */,
+				1895678065C3BDA417D7A546 /* WelcomeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,7 +478,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -376,13 +493,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = App/DoodleGuess.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.doodleguess;
+				PRODUCT_BUNDLE_IDENTIFIER = com.matthewlam.doodleguess;
 				PRODUCT_NAME = DoodleGuess;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -440,7 +558,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -455,13 +573,14 @@
 		9AD80EDBE180DC3AC717F275 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = DoodleWidget/DoodleWidget.entitlements;
 				INFOPLIST_FILE = DoodleWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.doodleguess.widget;
+				PRODUCT_BUNDLE_IDENTIFIER = com.matthewlam.doodleguess.widget;
 				PRODUCT_NAME = DoodleWidget;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -471,13 +590,14 @@
 		A703D029BCE90DD90A0204EA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = DoodleWidget/DoodleWidget.entitlements;
 				INFOPLIST_FILE = DoodleWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.doodleguess.widget;
+				PRODUCT_BUNDLE_IDENTIFIER = com.matthewlam.doodleguess.widget;
 				PRODUCT_NAME = DoodleWidget;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -494,7 +614,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.DoodleGuessTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.matthewlam.DoodleGuessTests;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DoodleGuess.app/DoodleGuess";
@@ -511,7 +631,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.DoodleGuessTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.matthewlam.DoodleGuessTests;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DoodleGuess.app/DoodleGuess";
@@ -522,13 +642,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = App/DoodleGuess.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.doodleguess;
+				PRODUCT_BUNDLE_IDENTIFIER = com.matthewlam.doodleguess;
 				PRODUCT_NAME = DoodleGuess;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -40,4 +40,8 @@ enum SharedStorage {
 
         return (image, metadata)
     }
+
+    static func hasDrawing() -> Bool {
+        FileManager.default.fileExists(atPath: imageURL.path)
+    }
 }

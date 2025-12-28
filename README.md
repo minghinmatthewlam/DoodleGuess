@@ -9,7 +9,7 @@ Draw for your partner; their drawing appears on your home screen widget.
 - **Drawing:** PencilKit
 - **Backend:** Firebase (Auth, Firestore, Cloud Functions, Messaging)
 - **Widgets:** WidgetKit
-- **Minimum iOS:** 16.0
+- **Minimum iOS:** 17.0
 
 ## Features (MVP)
 
