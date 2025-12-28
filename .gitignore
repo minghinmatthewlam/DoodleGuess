@@ -57,6 +57,9 @@ plan.md
 *.dSYM.zip
 *.dSYM
 
+# Logs
+logs/
+
 # Playgrounds
 timeline.xctimeline
 playground.xcworkspace
