@@ -47,7 +47,7 @@ struct DoodleWidgetProvider: TimelineProvider {
     private func maxSide(for family: WidgetFamily) -> CGFloat {
         switch family {
         case .systemSmall:
-            480
+            320
         case .systemMedium:
             480
         default:
@@ -103,6 +103,9 @@ struct DoodleWidgetEntryView: View {
                 .padding(8)
                 .background(.ultraThinMaterial)
             }
+        }
+        .containerBackground(for: .widget) {
+            Color.clear
         }
         .widgetURL(deepLinkURL(entry.drawingId))
     }
