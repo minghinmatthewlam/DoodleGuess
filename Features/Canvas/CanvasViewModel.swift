@@ -16,10 +16,12 @@ final class CanvasViewModel: ObservableObject {
     @Published var strokeWidth: CGFloat = 8
     @Published var inkStyle: InkStyle = .pen
     @Published var hasDrawing = false
+    @Published var backgroundImage: UIImage?
 
     init() {
         canvasView.drawingPolicy = .anyInput
-        canvasView.backgroundColor = .white
+        canvasView.backgroundColor = .clear
+        canvasView.isOpaque = false
         applyTool()
         updateHasDrawing()
     }
@@ -39,6 +41,10 @@ final class CanvasViewModel: ObservableObject {
         updateHasDrawing()
     }
 
+    func clearBackground() {
+        backgroundImage = nil
+    }
+
     func undo() {
         canvasView.undoManager?.undo()
         updateHasDrawing()
@@ -54,5 +60,14 @@ final class CanvasViewModel: ObservableObject {
 
     func renderSquareImage(side: CGFloat = 512, background: UIColor = .white) -> UIImage {
         DrawingRendering.renderSquare(drawing: canvasView.drawing, side: side, background: background)
+    }
+
+    func renderCompositeImage(side: CGFloat = 2048) -> UIImage {
+        DrawingRendering.renderComposite(
+            drawing: canvasView.drawing,
+            canvasSize: canvasView.bounds.size,
+            outputSide: side,
+            background: backgroundImage
+        )
     }
 }

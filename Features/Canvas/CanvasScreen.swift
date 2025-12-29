@@ -1,4 +1,5 @@
 import PencilKit
+import PhotosUI
 import SwiftUI
 
 struct CanvasScreen: View {
@@ -8,32 +9,61 @@ struct CanvasScreen: View {
 
     @State private var showingSent = false
     @State private var sendError: String?
+    @State private var selectedPhotoItem: PhotosPickerItem?
+    @State private var photoError: String?
 
     var body: some View {
         ZStack {
             BrandBackground()
 
-            VStack(spacing: 16) {
-                HStack {
-                    BrandPill(text: "For \(partnerName())")
-                    Spacer()
+            GeometryReader { proxy in
+                let canvasSide = max(220, proxy.size.width - 36)
+                VStack(spacing: 16) {
+                    HStack(spacing: 10) {
+                        BrandPill(text: "For \(partnerName())")
+                        Spacer()
+
+                        PhotosPicker(selection: $selectedPhotoItem, matching: .images) {
+                            controlLabel(title: "Photo", systemImage: "photo")
+                        }
+                        .buttonStyle(.plain)
+
+                        if vm.backgroundImage != nil {
+                            Button {
+                                vm.clearBackground()
+                            } label: {
+                                controlLabel(title: "Remove", systemImage: "photo.badge.minus")
+                            }
+                            .buttonStyle(.plain)
+                        }
+                    }
+
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 24, style: .continuous)
+                            .fill(Color.white)
+                            .shadow(color: Brand.ink.opacity(0.08), radius: 12, x: 0, y: 6)
+
+                        ZStack {
+                            if let background = vm.backgroundImage {
+                                Image(uiImage: background)
+                                    .resizable()
+                                    .scaledToFill()
+                                    .clipped()
+                            }
+
+                            PencilKitCanvasView(vm: vm)
+                                .padding(10)
+                        }
+                        .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
+                    }
+                    .frame(width: canvasSide, height: canvasSide)
+
+                    CanvasToolbar(vm: vm)
                 }
-
-                ZStack {
-                    RoundedRectangle(cornerRadius: 24, style: .continuous)
-                        .fill(Color.white)
-                        .shadow(color: Brand.ink.opacity(0.08), radius: 12, x: 0, y: 6)
-
-                    PencilKitCanvasView(vm: vm)
-                        .padding(10)
-                }
-                .frame(maxHeight: .infinity)
-
-                CanvasToolbar(vm: vm)
+                .padding(.horizontal, 18)
+                .padding(.top, 16)
+                .padding(.bottom, 12)
             }
-            .padding(.horizontal, 18)
-            .padding(.top, 16)
-            .padding(.bottom, 12)
 
             if showingSent {
                 SentToast(message: "Sent to \(partnerName())")
@@ -67,6 +97,33 @@ struct CanvasScreen: View {
         } message: {
             Text(sendError ?? "Something went wrong.")
         }
+        .alert("Photo", isPresented: Binding(
+            get: { photoError != nil },
+            set: { if !$0 { photoError = nil } }
+        )) {
+            Button("OK") { photoError = nil }
+        } message: {
+            Text(photoError ?? "Unable to load that photo.")
+        }
+        .onChange(of: selectedPhotoItem) { _, newItem in
+            guard let newItem else { return }
+            Task {
+                do {
+                    if let data = try await newItem.loadTransferable(type: Data.self),
+                       let image = UIImage(data: data) {
+                        let scaled = ImageSizing.downscale(image, maxPixel: 2048)
+                        await MainActor.run {
+                            vm.backgroundImage = scaled
+                            selectedPhotoItem = nil
+                        }
+                    } else {
+                        await MainActor.run { photoError = "Unable to load that photo." }
+                    }
+                } catch {
+                    await MainActor.run { photoError = error.localizedDescription }
+                }
+            }
+        }
     }
 
     private func send() async {
@@ -86,7 +143,8 @@ struct CanvasScreen: View {
         }
 
         let pk = vm.canvasView.drawing
-        let rendered = vm.renderSquareImage(side: 512)
+        let hasBackground = vm.backgroundImage != nil
+        let rendered = hasBackground ? vm.renderCompositeImage(side: 2048) : vm.renderSquareImage(side: 512)
 
         do {
             try await app.drawings.sendDrawing(
@@ -95,9 +153,10 @@ struct CanvasScreen: View {
                 fromUserId: me,
                 toUserId: partnerId,
                 pairId: pairId,
-                uploadPNGToStorage: false
+                uploadPNGToStorage: hasBackground
             )
             vm.clear()
+            vm.clearBackground()
             withAnimation(.spring()) {
                 showingSent = true
             }
@@ -115,6 +174,20 @@ struct CanvasScreen: View {
         let name = app.pairing.partner?.name
             .trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
         return name.isEmpty ? "Partner" : name
+    }
+
+    private func controlLabel(title: String, systemImage: String) -> some View {
+        HStack(spacing: 6) {
+            Image(systemName: systemImage)
+            Text(title)
+                .font(Brand.text(13, weight: .semibold))
+        }
+        .padding(.vertical, 8)
+        .padding(.horizontal, 12)
+        .background(
+            RoundedRectangle(cornerRadius: 12, style: .continuous)
+                .fill(Color.white.opacity(0.8))
+        )
     }
 }
 

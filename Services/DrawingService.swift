@@ -121,10 +121,10 @@ import WidgetKit
         }
 
         func updateWidgetFromDrawing(_ drawing: DrawingRecord, partnerName: String) async {
-            let image: UIImage? = if let bytes = drawing.drawingBytes, let pk = try? PKDrawing(data: bytes) {
-                renderSquareForWidget(drawing: pk)
-            } else if let urlStr = drawing.imageUrl, let downloaded = await downloadImage(from: urlStr) {
+            let image: UIImage? = if let urlStr = drawing.imageUrl, let downloaded = await downloadImage(from: urlStr) {
                 downloaded
+            } else if let bytes = drawing.drawingBytes, let pk = try? PKDrawing(data: bytes) {
+                renderSquareForWidget(drawing: pk)
             } else {
                 nil
             }
