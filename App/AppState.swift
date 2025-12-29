@@ -46,7 +46,8 @@ final class AppState: ObservableObject {
     }
 
     private func bindServiceChangeForwarding() {
-        // IMPORTANT: Forward nested service changes so RootView re-renders when auth/pairing/drawings change.
+        // CRITICAL: Forward nested service changes so RootView re-renders on auth/pairing/drawings/deepLink updates.
+        // Without this, deep links and auth state changes can appear to "do nothing" because RootView won't refresh.
         auth.objectWillChange
             .receive(on: RunLoop.main)
             .sink { [weak self] _ in self?.objectWillChange.send() }
@@ -58,6 +59,11 @@ final class AppState: ObservableObject {
             .store(in: &cancellables)
 
         drawings.objectWillChange
+            .receive(on: RunLoop.main)
+            .sink { [weak self] _ in self?.objectWillChange.send() }
+            .store(in: &cancellables)
+
+        deepLink.objectWillChange
             .receive(on: RunLoop.main)
             .sink { [weak self] _ in self?.objectWillChange.send() }
             .store(in: &cancellables)
