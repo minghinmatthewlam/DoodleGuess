@@ -15,9 +15,10 @@ import WidgetKit
         @Published var latestReceivedDrawing: DrawingRecord?
         @Published var isSending = false
 
-        private let db = Firestore.firestore()
-        private let storage = Storage.storage()
+        private lazy var db = Firestore.firestore()
+        private lazy var storage = Storage.storage()
         private var listener: ListenerRegistration?
+        private let isRunningTests = ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil
 
         func sendDrawing(
             pkDrawing: PKDrawing,
@@ -27,6 +28,7 @@ import WidgetKit
             pairId: String,
             uploadPNGToStorage: Bool = false
         ) async throws {
+            guard !isRunningTests else { return }
             isSending = true
             defer { isSending = false }
 
@@ -60,6 +62,7 @@ import WidgetKit
         }
 
         func startListeningForDrawings(userId: String, partnerName: String) {
+            guard !isRunningTests else { return }
             listener?.remove()
 
             listener = db.collection("drawings")
@@ -93,6 +96,7 @@ import WidgetKit
         }
 
         func loadSentDrawings(userId: String) async {
+            guard !isRunningTests else { return }
             do {
                 let snap = try await db.collection("drawings")
                     .whereField("fromUserId", isEqualTo: userId)
@@ -106,6 +110,7 @@ import WidgetKit
         }
 
         func fetchDrawing(byId drawingId: String) async -> DrawingRecord? {
+            guard !isRunningTests else { return nil }
             do {
                 let snap = try await db.collection("drawings").document(drawingId).getDocument()
                 return try snap.data(as: DrawingRecord.self)

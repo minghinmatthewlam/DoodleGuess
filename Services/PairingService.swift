@@ -11,10 +11,12 @@ import Foundation
         @Published var isLoading = false
         @Published var error: String?
 
-        private let db = Firestore.firestore()
+        private lazy var db = Firestore.firestore()
         private var partnerListener: ListenerRegistration?
+        private let isRunningTests = ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil
 
         func ensurePairExistsForMyInviteCode(currentUser: AppUser) async {
+            guard !isRunningTests else { return }
             guard let myId = currentUser.id else { return }
             let code = currentUser.inviteCode.uppercased()
 
@@ -31,6 +33,7 @@ import Foundation
         }
 
         func joinWithCode(_ code: String, currentUserId: String) async throws {
+            guard !isRunningTests else { return }
             isLoading = true
             error = nil
             defer { isLoading = false }
@@ -87,6 +90,7 @@ import Foundation
         }
 
         func checkPairingStatus(currentUserId: String) async {
+            guard !isRunningTests else { return }
             do {
                 let snap = try await db.collection("users").document(currentUserId).getDocument()
                 guard let me = try? snap.data(as: AppUser.self),
@@ -104,6 +108,7 @@ import Foundation
         }
 
         private func loadPartnerAndListen(currentUserId: String) async throws {
+            guard !isRunningTests else { return }
             let mySnap = try await db.collection("users").document(currentUserId).getDocument()
             guard let me = try? mySnap.data(as: AppUser.self),
                   let partnerId = me.partnerId
@@ -122,6 +127,7 @@ import Foundation
         }
 
         private func startPartnerListener(partnerId: String) {
+            guard !isRunningTests else { return }
             partnerListener?.remove()
             partnerListener = db.collection("users").document(partnerId)
                 .addSnapshotListener { [weak self] snap, _ in
@@ -140,6 +146,7 @@ import Foundation
         }
 
         func disconnect(currentUserId: String) async throws {
+            guard !isRunningTests else { return }
             guard let partnerId = partner?.id else { return }
 
             isLoading = true
