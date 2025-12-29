@@ -104,7 +104,7 @@ struct HomeView: View {
             NavigationLink {
                 HistoryView()
             } label: {
-                Text("See History")
+                Text("Open Gallery")
                     .frame(maxWidth: .infinity)
             }
             .buttonStyle(SecondaryButtonStyle())
@@ -164,7 +164,7 @@ struct HomeView: View {
                     NavigationLink {
                         HistoryView()
                     } label: {
-                        Text("View all")
+                        Text("View gallery")
                             .font(Brand.text(13, weight: .semibold))
                             .foregroundColor(Brand.inkSoft)
                     }
@@ -213,8 +213,7 @@ struct HomeView: View {
     private func deduped(_ drawings: [DrawingRecord]) -> [DrawingRecord] {
         var seen = Set<String>()
         return drawings.filter { drawing in
-            let key = drawing.id
-                ?? "\(drawing.fromUserId)-\(drawing.toUserId)-\(drawing.createdAt.timeIntervalSince1970)"
+            let key = drawing.stableId
             if seen.contains(key) { return false }
             seen.insert(key)
             return true

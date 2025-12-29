@@ -6,6 +6,7 @@ final class AppState: ObservableObject {
     let auth: AuthService
     let pairing: PairingService
     let drawings: DrawingService
+    let favorites: FavoritesStore
     let deepLink: DeepLinkRouter
 
     private var cancellables = Set<AnyCancellable>()
@@ -15,15 +16,18 @@ final class AppState: ObservableObject {
         auth: AuthService? = nil,
         pairing: PairingService? = nil,
         drawings: DrawingService? = nil,
+        favorites: FavoritesStore? = nil,
         deepLink: DeepLinkRouter? = nil
     ) {
         self.auth = auth ?? AuthService()
         self.pairing = pairing ?? PairingService()
         self.drawings = drawings ?? DrawingService()
+        self.favorites = favorites ?? FavoritesStore()
         self.deepLink = deepLink ?? DeepLinkRouter()
 
         bindServiceChangeForwarding()
         bindPairingState()
+        bindFavorites()
     }
 
     func start() async {
@@ -63,6 +67,11 @@ final class AppState: ObservableObject {
             .sink { [weak self] _ in self?.objectWillChange.send() }
             .store(in: &cancellables)
 
+        favorites.objectWillChange
+            .receive(on: RunLoop.main)
+            .sink { [weak self] _ in self?.objectWillChange.send() }
+            .store(in: &cancellables)
+
         deepLink.objectWillChange
             .receive(on: RunLoop.main)
             .sink { [weak self] _ in self?.objectWillChange.send() }
@@ -74,6 +83,15 @@ final class AppState: ObservableObject {
             .receive(on: RunLoop.main)
             .sink { [weak self] user, isPaired, partner in
                 self?.updateListeners(user: user, isPaired: isPaired, partner: partner)
+            }
+            .store(in: &cancellables)
+    }
+
+    private func bindFavorites() {
+        auth.$currentUser
+            .receive(on: RunLoop.main)
+            .sink { [weak self] user in
+                self?.favorites.setUserId(user?.id)
             }
             .store(in: &cancellables)
     }

@@ -56,18 +56,11 @@ struct DrawingPreviewImage: View {
     }
 
     private var cacheKey: NSString {
-        let id = drawing.id
-            ?? "\(drawing.fromUserId)-\(drawing.toUserId)-\(drawing.createdAt.timeIntervalSince1970)"
-        return "\(id)-\(Int(side))" as NSString
+        "\(drawing.stableId)-\(Int(side))" as NSString
     }
 
     private func load() async {
-        if let bytes = drawing.drawingBytes, let pk = try? PKDrawing(data: bytes) {
-            image = DrawingRendering.renderSquare(drawing: pk, side: side, background: .white)
-            if let image {
-                Self.cache.setObject(image, forKey: cacheKey)
-            }
-        } else if let urlStr = drawing.imageUrl, let url = URL(string: urlStr) {
+        if let urlStr = drawing.imageUrl, let url = URL(string: urlStr) {
             do {
                 let (data, _) = try await URLSession.shared.data(from: url)
                 image = UIImage(data: data)
@@ -76,6 +69,11 @@ struct DrawingPreviewImage: View {
                 }
             } catch {
                 image = nil
+            }
+        } else if let bytes = drawing.drawingBytes, let pk = try? PKDrawing(data: bytes) {
+            image = DrawingRendering.renderSquare(drawing: pk, side: side, background: .white)
+            if let image {
+                Self.cache.setObject(image, forKey: cacheKey)
             }
         }
     }

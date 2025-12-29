@@ -13,4 +13,11 @@ enum Formatters {
         formatter.timeStyle = .short
         return formatter
     }()
+
+    static let dayHeader: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .full
+        formatter.timeStyle = .none
+        return formatter
+    }()
 }

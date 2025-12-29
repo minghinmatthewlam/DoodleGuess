@@ -32,3 +32,9 @@ struct DrawingRecord: Codable, Identifiable {
         self.imageUrl = imageUrl
     }
 }
+
+extension DrawingRecord {
+    var stableId: String {
+        id ?? "\(fromUserId)-\(toUserId)-\(createdAt.timeIntervalSince1970)"
+    }
+}
