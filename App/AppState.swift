@@ -9,6 +9,7 @@ final class AppState: ObservableObject {
     let deepLink: DeepLinkRouter
 
     private var cancellables = Set<AnyCancellable>()
+    private var didStart = false
 
     init(
         auth: AuthService? = nil,
@@ -21,10 +22,14 @@ final class AppState: ObservableObject {
         self.drawings = drawings ?? DrawingService()
         self.deepLink = deepLink ?? DeepLinkRouter()
 
+        bindServiceChangeForwarding()
         bindPairingState()
     }
 
     func start() async {
+        guard !didStart else { return }
+        didStart = true
+
         if !auth.isAuthenticated {
             try? await auth.signInAnonymously()
         }
@@ -38,6 +43,24 @@ final class AppState: ObservableObject {
         }
 
         updateListeners(user: auth.currentUser, isPaired: pairing.isPaired, partner: pairing.partner)
+    }
+
+    private func bindServiceChangeForwarding() {
+        // IMPORTANT: Forward nested service changes so RootView re-renders when auth/pairing/drawings change.
+        auth.objectWillChange
+            .receive(on: RunLoop.main)
+            .sink { [weak self] _ in self?.objectWillChange.send() }
+            .store(in: &cancellables)
+
+        pairing.objectWillChange
+            .receive(on: RunLoop.main)
+            .sink { [weak self] _ in self?.objectWillChange.send() }
+            .store(in: &cancellables)
+
+        drawings.objectWillChange
+            .receive(on: RunLoop.main)
+            .sink { [weak self] _ in self?.objectWillChange.send() }
+            .store(in: &cancellables)
     }
 
     private func bindPairingState() {

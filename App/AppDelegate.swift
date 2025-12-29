@@ -1,6 +1,10 @@
 import UIKit
 import UserNotifications
 
+#if canImport(FirebaseCore)
+    import FirebaseCore
+#endif
+
 #if canImport(FirebaseMessaging)
     import FirebaseMessaging
 #endif
@@ -10,6 +14,13 @@ final class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCent
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil
     ) -> Bool {
+        #if canImport(FirebaseCore)
+            // IMPORTANT: Firebase must be configured here or Auth state callbacks may never fire,
+            // leaving the app stuck on the "Loading..." screen.
+            if FirebaseApp.app() == nil {
+                FirebaseApp.configure()
+            }
+        #endif
         UNUserNotificationCenter.current().delegate = self
         #if canImport(FirebaseMessaging)
             Messaging.messaging().delegate = self
