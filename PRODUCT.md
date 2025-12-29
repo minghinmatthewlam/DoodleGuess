@@ -61,6 +61,7 @@ Free Draw   →    Daily Prompt    →    Same Word Compare
 - Draw anything → appears on partner's widget
 - No prompts, no game, just passing drawings back and forth
 - This is what noteit does - proven model
+- Optional photo-backed drawings: import a photo as the background, draw on top, and send
 
 ### User Flow
 
@@ -74,12 +75,13 @@ FIRST TIME:
 
 DAILY USE:
 1. Open app → drawing canvas
-2. Draw something
-3. Tap send
-4. Partner's widget updates with your drawing
-5. Partner gets push notification
-6. Partner taps widget → sees drawing full screen
-7. Partner draws back → cycle repeats
+2. (Optional) Pick a photo background
+3. Draw something
+4. Tap send
+5. Partner's widget updates with your drawing
+6. Partner gets push notification
+7. Partner taps widget → sees drawing full screen
+8. Partner draws back → cycle repeats
 ```
 
 ### Phase 1 Verification Checklist
@@ -119,10 +121,18 @@ DAILY USE:
 - [ ] Widget tap opens the app
 - [ ] Widget shows placeholder if no drawings yet (never empty)
 
-**History:**
-- [ ] Can view list of past drawings
-- [ ] Shows both sent and received
+**History / Gallery:**
+- [ ] Photos-style gallery (tile grid)
+- [ ] View modes: Grid, List, Moments (day-grouped)
+- [ ] Filters: All / Sent / Received / Favorites
+- [ ] Tap a drawing to view full screen and swipe through
+- [ ] Favorites are per-user (not shared)
+- [ ] Share and save drawings to Photos
 - [ ] Sorted by date (newest first)
+- [ ] Optional photo-backed drawings (photo as background + doodle on top)
+- [ ] Photo-backed drawings behave exactly like drawings in widget + gallery (no badge)
+- [ ] Max upload/export size: 2048px longest edge
+- [ ] Export strips metadata (EXIF)
 
 **Edge Cases:**
 - [ ] App works after phone restart
@@ -270,7 +280,7 @@ Not for MVP, but potential directions:
 - ❌ Streaks or gamification
 - ❌ Complex drawing tools (layers, shapes, etc.)
 - ❌ Text messaging / chat
-- ❌ Photo sharing (that's Locket's space)
+- ❌ Standalone photo feed or social photo sharing
 - ❌ Android (iOS first, validate before expanding)
 
 ---
