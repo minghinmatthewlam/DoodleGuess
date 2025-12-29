@@ -9,6 +9,7 @@ struct DrawingDetailView: View {
 
     @State private var resolvedDrawing: DrawingRecord?
     @State private var image: UIImage?
+    @State private var didLoad = false
 
     init(drawing: DrawingRecord? = nil, drawingId: String? = nil) {
         self.drawing = drawing
@@ -22,37 +23,66 @@ struct DrawingDetailView: View {
                     .resizable()
                     .scaledToFit()
                     .background(Color.white)
+            } else if didLoad {
+                VStack(spacing: 8) {
+                    Text("Unable to load drawing")
+                        .font(.headline)
+                    Text("Open the app to refresh or try again later.")
+                        .font(.footnote)
+                        .foregroundColor(.secondary)
+                }
+                .padding()
             } else {
                 ProgressView()
             }
         }
-        .task {
+        .task(id: drawingId) {
+            didLoad = false
+            image = nil
+            resolvedDrawing = nil
+
             let activeDrawing: DrawingRecord?
             if let drawing {
                 activeDrawing = drawing
             } else if let drawingId {
-                let fetched = await app.drawings.fetchDrawing(byId: drawingId)
-                resolvedDrawing = fetched
-                activeDrawing = fetched
+                let cached = app.drawings.receivedDrawings.first { $0.id == drawingId }
+                    ?? app.drawings.sentDrawings.first { $0.id == drawingId }
+                    ?? app.drawings.latestReceivedDrawing
+                if let cached, cached.id == drawingId {
+                    resolvedDrawing = cached
+                    activeDrawing = cached
+                } else {
+                    let fetched = await app.drawings.fetchDrawing(byId: drawingId)
+                    resolvedDrawing = fetched
+                    activeDrawing = fetched
+                }
             } else {
                 activeDrawing = nil
             }
 
-            guard let activeDrawing else { return }
+            guard let activeDrawing else {
+                if let drawingId {
+                    let cached = SharedStorage.loadLatestDrawing()
+                    if cached.metadata?.drawingId == drawingId, let cachedImage = cached.image {
+                        image = cachedImage
+                    }
+                }
+                didLoad = true
+                return
+            }
 
             if let bytes = activeDrawing.drawingBytes, let pk = try? PKDrawing(data: bytes) {
                 image = renderFull(drawing: pk)
             } else if let url = activeDrawing.imageUrl {
                 image = await download(url)
             }
+            didLoad = true
         }
         .navigationTitle("Drawing")
         .navigationBarTitleDisplayMode(.inline)
-        .overlay {
-            if drawing == nil, resolvedDrawing == nil {
-                Text("Open the app to load this drawing")
-                    .font(.footnote)
-                    .foregroundColor(.secondary)
+        .onDisappear {
+            if app.deepLink.drawingId == drawingId {
+                app.deepLink.drawingId = nil
             }
         }
     }
