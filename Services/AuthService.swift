@@ -11,10 +11,16 @@ import Foundation
         @Published var isAuthenticated = false
         @Published var isLoading = true
 
-        private let db = Firestore.firestore()
+        private lazy var db = Firestore.firestore()
         private var authListener: AuthStateDidChangeListenerHandle?
+        private let isRunningTests: Bool
 
         init() {
+            isRunningTests = ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil
+            guard !isRunningTests else {
+                isLoading = false
+                return
+            }
             setupAuthListener()
 
             NotificationCenter.default.addObserver(
@@ -43,6 +49,10 @@ import Foundation
         }
 
         func signInAnonymously() async throws {
+            if isRunningTests {
+                setTestUser()
+                return
+            }
             let result = try await Auth.auth().signInAnonymously()
             await loadOrCreateUser(firebaseUserId: result.user.uid)
         }
@@ -79,6 +89,10 @@ import Foundation
         }
 
         func updateName(_ name: String) async {
+            if isRunningTests {
+                currentUser?.name = name
+                return
+            }
             guard let userId = currentUser?.id else { return }
             do {
                 try await db.collection("users").document(userId).updateData(["name": name])
@@ -89,6 +103,10 @@ import Foundation
         }
 
         func updateDeviceToken(_ token: String) async {
+            if isRunningTests {
+                currentUser?.deviceToken = token
+                return
+            }
             guard let userId = currentUser?.id else { return }
             do {
                 try await db.collection("users").document(userId).updateData(["deviceToken": token])
@@ -99,9 +117,28 @@ import Foundation
         }
 
         func signOut() throws {
+            if isRunningTests {
+                currentUser = nil
+                isAuthenticated = false
+                return
+            }
             try Auth.auth().signOut()
             currentUser = nil
             isAuthenticated = false
+        }
+
+        private func setTestUser() {
+            let user = AppUser(
+                id: UUID().uuidString,
+                name: "User",
+                partnerId: nil,
+                pairId: nil,
+                inviteCode: AppUser.generateInviteCode(),
+                deviceToken: nil,
+                createdAt: Date()
+            )
+            currentUser = user
+            isAuthenticated = true
         }
 
         deinit {
