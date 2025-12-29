@@ -35,41 +35,48 @@ jobs:
         with:
           xcode-version: latest-stable
 
+      - name: Cache SwiftPM
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/Library/Developer/Xcode/DerivedData/**/SourcePackages
+            ~/Library/Caches/org.swift.swiftpm
+            ~/.swiftpm
+          key: ${{ runner.os }}-spm-${{ hashFiles('**/Package.resolved', 'project.yml') }}
+          restore-keys: |
+            ${{ runner.os }}-spm-
+
       - name: Install XcodeGen
         run: ./scripts/bootstrap_xcodegen.sh
 
       - name: Generate Xcode project
         run: ./scripts/generate_xcodeproj.sh
 
-      - name: Build App
+      - name: Build for Testing
         run: |
+          DERIVED_DATA_PATH="${RUNNER_TEMP}/DerivedData"
           xcodebuild -project DoodleGuess.xcodeproj \
             -scheme DoodleGuess \
             -destination 'platform=iOS Simulator,name=iPhone 16' \
+            -derivedDataPath "$DERIVED_DATA_PATH" \
             -quiet \
-            build
-
-      - name: Build Widget
-        run: |
-          xcodebuild -project DoodleGuess.xcodeproj \
-            -scheme DoodleWidget \
-            -destination 'platform=iOS Simulator,name=iPhone 16' \
-            -quiet \
-            build
+            build-for-testing
 
       - name: Run Tests
         run: |
+          DERIVED_DATA_PATH="${RUNNER_TEMP}/DerivedData"
           RESULT_BUNDLE_PATH="${RUNNER_TEMP}/DoodleGuessTests.xcresult"
           rm -rf "$RESULT_BUNDLE_PATH"
           xcodebuild -project DoodleGuess.xcodeproj \
             -scheme DoodleGuess \
             -destination 'platform=iOS Simulator,name=iPhone 16' \
+            -derivedDataPath "$DERIVED_DATA_PATH" \
             -quiet \
             -resultBundlePath "$RESULT_BUNDLE_PATH" \
-            test -only-testing:DoodleGuessTests
+            test-without-building -only-testing:DoodleGuessTests
 
       - name: Upload test results
-        if: always()
+        if: failure()
         uses: actions/upload-artifact@v4
         with:
           name: DoodleGuessTests.xcresult
