@@ -59,8 +59,19 @@ jobs:
 
       - name: Run Tests
         run: |
+          RESULT_BUNDLE_PATH="${RUNNER_TEMP}/DoodleGuessTests.xcresult"
+          rm -rf "$RESULT_BUNDLE_PATH"
           xcodebuild -project DoodleGuess.xcodeproj \
             -scheme DoodleGuess \
             -destination 'platform=iOS Simulator,name=iPhone 16' \
             -quiet \
+            -resultBundlePath "$RESULT_BUNDLE_PATH" \
             test -only-testing:DoodleGuessTests
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: DoodleGuessTests.xcresult
+          path: ${{ runner.temp }}/DoodleGuessTests.xcresult
+          if-no-files-found: warn
