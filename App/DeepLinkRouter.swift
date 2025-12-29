@@ -9,8 +9,11 @@ final class DeepLinkRouter: ObservableObject {
 
         if url.host == "drawing" {
             let components = URLComponents(url: url, resolvingAgainstBaseURL: false)
-            let id = components?.queryItems?.first(where: { $0.name == "id" })?.value
-            drawingId = id
+            let raw = components?.queryItems?.first(where: { $0.name == "id" })?.value
+            let cleaned = raw?
+                .removingPercentEncoding?
+                .trimmingCharacters(in: .whitespacesAndNewlines)
+            drawingId = (cleaned?.isEmpty == false) ? cleaned : nil
         } else {
             drawingId = nil
         }

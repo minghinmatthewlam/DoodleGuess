@@ -2,10 +2,10 @@ import SwiftUI
 
 struct RootView: View {
     @EnvironmentObject var app: AppState
-    @State private var path = NavigationPath()
+    @State private var drawingRoute: DrawingRoute?
 
     var body: some View {
-        NavigationStack(path: $path) {
+        NavigationStack {
             Group {
                 if app.auth.isLoading {
                     ProgressView("Loading...")
@@ -17,11 +17,8 @@ struct RootView: View {
                     MainView()
                 }
             }
-            .navigationDestination(for: Route.self) { route in
-                switch route {
-                case let .drawing(id):
-                    DrawingDetailView(drawingId: id)
-                }
+            .navigationDestination(item: $drawingRoute) { route in
+                DrawingDetailView(drawingId: route.id)
             }
         }
         .task {
@@ -31,20 +28,33 @@ struct RootView: View {
         .onChange(of: app.deepLink.drawingId) { _, _ in
             syncPath()
         }
+        .onChange(of: app.auth.isAuthenticated) { _, _ in
+            syncPath()
+        }
+        .onChange(of: app.auth.isLoading) { _, _ in
+            syncPath()
+        }
+        .onChange(of: app.pairing.isPaired) { _, _ in
+            syncPath()
+        }
         .onOpenURL { url in
             app.deepLink.handle(url: url)
         }
     }
 
     private func syncPath() {
-        guard let drawingId = app.deepLink.drawingId else {
-            path = NavigationPath()
+        guard !app.auth.isLoading, app.auth.isAuthenticated, app.pairing.isPaired else {
+            drawingRoute = nil
             return
         }
-        path = NavigationPath([Route.drawing(drawingId)])
+        guard let drawingId = app.deepLink.drawingId else {
+            drawingRoute = nil
+            return
+        }
+        drawingRoute = DrawingRoute(id: drawingId)
     }
 }
 
-private enum Route: Hashable {
-    case drawing(String)
+private struct DrawingRoute: Identifiable, Hashable {
+    let id: String
 }
