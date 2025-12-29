@@ -10,7 +10,7 @@ struct DrawingDetailView: View {
     @State private var resolvedDrawing: DrawingRecord?
     @State private var image: UIImage?
     @State private var didLoad = false
-    
+
     private struct LoadKey: Hashable {
         let drawingId: String?
         let authUserId: String?
@@ -114,7 +114,8 @@ struct DrawingDetailView: View {
     @MainActor
     private func load() async {
         // NOTE: Deep links often cold-start the app before auth/pairing/listeners are ready.
-        // We retry when auth or drawing state changes and show the widget cache immediately to avoid a false "failed" state.
+        // We retry when auth or drawing state changes and show the widget cache immediately
+        // to avoid a false "failed" state.
         didLoad = false
         resolvedDrawing = nil
         image = nil
@@ -135,7 +136,8 @@ struct DrawingDetailView: View {
 
         if let cached = app.drawings.receivedDrawings.first(where: { $0.id == drawingId })
             ?? app.drawings.sentDrawings.first(where: { $0.id == drawingId })
-            ?? (app.drawings.latestReceivedDrawing?.id == drawingId ? app.drawings.latestReceivedDrawing : nil) {
+            ?? (app.drawings.latestReceivedDrawing?.id == drawingId ? app.drawings.latestReceivedDrawing : nil)
+        {
             resolvedDrawing = cached
             await renderOrFallback(record: cached, drawingId: drawingId)
             didLoad = true
