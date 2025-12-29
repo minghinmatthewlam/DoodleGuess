@@ -12,24 +12,28 @@ struct DoodleWidgetEntry: TimelineEntry {
 
 struct DoodleWidgetProvider: TimelineProvider {
     func placeholder(in context: Context) -> DoodleWidgetEntry {
-        loadEntry(family: context.family)
+        loadEntry(context: context)
     }
 
     func getSnapshot(in context: Context, completion: @escaping (DoodleWidgetEntry) -> Void) {
-        completion(loadEntry(family: context.family))
+        completion(loadEntry(context: context))
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<DoodleWidgetEntry>) -> Void) {
-        let entry = loadEntry(family: context.family)
+        let entry = loadEntry(context: context)
         let next = Calendar.current.date(byAdding: .minute, value: 15, to: Date()) ?? Date().addingTimeInterval(900)
         completion(Timeline(entries: [entry], policy: .after(next)))
     }
 
-    private func loadEntry(family: WidgetFamily) -> DoodleWidgetEntry {
+    private func loadEntry(context: Context) -> DoodleWidgetEntry {
         let (image, metadata) = SharedStorage.loadLatestDrawing()
         let fallback = UIImage(named: "starter_doodle") ?? UIImage()
         let baseImage = image ?? fallback
-        let finalImage = resizedImage(baseImage, maxSide: maxSide(for: family))
+        let finalImage = resizedImage(
+            baseImage,
+            maxSide: maxSide(for: context.family),
+            displayScale: UIScreen.main.scale
+        )
 
         return DoodleWidgetEntry(
             date: Date(),
@@ -43,7 +47,7 @@ struct DoodleWidgetProvider: TimelineProvider {
     private func maxSide(for family: WidgetFamily) -> CGFloat {
         switch family {
         case .systemSmall:
-            360
+            480
         case .systemMedium:
             480
         default:
@@ -51,7 +55,7 @@ struct DoodleWidgetProvider: TimelineProvider {
         }
     }
 
-    private func resizedImage(_ image: UIImage, maxSide: CGFloat) -> UIImage {
+    private func resizedImage(_ image: UIImage, maxSide: CGFloat, displayScale: CGFloat) -> UIImage {
         let size = image.size
         let maxDimension = max(size.width, size.height)
         if maxDimension <= maxSide {
@@ -61,7 +65,10 @@ struct DoodleWidgetProvider: TimelineProvider {
         let scale = maxSide / maxDimension
         let newSize = CGSize(width: size.width * scale, height: size.height * scale)
 
-        return UIGraphicsImageRenderer(size: newSize).image { _ in
+        let format = UIGraphicsImageRendererFormat()
+        format.scale = displayScale
+
+        return UIGraphicsImageRenderer(size: newSize, format: format).image { _ in
             image.draw(in: CGRect(origin: .zero, size: newSize))
         }
     }

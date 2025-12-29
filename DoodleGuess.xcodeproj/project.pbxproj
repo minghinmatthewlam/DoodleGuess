@@ -17,6 +17,7 @@
 		2225ED7F7CCCCA048222234D /* DoodleGuessApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F54801630557C3A0DFCE90 /* DoodleGuessApp.swift */; };
 		22846415D362CFCBB615A337 /* DoodleWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 1ECE7392F68D897F5ED59E34 /* DoodleWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		276F35B442C25A4457BB3361 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8A1F06E1BA8A2A16A7CDFF8 /* Assets.xcassets */; };
+		2A36A4377A978F4AB7CDD196 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 94A75D2EBCA095BB4565E376 /* GoogleService-Info.plist */; };
 		2CD3CB02B615A63AB8F3F261 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F0F33A22C54DB3F735BC58 /* AppState.swift */; };
 		2E9DA8EF7F9E5F8B632339E6 /* CanvasViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381DCF567C1FA890077A39F4 /* CanvasViewModel.swift */; };
 		30989DA0C40609C8B61FEDAA /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = FF96C33A3DA7E40EDC34EACB /* FirebaseFirestore */; };
@@ -108,6 +109,7 @@
 		915E77D9D92D373F51FC3A36 /* DoodleWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoodleWidget.swift; sourceTree = "<group>"; };
 		94676A7FA0D10D264DFB8EE4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		946B7AC584C47C89C809B341 /* Pair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pair.swift; sourceTree = "<group>"; };
+		94A75D2EBCA095BB4565E376 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9C08975584CF5A778DD69CC7 /* PairingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairingView.swift; sourceTree = "<group>"; };
 		9CA4480ADF95A21B201907AB /* DoodleGuessTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = DoodleGuessTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A64703828EBF5877BA857AD6 /* SharedStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedStorage.swift; sourceTree = "<group>"; };
@@ -275,6 +277,7 @@
 		FE34C037C5CBF385322601C4 = {
 			isa = PBXGroup;
 			children = (
+				94A75D2EBCA095BB4565E376 /* GoogleService-Info.plist */,
 				45880DB461D966455E675AD2 /* App */,
 				5FC17D9856663CD6DA2ED260 /* DoodleGuessTests */,
 				8F3659E56ED3616B1CDF9598 /* DoodleWidget */,
@@ -312,6 +315,7 @@
 			buildConfigurationList = 8C2BF254A1983BC385953DC3 /* Build configuration list for PBXNativeTarget "DoodleGuess" */;
 			buildPhases = (
 				1E84AC1213F95B93B34E38D0 /* Sources */,
+				36DB5C93E8929FF7AE0583AF /* Resources */,
 				7F598095090FF76CC4CC97E6 /* Frameworks */,
 				9A6DF9390DB36C63A843F38F /* Embed Foundation Extensions */,
 			);
@@ -385,6 +389,14 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		36DB5C93E8929FF7AE0583AF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A36A4377A978F4AB7CDD196 /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4B4E8D42E48360E3F8BE0238 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;

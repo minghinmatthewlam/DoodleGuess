@@ -21,6 +21,9 @@ targets:
       - Models
       - Services
       - Shared
+      - path: GoogleService-Info.plist
+        type: file
+        buildPhase: resources
     info:
       path: App/Info.plist
       properties:
