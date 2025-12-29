@@ -10,14 +10,40 @@ struct CanvasScreen: View {
     @State private var sendError: String?
 
     var body: some View {
-        VStack(spacing: 0) {
-            PencilKitCanvasView(vm: vm)
-                .background(Color.white)
+        ZStack {
+            BrandBackground()
 
-            CanvasToolbar(vm: vm)
+            VStack(spacing: 16) {
+                HStack {
+                    BrandPill(text: "For \(partnerName())")
+                    Spacer()
+                }
+
+                ZStack {
+                    RoundedRectangle(cornerRadius: 24, style: .continuous)
+                        .fill(Color.white)
+                        .shadow(color: Brand.ink.opacity(0.08), radius: 12, x: 0, y: 6)
+
+                    PencilKitCanvasView(vm: vm)
+                        .padding(10)
+                }
+                .frame(maxHeight: .infinity)
+
+                CanvasToolbar(vm: vm)
+            }
+            .padding(.horizontal, 18)
+            .padding(.top, 16)
+            .padding(.bottom, 12)
+
+            if showingSent {
+                SentToast(message: "Sent to \(partnerName())")
+                    .transition(.move(edge: .top).combined(with: .opacity))
+                    .zIndex(2)
+            }
         }
         .navigationTitle("")
         .navigationBarTitleDisplayMode(.inline)
+        .toolbarBackground(.hidden, for: .navigationBar)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
@@ -26,16 +52,12 @@ struct CanvasScreen: View {
                     if app.drawings.isSending {
                         ProgressView()
                     } else {
-                        Text("Send").fontWeight(.semibold)
+                        Text("Send")
+                            .font(Brand.text(16, weight: .semibold))
                     }
                 }
                 .disabled(app.drawings.isSending || !vm.hasDrawing)
             }
-        }
-        .alert("Sent!", isPresented: $showingSent) {
-            Button("OK") { vm.clear() }
-        } message: {
-            Text("Your drawing is on its way.")
         }
         .alert("Error", isPresented: Binding(
             get: { sendError != nil },
@@ -75,9 +97,46 @@ struct CanvasScreen: View {
                 pairId: pairId,
                 uploadPNGToStorage: false
             )
-            showingSent = true
+            vm.clear()
+            withAnimation(.spring()) {
+                showingSent = true
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.6) {
+                withAnimation(.easeOut) {
+                    showingSent = false
+                }
+            }
         } catch {
             sendError = error.localizedDescription
         }
+    }
+
+    private func partnerName() -> String {
+        let name = app.pairing.partner?.name
+            .trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+        return name.isEmpty ? "Partner" : name
+    }
+}
+
+struct SentToast: View {
+    let message: String
+
+    var body: some View {
+        HStack(spacing: 10) {
+            Image(systemName: "checkmark.circle.fill")
+                .foregroundColor(Brand.accent2)
+            Text(message)
+                .font(Brand.text(14, weight: .semibold))
+                .foregroundColor(Brand.ink)
+        }
+        .padding(.vertical, 10)
+        .padding(.horizontal, 16)
+        .background(
+            Capsule()
+                .fill(Color.white.opacity(0.92))
+                .overlay(Capsule().stroke(Brand.ink.opacity(0.08), lineWidth: 1))
+                .shadow(color: Brand.ink.opacity(0.08), radius: 10, x: 0, y: 6)
+        )
+        .padding(.top, 8)
     }
 }

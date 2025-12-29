@@ -21,13 +21,6 @@ struct DrawingDetailView: View {
         let sentCount: Int
     }
 
-    private let dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .short
-        return formatter
-    }()
-
     init(drawing: DrawingRecord? = nil, drawingId: String? = nil) {
         self.drawing = drawing
         self.drawingId = drawingId
@@ -70,7 +63,7 @@ struct DrawingDetailView: View {
                                 Text(detailTitle(for: active))
                                     .font(Brand.text(18, weight: .semibold))
                                     .foregroundColor(Brand.ink)
-                                Text(dateFormatter.string(from: active.createdAt))
+                                Text(Formatters.detailDate.string(from: active.createdAt))
                                     .font(Brand.text(13))
                                     .foregroundColor(Brand.inkSoft)
                             }
@@ -120,6 +113,8 @@ struct DrawingDetailView: View {
 
     @MainActor
     private func load() async {
+        // NOTE: Deep links often cold-start the app before auth/pairing/listeners are ready.
+        // We retry when auth or drawing state changes and show the widget cache immediately to avoid a false "failed" state.
         didLoad = false
         resolvedDrawing = nil
         image = nil
@@ -191,7 +186,9 @@ struct DrawingDetailView: View {
     }
 
     private func detailTitle(for drawing: DrawingRecord) -> String {
-        let partner = app.pairing.partner?.name ?? "Partner"
+        let raw = app.pairing.partner?.name
+            .trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+        let partner = raw.isEmpty ? "Partner" : raw
         return isSent(drawing) ? "You sent this to \(partner)" : "\(partner) sent this to you"
     }
 }

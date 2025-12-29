@@ -85,23 +85,29 @@ struct DoodleWidgetEntryView: View {
                 .clipped()
 
             VStack {
-                Spacer()
-                HStack {
+                HStack(spacing: 8) {
                     Text(entry.partnerName)
                         .font(.caption2)
                         .lineLimit(1)
-
-                    Spacer()
+                        .foregroundColor(Brand.ink)
 
                     if let ts = entry.timestamp {
-                        Text(RelativeDateTimeFormatter().localizedString(for: ts, relativeTo: Date()))
+                        Text(Formatters.relative.localizedString(for: ts, relativeTo: Date()))
                             .font(.caption2)
                             .lineLimit(1)
-                            .foregroundColor(.secondary)
+                            .foregroundColor(Brand.inkSoft)
                     }
                 }
+                .padding(.horizontal, 10)
+                .padding(.vertical, 6)
+                .background(
+                    Capsule()
+                        .fill(Color.white.opacity(0.8))
+                        .overlay(Capsule().stroke(Brand.ink.opacity(0.08), lineWidth: 1))
+                )
                 .padding(8)
-                .background(.ultraThinMaterial)
+
+                Spacer()
             }
         }
         .containerBackground(for: .widget) {

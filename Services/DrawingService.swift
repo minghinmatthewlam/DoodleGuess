@@ -147,25 +147,7 @@ import WidgetKit
         }
 
         private func renderSquareForWidget(drawing: PKDrawing) -> UIImage {
-            let side: CGFloat = 480
-            if drawing.strokes.isEmpty {
-                return UIGraphicsImageRenderer(size: CGSize(width: side, height: side)).image { ctx in
-                    UIColor.white.setFill()
-                    ctx.fill(CGRect(x: 0, y: 0, width: side, height: side))
-                }
-            }
-
-            var bounds = drawing.bounds.insetBy(dx: -24, dy: -24)
-            let scale = min(side / bounds.width, side / bounds.height)
-            let ink = drawing.image(from: bounds, scale: scale)
-
-            return UIGraphicsImageRenderer(size: CGSize(width: side, height: side)).image { _ in
-                UIColor.white.setFill()
-                UIBezierPath(rect: CGRect(x: 0, y: 0, width: side, height: side)).fill()
-                let x = (side - ink.size.width) / 2
-                let y = (side - ink.size.height) / 2
-                ink.draw(in: CGRect(x: x, y: y, width: ink.size.width, height: ink.size.height))
-            }
+            DrawingRendering.renderSquare(drawing: drawing, side: 480, background: .white)
         }
 
         deinit { listener?.remove() }
@@ -245,25 +227,7 @@ import WidgetKit
         }
 
         private func renderSquareForWidget(drawing: PKDrawing) -> UIImage {
-            let side: CGFloat = 480
-            if drawing.strokes.isEmpty {
-                return UIGraphicsImageRenderer(size: CGSize(width: side, height: side)).image { ctx in
-                    UIColor.white.setFill()
-                    ctx.fill(CGRect(x: 0, y: 0, width: side, height: side))
-                }
-            }
-
-            var bounds = drawing.bounds.insetBy(dx: -24, dy: -24)
-            let scale = min(side / bounds.width, side / bounds.height)
-            let ink = drawing.image(from: bounds, scale: scale)
-
-            return UIGraphicsImageRenderer(size: CGSize(width: side, height: side)).image { _ in
-                UIColor.white.setFill()
-                UIBezierPath(rect: CGRect(x: 0, y: 0, width: side, height: side)).fill()
-                let x = (side - ink.size.width) / 2
-                let y = (side - ink.size.height) / 2
-                ink.draw(in: CGRect(x: x, y: y, width: ink.size.width, height: ink.size.height))
-            }
+            DrawingRendering.renderSquare(drawing: drawing, side: 480, background: .white)
         }
     }
 

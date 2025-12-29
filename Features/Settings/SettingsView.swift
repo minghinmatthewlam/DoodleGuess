@@ -4,23 +4,54 @@ struct SettingsView: View {
     @EnvironmentObject var app: AppState
 
     var body: some View {
-        Form {
-            Section("Partner") {
-                Text(app.pairing.partner?.name ?? "Not connected")
-            }
+        ZStack {
+            BrandBackground()
 
-            Section {
-                Button(role: .destructive) {
-                    Task {
-                        if let me = app.auth.currentUser?.id {
-                            try? await app.pairing.disconnect(currentUserId: me)
+            ScrollView {
+                VStack(spacing: 18) {
+                    Text("Settings")
+                        .font(Brand.display(30, weight: .bold))
+                        .foregroundColor(Brand.ink)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+
+                    BrandCard {
+                        VStack(alignment: .leading, spacing: 10) {
+                            Text("Partner")
+                                .font(Brand.text(14, weight: .semibold))
+                                .foregroundColor(Brand.inkSoft)
+                            Text(app.pairing.partner?.name ?? "Not connected")
+                                .font(Brand.text(18, weight: .semibold))
+                                .foregroundColor(Brand.ink)
                         }
                     }
-                } label: {
-                    Text("Disconnect")
+
+                    BrandCard {
+                        VStack(alignment: .leading, spacing: 12) {
+                            Text("Connection")
+                                .font(Brand.text(14, weight: .semibold))
+                                .foregroundColor(Brand.inkSoft)
+
+                            Button(role: .destructive) {
+                                Task {
+                                    if let me = app.auth.currentUser?.id {
+                                        try? await app.pairing.disconnect(currentUserId: me)
+                                    }
+                                }
+                            } label: {
+                                Text("Disconnect")
+                                    .frame(maxWidth: .infinity)
+                            }
+                            .buttonStyle(DangerButtonStyle())
+                        }
+                    }
                 }
+                .padding(.horizontal, 20)
+                .padding(.top, 20)
+                .padding(.bottom, 30)
             }
         }
-        .navigationTitle("Settings")
+        .navigationTitle("")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbarBackground(.hidden, for: .navigationBar)
     }
 }
