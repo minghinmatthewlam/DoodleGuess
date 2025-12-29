@@ -31,13 +31,13 @@ import Foundation
             authListener = Auth.auth().addStateDidChangeListener { [weak self] _, firebaseUser in
                 Task { @MainActor in
                     guard let self else { return }
+                    self.isLoading = false
                     if let firebaseUser {
                         await self.loadOrCreateUser(firebaseUserId: firebaseUser.uid)
                     } else {
                         self.currentUser = nil
                         self.isAuthenticated = false
                     }
-                    self.isLoading = false
                 }
             }
         }
