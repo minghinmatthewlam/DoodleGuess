@@ -56,7 +56,9 @@ struct CanvasScreen: View {
             sendError = "Not connected to a partner."
             return
         }
-        guard let pairId = app.auth.currentUser?.pairId ?? app.pairing.partner?.pairId ?? app.auth.currentUser?.pairId else {
+        guard let pairId = app.auth.currentUser?.pairId
+            ?? app.pairing.partner?.pairId
+        else {
             sendError = "Missing pair information."
             return
         }

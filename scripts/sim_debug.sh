@@ -29,6 +29,9 @@ PY
 
 build_app() {
   local udid="$1"
+  if [[ -x "$ROOT_DIR/scripts/generate_xcodeproj.sh" ]]; then
+    "$ROOT_DIR/scripts/generate_xcodeproj.sh" >/dev/null
+  fi
   xcodebuild -project "$PROJECT_PATH" -scheme "$SCHEME" -destination "platform=iOS Simulator,id=$udid" build >/dev/null
 }
 

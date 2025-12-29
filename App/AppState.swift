@@ -11,15 +11,15 @@ final class AppState: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
 
     init(
-        auth: AuthService = AuthService(),
-        pairing: PairingService = PairingService(),
-        drawings: DrawingService = DrawingService(),
-        deepLink: DeepLinkRouter = DeepLinkRouter()
+        auth: AuthService? = nil,
+        pairing: PairingService? = nil,
+        drawings: DrawingService? = nil,
+        deepLink: DeepLinkRouter? = nil
     ) {
-        self.auth = auth
-        self.pairing = pairing
-        self.drawings = drawings
-        self.deepLink = deepLink
+        self.auth = auth ?? AuthService()
+        self.pairing = pairing ?? PairingService()
+        self.drawings = drawings ?? DrawingService()
+        self.deepLink = deepLink ?? DeepLinkRouter()
 
         bindPairingState()
     }

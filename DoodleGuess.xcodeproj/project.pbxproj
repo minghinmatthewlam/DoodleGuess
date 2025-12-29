@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 63;
+	objectVersion = 77;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -17,6 +17,7 @@
 		2225ED7F7CCCCA048222234D /* DoodleGuessApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F54801630557C3A0DFCE90 /* DoodleGuessApp.swift */; };
 		22846415D362CFCBB615A337 /* DoodleWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 1ECE7392F68D897F5ED59E34 /* DoodleWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		276F35B442C25A4457BB3361 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8A1F06E1BA8A2A16A7CDFF8 /* Assets.xcassets */; };
+		2CD3CB02B615A63AB8F3F261 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F0F33A22C54DB3F735BC58 /* AppState.swift */; };
 		2E9DA8EF7F9E5F8B632339E6 /* CanvasViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381DCF567C1FA890077A39F4 /* CanvasViewModel.swift */; };
 		30989DA0C40609C8B61FEDAA /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = FF96C33A3DA7E40EDC34EACB /* FirebaseFirestore */; };
 		4708403D214B4C29CA037C4C /* CanvasViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4679FBC69E35A7E854C24F /* CanvasViewModelTests.swift */; };
@@ -46,7 +47,6 @@
 		D11275EE7F0A82642C6C1BEA /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBD4461C6E54B071D00B57E /* MainView.swift */; };
 		DD062BC802451F6A4B5816E8 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 77F2EC09FCC759069606FCEC /* FirebaseStorage */; };
 		E8A9B760438FA5457BFDE72E /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC79663418E37C1A254AF20 /* AuthService.swift */; };
-		ED9BB59C2F01B7C70093A589 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ED9BB59A2F01B5470093A589 /* GoogleService-Info.plist */; };
 		F043B3E08A8FE4AF81CFAFA8 /* PairingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C08975584CF5A778DD69CC7 /* PairingView.swift */; };
 		F5CA29E8DEE085EB19919044 /* InviteCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AAD484C7C680261C0429B10 /* InviteCode.swift */; };
 		F907317B0281E6C27C3B4348 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A30085F8E28EB3E0AA77D8 /* ContentView.swift */; };
@@ -115,6 +115,7 @@
 		B82F897584DA07F6D81C9D9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		BC0D14AB518FDF987FF09AD7 /* DoodleGuess.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = DoodleGuess.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1DAE9486FB103D3BA516AF3 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		C1F0F33A22C54DB3F735BC58 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		C5233C963571E4A74B5E4261 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C9A30085F8E28EB3E0AA77D8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		CC053921CE8159C046BBF060 /* DrawingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingService.swift; sourceTree = "<group>"; };
@@ -123,7 +124,6 @@
 		D38D1E239CEC69570C069199 /* FirebaseShims.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseShims.swift; sourceTree = "<group>"; };
 		D8A1F06E1BA8A2A16A7CDFF8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EA48C5876654563743ABFED1 /* AppGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGroup.swift; sourceTree = "<group>"; };
-		ED9BB59A2F01B5470093A589 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FDC79663418E37C1A254AF20 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -159,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				94676A7FA0D10D264DFB8EE4 /* AppDelegate.swift */,
+				C1F0F33A22C54DB3F735BC58 /* AppState.swift */,
 				C9A30085F8E28EB3E0AA77D8 /* ContentView.swift */,
 				AA84D8EDBA379EE975890BD9 /* DeepLinkRouter.swift */,
 				3285E3A2B1A214F9BD1FFC78 /* DoodleGuess.entitlements */,
@@ -282,7 +283,6 @@
 				861FE4F0ECA0A1E890D72DDF /* Services */,
 				5D5D0E5D6D0BA757B177E5F5 /* Shared */,
 				A49AB2467CF03EEE1A128BB7 /* Products */,
-				ED9BB59A2F01B5470093A589 /* GoogleService-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -314,7 +314,6 @@
 				1E84AC1213F95B93B34E38D0 /* Sources */,
 				7F598095090FF76CC4CC97E6 /* Frameworks */,
 				9A6DF9390DB36C63A843F38F /* Embed Foundation Extensions */,
-				ED9BB59B2F01B7B50093A589 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -374,6 +373,7 @@
 			packageReferences = (
 				D6928655616C7C45026786A5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
+			preferredProjectObjectVersion = 77;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -390,14 +390,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				276F35B442C25A4457BB3361 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		ED9BB59B2F01B7B50093A589 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				ED9BB59C2F01B7C70093A589 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,6 +415,7 @@
 			files = (
 				4B37BF5A56E618639F50E451 /* AppDelegate.swift in Sources */,
 				B564098514090DDE88B25096 /* AppGroup.swift in Sources */,
+				2CD3CB02B615A63AB8F3F261 /* AppState.swift in Sources */,
 				77BC2646DADD9326966F3159 /* AppUser.swift in Sources */,
 				E8A9B760438FA5457BFDE72E /* AuthService.swift in Sources */,
 				AFF65445F918D534B34DEF6F /* CanvasScreen.swift in Sources */,
