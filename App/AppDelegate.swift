@@ -17,7 +17,8 @@ final class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCent
         #if canImport(FirebaseCore)
             // IMPORTANT: Firebase must be configured here or Auth state callbacks may never fire,
             // leaving the app stuck on the "Loading..." screen.
-            if FirebaseApp.app() == nil {
+            let isRunningTests = ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil
+            if !isRunningTests, FirebaseApp.app() == nil {
                 FirebaseApp.configure()
             }
         #endif
