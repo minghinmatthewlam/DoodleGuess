@@ -19,18 +19,18 @@ enum PhotoLibrarySaver {
             throw PhotoLibraryError.notAuthorized
         }
 
-        try await withCheckedThrowingContinuation { continuation in
-            PHPhotoLibrary.shared().performChanges({
+        try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, Error>) in
+            PHPhotoLibrary.shared().performChanges {
                 PHAssetChangeRequest.creationRequestForAsset(from: image)
-            }, completionHandler: { success, error in
+            } completionHandler: { success, error in
                 if let error {
                     continuation.resume(throwing: error)
                 } else if success {
-                    continuation.resume()
+                    continuation.resume(returning: ())
                 } else {
                     continuation.resume(throwing: PhotoLibraryError.saveFailed)
                 }
-            })
+            }
         }
     }
 }
@@ -42,9 +42,9 @@ enum PhotoLibraryError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .notAuthorized:
-            return "Allow photo access to save this drawing."
+            "Allow photo access to save this drawing."
         case .saveFailed:
-            return "Could not save the drawing. Please try again."
+            "Could not save the drawing. Please try again."
         }
     }
 }

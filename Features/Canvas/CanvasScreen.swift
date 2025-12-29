@@ -110,7 +110,8 @@ struct CanvasScreen: View {
             Task {
                 do {
                     if let data = try await newItem.loadTransferable(type: Data.self),
-                       let image = UIImage(data: data) {
+                       let image = UIImage(data: data)
+                    {
                         let scaled = ImageSizing.downscale(image, maxPixel: 2048)
                         await MainActor.run {
                             vm.backgroundImage = scaled

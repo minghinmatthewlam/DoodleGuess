@@ -139,7 +139,7 @@ struct HistoryView: View {
         .toolbarBackground(.hidden, for: .navigationBar)
     }
 
-    private func navigationLink<Content: View>(for drawing: DrawingRecord, @ViewBuilder content: () -> Content) -> some View {
+    private func navigationLink(for drawing: DrawingRecord, @ViewBuilder content: () -> some View) -> some View {
         NavigationLink {
             DrawingDetailView(drawings: filteredDrawings, initialDrawingId: drawing.stableId)
         } label: {
@@ -197,18 +197,18 @@ struct HistoryView: View {
     private var emptyStateTitle: String {
         switch filter {
         case .favorites:
-            return "No favorites yet"
+            "No favorites yet"
         default:
-            return "No drawings yet"
+            "No drawings yet"
         }
     }
 
     private var emptyStateSubtitle: String {
         switch filter {
         case .favorites:
-            return "Tap the star on a doodle to save it here."
+            "Tap the star on a doodle to save it here."
         default:
-            return "Your gallery will grow as you trade doodles."
+            "Your gallery will grow as you trade doodles."
         }
     }
 }

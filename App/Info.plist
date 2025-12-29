@@ -33,6 +33,10 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Save your doodles to Photos.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Pick a photo to use as a doodle background.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -44,9 +48,5 @@
 	</array>
 	<key>UILaunchScreen</key>
 	<dict/>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Pick a photo to use as a doodle background.</string>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Save your doodles to Photos.</string>
 </dict>
 </plist>

@@ -40,6 +40,8 @@ targets:
         UIApplicationSceneManifest:
           UIApplicationSupportsMultipleScenes: false
         UILaunchScreen: {}
+        NSPhotoLibraryUsageDescription: Pick a photo to use as a doodle background.
+        NSPhotoLibraryAddUsageDescription: Save your doodles to Photos.
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.matthewlam.doodleguess

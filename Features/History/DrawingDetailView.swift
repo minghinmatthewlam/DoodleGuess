@@ -14,13 +14,13 @@ struct DrawingDetailView: View {
     init(drawings: [DrawingRecord], initialDrawingId: String? = nil) {
         self.drawings = drawings
         self.initialDrawingId = initialDrawingId
-        self.drawing = nil
-        self.drawingId = nil
+        drawing = nil
+        drawingId = nil
     }
 
     init(drawing: DrawingRecord? = nil, drawingId: String? = nil) {
-        self.drawings = nil
-        self.initialDrawingId = nil
+        drawings = nil
+        initialDrawingId = nil
         self.drawing = drawing
         self.drawingId = drawingId
     }
