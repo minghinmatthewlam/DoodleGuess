@@ -130,16 +130,16 @@ private struct DrawingDetailPage: View {
                             }
 
                             ActionButton(
-                                title: "Save",
-                                systemImage: "square.and.arrow.down",
+                                title: "Download",
+                                systemImage: "arrow.down.circle",
                                 isEnabled: image != nil
                             ) {
                                 Task { await saveToPhotos() }
                             }
 
                             ActionButton(
-                                title: isFavorite(active) ? "Favorited" : "Favorite",
-                                systemImage: isFavorite(active) ? "star.fill" : "star",
+                                title: isFavorite(active) ? "Loved" : "Love",
+                                systemImage: isFavorite(active) ? "heart.fill" : "heart",
                                 isEnabled: true
                             ) {
                                 app.favorites.toggleFavorite(active.stableId)
@@ -306,7 +306,11 @@ private struct ActionButton: View {
             .padding(.vertical, 10)
             .background(
                 RoundedRectangle(cornerRadius: 14, style: .continuous)
-                    .fill(Color.white.opacity(isEnabled ? 0.85 : 0.5))
+                    .fill(Color.white.opacity(isEnabled ? 0.95 : 0.6))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 14, style: .continuous)
+                            .stroke(Brand.ink.opacity(isEnabled ? 0.1 : 0.05), lineWidth: 1)
+                    )
             )
         }
         .disabled(!isEnabled)

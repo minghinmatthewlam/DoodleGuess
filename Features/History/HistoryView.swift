@@ -17,19 +17,40 @@ struct HistoryView: View {
                             .font(Brand.display(30, weight: .bold))
                             .foregroundColor(Brand.ink)
 
-                        VStack(spacing: 12) {
-                            Picker("Filter", selection: $filter) {
-                                ForEach(HistoryFilter.allCases, id: \.self) { option in
-                                    Text(option.title).tag(option)
-                                }
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack(spacing: 10) {
+                                FilterChip(
+                                    title: "All",
+                                    count: allCount,
+                                    isActive: filter == .all
+                                ) { filter = .all }
+
+                                FilterChip(
+                                    title: "Sent",
+                                    count: sentCount,
+                                    isActive: filter == .sent
+                                ) { filter = .sent }
+
+                                FilterChip(
+                                    title: "Received",
+                                    count: receivedCount,
+                                    isActive: filter == .received
+                                ) { filter = .received }
+
+                                FilterChip(
+                                    title: "Favorites",
+                                    count: favoriteCount,
+                                    isActive: filter == .favorites
+                                ) { filter = .favorites }
                             }
-                            .pickerStyle(.segmented)
-                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 2)
                         }
 
                         if filteredDrawings.isEmpty {
                             BrandCard {
-                                VStack(alignment: .leading, spacing: 10) {
+                                VStack(alignment: .leading, spacing: 8) {
+                                    Text("🎨")
+                                        .font(.system(size: 36))
                                     Text(emptyStateTitle)
                                         .font(Brand.text(16, weight: .semibold))
                                         .foregroundColor(Brand.ink)
@@ -118,6 +139,23 @@ struct HistoryView: View {
         }
     }
 
+    private var allCount: Int {
+        app.drawings.receivedDrawings.count + app.drawings.sentDrawings.count
+    }
+
+    private var receivedCount: Int {
+        app.drawings.receivedDrawings.count
+    }
+
+    private var sentCount: Int {
+        app.drawings.sentDrawings.count
+    }
+
+    private var favoriteCount: Int {
+        let all = app.drawings.receivedDrawings + app.drawings.sentDrawings
+        return all.filter { app.favorites.isFavorite($0.stableId) }.count
+    }
+
     private var emptyStateTitle: String {
         switch filter {
         case .favorites:
@@ -130,7 +168,7 @@ struct HistoryView: View {
     private var emptyStateSubtitle: String {
         switch filter {
         case .favorites:
-            "Tap the star on a doodle to save it here."
+            "Tap the heart on a doodle to save it here."
         default:
             "Your gallery will grow as you trade doodles."
         }
@@ -194,7 +232,7 @@ struct DrawingTile: View {
         }
         .overlay(alignment: .topTrailing) {
             if isFavorite {
-                Image(systemName: "star.fill")
+                Image(systemName: "heart.fill")
                     .font(.system(size: 12, weight: .bold))
                     .foregroundColor(Brand.accent2)
                     .padding(6)
@@ -206,6 +244,43 @@ struct DrawingTile: View {
                     .padding(8)
             }
         }
+    }
+}
+
+private struct FilterChip: View {
+    let title: String
+    let count: Int
+    let isActive: Bool
+    let action: () -> Void
+
+    var body: some View {
+        Button(action: action) {
+            Text("\(title) (\(count))")
+                .font(Brand.text(14, weight: .semibold))
+                .foregroundColor(isActive ? .white : Brand.inkSoft)
+                .padding(.vertical, 8)
+                .padding(.horizontal, 14)
+                .background(
+                    RoundedRectangle(cornerRadius: 18, style: .continuous)
+                        .fill(
+                            isActive
+                                ? AnyShapeStyle(
+                                    LinearGradient(
+                                        colors: [Brand.accent, Brand.accent2],
+                                        startPoint: .leading,
+                                        endPoint: .trailing
+                                    )
+                                )
+                                : AnyShapeStyle(Color.white)
+                        )
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 18, style: .continuous)
+                                .stroke(Brand.ink.opacity(isActive ? 0 : 0.12), lineWidth: 1)
+                        )
+                )
+                .shadow(color: Brand.ink.opacity(isActive ? 0.18 : 0.05), radius: 8, x: 0, y: 4)
+        }
+        .buttonStyle(.plain)
     }
 }
 
