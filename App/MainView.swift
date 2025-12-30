@@ -19,5 +19,6 @@ struct MainView: View {
                 Label("Gallery", systemImage: "square.grid.2x2")
             }
         }
+        .tint(Brand.accent)
     }
 }

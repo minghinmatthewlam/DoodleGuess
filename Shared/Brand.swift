@@ -1,12 +1,16 @@
 import SwiftUI
 
 enum Brand {
-    static let paper = Color(red: 0.97, green: 0.94, blue: 0.89)
-    static let paperDeep = Color(red: 0.94, green: 0.90, blue: 0.84)
-    static let ink = Color(red: 0.13, green: 0.11, blue: 0.10)
-    static let inkSoft = Color(red: 0.36, green: 0.31, blue: 0.28)
-    static let accent = Color(red: 0.95, green: 0.45, blue: 0.36)
-    static let accent2 = Color(red: 0.20, green: 0.67, blue: 0.63)
+    static let backgroundTop = Color(red: 0.97, green: 0.95, blue: 1.0)
+    static let backgroundMid = Color(red: 1.0, green: 0.95, blue: 0.98)
+    static let backgroundBottom = Color(red: 0.94, green: 0.97, blue: 1.0)
+    static let canvasBackground = Color(red: 0.97, green: 0.97, blue: 0.99)
+    static let ink = Color(red: 0.16, green: 0.16, blue: 0.20)
+    static let inkSoft = Color(red: 0.45, green: 0.45, blue: 0.55)
+    static let accent = Color(red: 0.54, green: 0.36, blue: 0.95)
+    static let accent2 = Color(red: 0.93, green: 0.36, blue: 0.62)
+    static let accent3 = Color(red: 0.24, green: 0.67, blue: 0.84)
+    static let accent4 = Color(red: 0.24, green: 0.75, blue: 0.68)
 
     static func display(_ size: CGFloat, weight: Font.Weight = .bold) -> Font {
         Font.custom("Avenir Next", size: size).weight(weight)
@@ -21,21 +25,21 @@ struct BrandBackground: View {
     var body: some View {
         ZStack {
             LinearGradient(
-                colors: [Brand.paper, Brand.paperDeep],
+                colors: [Brand.backgroundTop, Brand.backgroundMid, Brand.backgroundBottom],
                 startPoint: .topLeading,
                 endPoint: .bottomTrailing
             )
 
             Circle()
-                .fill(Brand.accent.opacity(0.16))
+                .fill(Brand.accent.opacity(0.18))
                 .frame(width: 280, height: 280)
-                .blur(radius: 30)
+                .blur(radius: 34)
                 .offset(x: -140, y: -180)
 
             Circle()
-                .fill(Brand.accent2.opacity(0.12))
+                .fill(Brand.accent4.opacity(0.16))
                 .frame(width: 320, height: 320)
-                .blur(radius: 40)
+                .blur(radius: 42)
                 .offset(x: 170, y: 220)
         }
         .ignoresSafeArea()
@@ -54,12 +58,12 @@ struct BrandCard<Content: View>: View {
             .padding(20)
             .background(
                 RoundedRectangle(cornerRadius: 26, style: .continuous)
-                    .fill(Brand.paper.opacity(0.95))
+                    .fill(Color.white)
                     .overlay(
                         RoundedRectangle(cornerRadius: 26, style: .continuous)
-                            .stroke(Brand.ink.opacity(0.06), lineWidth: 1)
+                            .stroke(Brand.ink.opacity(0.08), lineWidth: 1)
                     )
-                    .shadow(color: Brand.ink.opacity(0.08), radius: 16, x: 0, y: 8)
+                    .shadow(color: Brand.ink.opacity(0.12), radius: 18, x: 0, y: 10)
             )
     }
 }
@@ -68,7 +72,7 @@ struct PrimaryButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .font(Brand.text(18, weight: .semibold))
-            .foregroundColor(Brand.ink)
+            .foregroundColor(.white)
             .padding(.vertical, 16)
             .padding(.horizontal, 24)
             .frame(maxWidth: .infinity)
@@ -96,10 +100,10 @@ struct SecondaryButtonStyle: ButtonStyle {
             .padding(.horizontal, 18)
             .background(
                 RoundedRectangle(cornerRadius: 14, style: .continuous)
-                    .fill(Color.white.opacity(0.7))
+                    .fill(Color.white.opacity(0.95))
                     .overlay(
                         RoundedRectangle(cornerRadius: 14, style: .continuous)
-                            .stroke(Brand.ink.opacity(0.08), lineWidth: 1)
+                            .stroke(Brand.ink.opacity(0.12), lineWidth: 1)
                     )
             )
             .opacity(configuration.isPressed ? 0.7 : 1)
@@ -110,15 +114,15 @@ struct DangerButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .font(Brand.text(16, weight: .semibold))
-            .foregroundColor(.red)
+            .foregroundColor(Color.red.opacity(0.9))
             .padding(.vertical, 12)
             .padding(.horizontal, 18)
             .background(
                 RoundedRectangle(cornerRadius: 14, style: .continuous)
-                    .fill(Color.white.opacity(0.7))
+                    .fill(Color.white.opacity(0.95))
                     .overlay(
                         RoundedRectangle(cornerRadius: 14, style: .continuous)
-                            .stroke(Color.red.opacity(0.25), lineWidth: 1)
+                            .stroke(Color.red.opacity(0.3), lineWidth: 1)
                     )
             )
             .opacity(configuration.isPressed ? 0.7 : 1)
@@ -138,8 +142,8 @@ struct BrandPill: View {
             .padding(.vertical, 6)
             .background(
                 Capsule()
-                    .fill(Color.white.opacity(0.7))
-                    .overlay(Capsule().stroke(Brand.ink.opacity(0.08), lineWidth: 1))
+                    .fill(Color.white.opacity(0.9))
+                    .overlay(Capsule().stroke(Brand.ink.opacity(0.12), lineWidth: 1))
             )
     }
 }
