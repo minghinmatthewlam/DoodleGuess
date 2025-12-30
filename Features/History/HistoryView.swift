@@ -30,7 +30,10 @@ struct HistoryView: View {
                             HStack(spacing: 12) {
                                 Picker("View mode", selection: $viewMode) {
                                     ForEach(GalleryViewMode.allCases, id: \.self) { mode in
-                                        Text(mode.title).tag(mode)
+                                        Label(mode.title, systemImage: mode.systemImage)
+                                            .labelStyle(.iconOnly)
+                                            .accessibilityLabel(mode.title)
+                                            .tag(mode)
                                     }
                                 }
                                 .pickerStyle(.segmented)
@@ -77,7 +80,6 @@ struct HistoryView: View {
                                         navigationLink(for: drawing) {
                                             DrawingTile(
                                                 drawing: drawing,
-                                                isSent: isSent(drawing: drawing),
                                                 isFavorite: isFavorite(drawing: drawing),
                                                 side: layout.tileSide
                                             )
@@ -90,7 +92,7 @@ struct HistoryView: View {
                                         navigationLink(for: drawing) {
                                             DrawingListRow(
                                                 drawing: drawing,
-                                                isSent: isSent(drawing: drawing),
+                                                subtitle: listSubtitle(for: drawing),
                                                 isFavorite: isFavorite(drawing: drawing),
                                                 side: layout.listThumb
                                             )
@@ -110,7 +112,6 @@ struct HistoryView: View {
                                                     navigationLink(for: drawing) {
                                                         DrawingTile(
                                                             drawing: drawing,
-                                                            isSent: isSent(drawing: drawing),
                                                             isFavorite: isFavorite(drawing: drawing),
                                                             side: layout.tileSide
                                                         )
@@ -137,6 +138,16 @@ struct HistoryView: View {
         .navigationTitle("")
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(.hidden, for: .navigationBar)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                NavigationLink {
+                    SettingsView()
+                } label: {
+                    Image(systemName: "gearshape")
+                        .foregroundColor(Brand.ink)
+                }
+            }
+        }
     }
 
     private func navigationLink(for drawing: DrawingRecord, @ViewBuilder content: () -> some View) -> some View {
@@ -155,6 +166,12 @@ struct HistoryView: View {
 
     private func isFavorite(drawing: DrawingRecord) -> Bool {
         app.favorites.isFavorite(drawing.stableId)
+    }
+
+    private func listSubtitle(for drawing: DrawingRecord) -> String? {
+        let isMixedFilter = filter == .all || filter == .favorites
+        guard isMixedFilter else { return nil }
+        return isSent(drawing: drawing) ? "Sent" : "Received"
     }
 
     private var filteredDrawings: [DrawingRecord] {
@@ -241,6 +258,14 @@ enum GalleryViewMode: String, CaseIterable {
         case .moments: "Moments"
         }
     }
+
+    var systemImage: String {
+        switch self {
+        case .grid: "square.grid.2x2"
+        case .list: "list.bullet"
+        case .moments: "calendar"
+        }
+    }
 }
 
 enum GalleryGridSize: String, CaseIterable {
@@ -275,30 +300,12 @@ enum GalleryGridSize: String, CaseIterable {
 
 struct DrawingTile: View {
     let drawing: DrawingRecord
-    let isSent: Bool
     let isFavorite: Bool
     let side: CGFloat
 
     var body: some View {
-        ZStack(alignment: .bottomLeading) {
+        ZStack {
             DrawingPreviewImage(drawing: drawing, side: side, cornerRadius: 20)
-
-            HStack(spacing: 6) {
-                Text(isSent ? "Sent" : "Received")
-                    .font(Brand.text(11, weight: .semibold))
-                    .foregroundColor(Brand.ink)
-                Text(Formatters.relative.localizedString(for: drawing.createdAt, relativeTo: Date()))
-                    .font(Brand.text(10, weight: .medium))
-                    .foregroundColor(Brand.inkSoft)
-            }
-            .padding(.horizontal, 8)
-            .padding(.vertical, 6)
-            .background(
-                Capsule()
-                    .fill(Color.white.opacity(0.85))
-                    .overlay(Capsule().stroke(Brand.ink.opacity(0.08), lineWidth: 1))
-            )
-            .padding(10)
         }
         .overlay(alignment: .topTrailing) {
             if isFavorite {
@@ -319,7 +326,7 @@ struct DrawingTile: View {
 
 struct DrawingListRow: View {
     let drawing: DrawingRecord
-    let isSent: Bool
+    let subtitle: String?
     let isFavorite: Bool
     let side: CGFloat
 
@@ -328,12 +335,15 @@ struct DrawingListRow: View {
             DrawingPreviewImage(drawing: drawing, side: side, cornerRadius: 16)
 
             VStack(alignment: .leading, spacing: 6) {
-                Text(isSent ? "You to Partner" : "Partner to You")
+                Text(Formatters.detailDate.string(from: drawing.createdAt))
                     .font(Brand.text(14, weight: .semibold))
                     .foregroundColor(Brand.ink)
-                Text(Formatters.detailDate.string(from: drawing.createdAt))
-                    .font(Brand.text(12))
-                    .foregroundColor(Brand.inkSoft)
+
+                if let subtitle {
+                    Text(subtitle)
+                        .font(Brand.text(12))
+                        .foregroundColor(Brand.inkSoft)
+                }
             }
 
             Spacer()

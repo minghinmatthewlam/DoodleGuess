@@ -21,7 +21,7 @@ struct DrawingPreviewImage: View {
             if let image {
                 Image(uiImage: image)
                     .resizable()
-                    .scaledToFill()
+                    .scaledToFit()
             } else if didLoad {
                 placeholder
             } else {
