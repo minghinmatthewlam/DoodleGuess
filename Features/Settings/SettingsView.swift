@@ -16,6 +16,7 @@ struct SettingsView: View {
 
                     BrandCard {
                         VStack(alignment: .leading, spacing: 10) {
+                            BrandPill(text: "PARTNER")
                             Text("Partner")
                                 .font(Brand.text(14, weight: .semibold))
                                 .foregroundColor(Brand.inkSoft)
@@ -27,6 +28,7 @@ struct SettingsView: View {
 
                     BrandCard {
                         VStack(alignment: .leading, spacing: 12) {
+                            BrandPill(text: "CONNECTION")
                             Text("Connection")
                                 .font(Brand.text(14, weight: .semibold))
                                 .foregroundColor(Brand.inkSoft)
