@@ -75,44 +75,61 @@ struct DoodleWidgetProvider: TimelineProvider {
 }
 
 struct DoodleWidgetEntryView: View {
+    @Environment(\.widgetFamily) private var family
     let entry: DoodleWidgetEntry
 
     var body: some View {
         ZStack {
-            Image(uiImage: entry.image)
-                .resizable()
-                .scaledToFill()
-                .clipped()
+            LinearGradient(
+                colors: [Brand.backgroundTop, Brand.backgroundMid, Brand.backgroundBottom],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
 
-            VStack {
+            VStack(spacing: family == .systemSmall ? 6 : 8) {
                 HStack(spacing: 8) {
-                    Text(entry.partnerName)
-                        .font(.caption2)
-                        .lineLimit(1)
+                    Text("Doodle Guess 🎨")
+                        .font(.caption)
                         .foregroundColor(Brand.ink)
-
-                    if let ts = entry.timestamp {
-                        Text(Formatters.relative.localizedString(for: ts, relativeTo: Date()))
-                            .font(.caption2)
-                            .lineLimit(1)
-                            .foregroundColor(Brand.inkSoft)
-                    }
+                        .lineLimit(1)
+                    Spacer()
+                    Image(systemName: "arrow.clockwise")
+                        .font(.caption2)
+                        .foregroundColor(Brand.inkSoft)
                 }
-                .padding(.horizontal, 10)
-                .padding(.vertical, 6)
-                .background(
-                    Capsule()
-                        .fill(Color.white.opacity(0.8))
-                        .overlay(Capsule().stroke(Brand.ink.opacity(0.08), lineWidth: 1))
-                )
-                .padding(8)
 
-                Spacer()
+                ZStack {
+                    RoundedRectangle(cornerRadius: 16, style: .continuous)
+                        .fill(Color.white)
+                        .shadow(color: Brand.ink.opacity(0.12), radius: 8, x: 0, y: 4)
+
+                    Image(uiImage: entry.image)
+                        .resizable()
+                        .scaledToFill()
+                        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+                        .padding(6)
+                }
+                .aspectRatio(1, contentMode: .fit)
+
+                if family != .systemSmall {
+                    Text(statusText)
+                        .font(.caption2)
+                        .foregroundColor(Brand.inkSoft)
+                        .lineLimit(1)
+                }
             }
+            .padding(10)
+            .background(
+                RoundedRectangle(cornerRadius: 22, style: .continuous)
+                    .fill(Color.white.opacity(0.55))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 22, style: .continuous)
+                            .stroke(Brand.ink.opacity(0.08), lineWidth: 1)
+                    )
+            )
+            .padding(10)
         }
-        .containerBackground(for: .widget) {
-            Color.clear
-        }
+        .containerBackground(for: .widget) { Color.clear }
         .widgetURL(deepLinkURL(entry.drawingId))
     }
 
@@ -121,6 +138,13 @@ struct DoodleWidgetEntryView: View {
             return URL(string: "doodleguess://drawing?id=\(drawingId)")
         }
         return URL(string: "doodleguess://open")
+    }
+
+    private var statusText: String {
+        if entry.drawingId == nil {
+            return "Waiting for first doodle"
+        }
+        return "Latest from \(entry.partnerName)"
     }
 }
 
