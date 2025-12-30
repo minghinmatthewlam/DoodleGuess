@@ -152,7 +152,7 @@ import WidgetKit
         }
 
         private func renderSquareForWidget(drawing: PKDrawing) -> UIImage {
-            DrawingRendering.renderSquare(drawing: drawing, side: 480, background: .white)
+            DrawingRendering.renderSquare(drawing: drawing, side: 480, background: .white, allowUpscale: true)
         }
 
         deinit { listener?.remove() }
@@ -232,7 +232,7 @@ import WidgetKit
         }
 
         private func renderSquareForWidget(drawing: PKDrawing) -> UIImage {
-            DrawingRendering.renderSquare(drawing: drawing, side: 480, background: .white)
+            DrawingRendering.renderSquare(drawing: drawing, side: 480, background: .white, allowUpscale: true)
         }
     }
 

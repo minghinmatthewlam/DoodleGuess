@@ -6,7 +6,8 @@ enum DrawingRendering {
         drawing: PKDrawing,
         side: CGFloat,
         background: UIColor = .white,
-        padding: CGFloat = 24
+        padding: CGFloat = 24,
+        allowUpscale: Bool = false
     ) -> UIImage {
         if drawing.strokes.isEmpty {
             return UIGraphicsImageRenderer(size: CGSize(width: side, height: side)).image { ctx in
@@ -17,7 +18,10 @@ enum DrawingRendering {
 
         var bounds = drawing.bounds
         bounds = bounds.insetBy(dx: -padding, dy: -padding)
-        let scale = min(side / bounds.width, side / bounds.height)
+        var scale = min(side / bounds.width, side / bounds.height)
+        if !allowUpscale {
+            scale = min(scale, 1)
+        }
         let ink = drawing.image(from: bounds, scale: scale)
 
         return UIGraphicsImageRenderer(size: CGSize(width: side, height: side)).image { _ in
