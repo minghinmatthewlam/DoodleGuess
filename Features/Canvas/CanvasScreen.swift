@@ -4,6 +4,7 @@ import SwiftUI
 
 struct CanvasScreen: View {
     @EnvironmentObject var app: AppState
+    @Environment(\.dismiss) private var dismiss
 
     @StateObject private var vm = CanvasViewModel()
 
@@ -14,63 +15,18 @@ struct CanvasScreen: View {
 
     var body: some View {
         ZStack {
-            BrandBackground()
+            Brand.canvasBackground
+                .ignoresSafeArea()
 
             GeometryReader { proxy in
                 let canvasSide = max(220, proxy.size.width - 36)
                 VStack(spacing: 16) {
-                    HStack(spacing: 10) {
-                        BrandPill(text: "For \(partnerName())")
-                        Spacer()
-
-                        PhotosPicker(selection: $selectedPhotoItem, matching: .images) {
-                            controlLabel(title: "Photo", systemImage: "photo")
-                        }
-                        .buttonStyle(.plain)
-
-                        if vm.backgroundImage != nil {
-                            Button {
-                                vm.clearBackground()
-                            } label: {
-                                controlLabel(title: "Remove", systemImage: "photo.badge.minus")
-                            }
-                            .buttonStyle(.plain)
-                        }
-
-                        Button {
-                            Task { await send() }
-                        } label: {
-                            if app.drawings.isSending {
-                                ProgressView()
-                                    .tint(.white)
-                            } else {
-                                Label("Send", systemImage: "paperplane.fill")
-                                    .font(Brand.text(13, weight: .semibold))
-                                    .lineLimit(1)
-                                    .minimumScaleFactor(0.8)
-                            }
-                        }
-                        .disabled(app.drawings.isSending || !vm.hasDrawing)
-                        .padding(.vertical, 8)
-                        .padding(.horizontal, 12)
-                        .background(
-                            RoundedRectangle(cornerRadius: 12, style: .continuous)
-                                .fill(
-                                    LinearGradient(
-                                        colors: [Brand.accent, Brand.accent2],
-                                        startPoint: .leading,
-                                        endPoint: .trailing
-                                    )
-                                )
-                        )
-                        .foregroundColor(.white)
-                        .opacity(app.drawings.isSending || !vm.hasDrawing ? 0.6 : 1)
-                    }
+                    header
 
                     ZStack {
                         RoundedRectangle(cornerRadius: 24, style: .continuous)
                             .fill(Color.white)
-                            .shadow(color: Brand.ink.opacity(0.08), radius: 12, x: 0, y: 6)
+                            .shadow(color: Brand.ink.opacity(0.12), radius: 14, x: 0, y: 8)
 
                         ZStack {
                             if let background = vm.backgroundImage {
@@ -87,11 +43,22 @@ struct CanvasScreen: View {
                     }
                     .frame(width: canvasSide, height: canvasSide)
 
-                    CanvasToolbar(vm: vm)
+                    CanvasToolbar(
+                        vm: vm,
+                        selectedPhotoItem: $selectedPhotoItem,
+                        hasBackground: vm.backgroundImage != nil,
+                        onRemoveBackground: { vm.clearBackground() },
+                        onUndo: { vm.undo() },
+                        onClear: {
+                            vm.clear()
+                            vm.clearBackground()
+                        }
+                    )
                 }
                 .padding(.horizontal, 18)
-                .padding(.top, 16)
+                .padding(.top, 12)
                 .padding(.bottom, 12)
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
             }
 
             if showingSent {
@@ -191,20 +158,64 @@ struct CanvasScreen: View {
         return name.isEmpty ? "Partner" : name
     }
 
-    private func controlLabel(title: String, systemImage: String) -> some View {
-        HStack(spacing: 6) {
-            Image(systemName: systemImage)
-            Text(title)
-                .font(Brand.text(13, weight: .semibold))
-                .lineLimit(1)
-                .minimumScaleFactor(0.8)
+    private var header: some View {
+        HStack(spacing: 12) {
+            Button {
+                dismiss()
+            } label: {
+                Image(systemName: "chevron.left")
+                    .font(.system(size: 16, weight: .semibold))
+                    .foregroundColor(.white)
+                    .frame(width: 32, height: 32)
+                    .background(Circle().fill(Color.white.opacity(0.2)))
+            }
+
+            VStack(alignment: .leading, spacing: 2) {
+                Text("Create Doodle")
+                    .font(Brand.text(18, weight: .semibold))
+                    .foregroundColor(.white)
+                Text("For \(partnerName())")
+                    .font(Brand.text(12, weight: .medium))
+                    .foregroundColor(.white.opacity(0.85))
+            }
+
+            Spacer()
+
+            Button {
+                Task { await send() }
+            } label: {
+                if app.drawings.isSending {
+                    ProgressView()
+                        .tint(.white)
+                } else {
+                    Label("Send", systemImage: "paperplane.fill")
+                        .font(Brand.text(13, weight: .semibold))
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.8)
+                }
+            }
+            .disabled(app.drawings.isSending || !vm.hasDrawing)
+            .padding(.vertical, 8)
+            .padding(.horizontal, 12)
+            .background(
+                RoundedRectangle(cornerRadius: 12, style: .continuous)
+                    .fill(Color.white.opacity(0.92))
+            )
+            .foregroundColor(Brand.accent)
+            .opacity(app.drawings.isSending || !vm.hasDrawing ? 0.6 : 1)
         }
-        .padding(.vertical, 8)
-        .padding(.horizontal, 12)
+        .padding(12)
         .background(
-            RoundedRectangle(cornerRadius: 12, style: .continuous)
-                .fill(Color.white.opacity(0.8))
+            RoundedRectangle(cornerRadius: 18, style: .continuous)
+                .fill(
+                    LinearGradient(
+                        colors: [Brand.accent, Brand.accent2],
+                        startPoint: .leading,
+                        endPoint: .trailing
+                    )
+                )
         )
+        .shadow(color: Brand.ink.opacity(0.2), radius: 12, x: 0, y: 8)
     }
 }
 
