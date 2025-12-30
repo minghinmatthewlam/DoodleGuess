@@ -36,6 +36,35 @@ struct CanvasScreen: View {
                             }
                             .buttonStyle(.plain)
                         }
+
+                        Button {
+                            Task { await send() }
+                        } label: {
+                            if app.drawings.isSending {
+                                ProgressView()
+                                    .tint(.white)
+                            } else {
+                                Label("Send", systemImage: "paperplane.fill")
+                                    .font(Brand.text(13, weight: .semibold))
+                                    .lineLimit(1)
+                                    .minimumScaleFactor(0.8)
+                            }
+                        }
+                        .disabled(app.drawings.isSending || !vm.hasDrawing)
+                        .padding(.vertical, 8)
+                        .padding(.horizontal, 12)
+                        .background(
+                            RoundedRectangle(cornerRadius: 12, style: .continuous)
+                                .fill(
+                                    LinearGradient(
+                                        colors: [Brand.accent, Brand.accent2],
+                                        startPoint: .leading,
+                                        endPoint: .trailing
+                                    )
+                                )
+                        )
+                        .foregroundColor(.white)
+                        .opacity(app.drawings.isSending || !vm.hasDrawing ? 0.6 : 1)
                     }
 
                     ZStack {
@@ -74,21 +103,6 @@ struct CanvasScreen: View {
         .navigationTitle("")
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(.hidden, for: .navigationBar)
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button {
-                    Task { await send() }
-                } label: {
-                    if app.drawings.isSending {
-                        ProgressView()
-                    } else {
-                        Text("Send")
-                            .font(Brand.text(16, weight: .semibold))
-                    }
-                }
-                .disabled(app.drawings.isSending || !vm.hasDrawing)
-            }
-        }
         .alert("Error", isPresented: Binding(
             get: { sendError != nil },
             set: { if !$0 { sendError = nil } }
@@ -182,6 +196,8 @@ struct CanvasScreen: View {
             Image(systemName: systemImage)
             Text(title)
                 .font(Brand.text(13, weight: .semibold))
+                .lineLimit(1)
+                .minimumScaleFactor(0.8)
         }
         .padding(.vertical, 8)
         .padding(.horizontal, 12)

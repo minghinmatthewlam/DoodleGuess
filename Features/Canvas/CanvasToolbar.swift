@@ -87,6 +87,8 @@ struct CanvasToolbar: View {
                 Image(systemName: systemImage)
                 Text(title)
                     .font(Brand.text(13, weight: .semibold))
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.8)
             }
             .padding(.vertical, 8)
             .padding(.horizontal, 12)

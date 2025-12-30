@@ -4,17 +4,16 @@ import Foundation
 final class FavoritesStore: ObservableObject {
     @Published private(set) var favorites: Set<String> = []
 
-    private var userId: String?
     private let defaults: UserDefaults
+    private let storageKey = "favorite_drawings"
 
     init(defaults: UserDefaults = .standard) {
         self.defaults = defaults
+        loadFavorites()
     }
 
     func setUserId(_ userId: String?) {
-        guard self.userId != userId else { return }
-        self.userId = userId
-        loadFavorites()
+        migrateLegacyFavorites(userId)
     }
 
     func isFavorite(_ drawingId: String?) -> Bool {
@@ -23,7 +22,7 @@ final class FavoritesStore: ObservableObject {
     }
 
     func toggleFavorite(_ drawingId: String?) {
-        guard let drawingId, userId != nil else { return }
+        guard let drawingId else { return }
         if favorites.contains(drawingId) {
             favorites.remove(drawingId)
         } else {
@@ -33,22 +32,20 @@ final class FavoritesStore: ObservableObject {
     }
 
     private func loadFavorites() {
-        guard let userId else {
-            favorites = []
-            return
-        }
-        let key = storageKey(for: userId)
-        let stored = defaults.array(forKey: key) as? [String] ?? []
+        let stored = defaults.array(forKey: storageKey) as? [String] ?? []
         favorites = Set(stored)
     }
 
     private func persist() {
-        guard let userId else { return }
-        let key = storageKey(for: userId)
-        defaults.set(Array(favorites), forKey: key)
+        defaults.set(Array(favorites), forKey: storageKey)
     }
 
-    private func storageKey(for userId: String) -> String {
-        "favorite_drawings_\(userId)"
+    private func migrateLegacyFavorites(_ userId: String?) {
+        guard let userId else { return }
+        let legacyKey = "favorite_drawings_\(userId)"
+        guard let legacy = defaults.array(forKey: legacyKey) as? [String], !legacy.isEmpty else { return }
+        favorites.formUnion(legacy)
+        persist()
+        defaults.removeObject(forKey: legacyKey)
     }
 }

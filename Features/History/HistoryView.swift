@@ -21,7 +21,10 @@ struct HistoryView: View {
                         VStack(spacing: 12) {
                             Picker("Filter", selection: $filter) {
                                 ForEach(HistoryFilter.allCases, id: \.self) { option in
-                                    Text(option.title).tag(option)
+                                    Label(option.title, systemImage: option.systemImage)
+                                        .labelStyle(.iconOnly)
+                                        .accessibilityLabel(option.title)
+                                        .tag(option)
                                 }
                             }
                             .pickerStyle(.segmented)
@@ -242,6 +245,15 @@ enum HistoryFilter: String, CaseIterable {
         case .received: "Received"
         case .sent: "Sent"
         case .favorites: "Favorites"
+        }
+    }
+
+    var systemImage: String {
+        switch self {
+        case .all: "square.grid.2x2"
+        case .received: "arrow.down.left.circle"
+        case .sent: "arrow.up.right.circle"
+        case .favorites: "star.fill"
         }
     }
 }
