@@ -2,6 +2,7 @@ import SwiftUI
 
 struct RootView: View {
     @EnvironmentObject var app: AppState
+    @AppStorage("onboardingComplete") private var onboardingComplete = false
     @State private var drawingRoute: DrawingRoute?
 
     var body: some View {
@@ -10,6 +11,8 @@ struct RootView: View {
                 if app.auth.isLoading {
                     ProgressView("Loading...")
                 } else if !app.auth.isAuthenticated {
+                    ProgressView("Signing in...")
+                } else if !onboardingComplete {
                     WelcomeView()
                 } else if !app.pairing.isPaired {
                     PairingView()
