@@ -3,8 +3,7 @@ import SwiftUI
 struct HistoryView: View {
     @EnvironmentObject var app: AppState
     @State private var filter: HistoryFilter = .all
-    @State private var viewMode: GalleryViewMode = .grid
-    @State private var gridSize: GalleryGridSize = .medium
+    private let gridSize: GalleryGridSize = .medium
 
     var body: some View {
         ZStack {
@@ -21,47 +20,11 @@ struct HistoryView: View {
                         VStack(spacing: 12) {
                             Picker("Filter", selection: $filter) {
                                 ForEach(HistoryFilter.allCases, id: \.self) { option in
-                                    Label(option.title, systemImage: option.systemImage)
-                                        .labelStyle(.iconOnly)
-                                        .accessibilityLabel(option.title)
-                                        .tag(option)
+                                    Text(option.title).tag(option)
                                 }
                             }
                             .pickerStyle(.segmented)
                             .frame(maxWidth: .infinity)
-
-                            HStack(spacing: 12) {
-                                Picker("View mode", selection: $viewMode) {
-                                    ForEach(GalleryViewMode.allCases, id: \.self) { mode in
-                                        Label(mode.title, systemImage: mode.systemImage)
-                                            .labelStyle(.iconOnly)
-                                            .accessibilityLabel(mode.title)
-                                            .tag(mode)
-                                    }
-                                }
-                                .pickerStyle(.segmented)
-
-                                if viewMode != .list {
-                                    Menu {
-                                        ForEach(GalleryGridSize.allCases, id: \.self) { size in
-                                            Button {
-                                                gridSize = size
-                                            } label: {
-                                                Label(size.title, systemImage: size.systemImage)
-                                            }
-                                        }
-                                    } label: {
-                                        Image(systemName: gridSize.systemImage)
-                                            .font(.system(size: 16, weight: .semibold))
-                                            .foregroundColor(Brand.ink)
-                                            .frame(width: 36, height: 36)
-                                            .background(
-                                                RoundedRectangle(cornerRadius: 12, style: .continuous)
-                                                    .fill(Color.white.opacity(0.8))
-                                            )
-                                    }
-                                }
-                            }
                         }
 
                         if filteredDrawings.isEmpty {
@@ -76,52 +39,14 @@ struct HistoryView: View {
                                 }
                             }
                         } else {
-                            switch viewMode {
-                            case .grid:
-                                LazyVGrid(columns: layout.columns, spacing: 14) {
-                                    ForEach(filteredDrawings, id: \.stableId) { drawing in
-                                        navigationLink(for: drawing) {
-                                            DrawingTile(
-                                                drawing: drawing,
-                                                isFavorite: isFavorite(drawing: drawing),
-                                                side: layout.tileSide
-                                            )
-                                        }
-                                    }
-                                }
-                            case .list:
-                                LazyVStack(spacing: 12) {
-                                    ForEach(filteredDrawings, id: \.stableId) { drawing in
-                                        navigationLink(for: drawing) {
-                                            DrawingListRow(
-                                                drawing: drawing,
-                                                subtitle: listSubtitle(for: drawing),
-                                                isFavorite: isFavorite(drawing: drawing),
-                                                side: layout.listThumb
-                                            )
-                                        }
-                                    }
-                                }
-                            case .moments:
-                                LazyVStack(alignment: .leading, spacing: 18) {
-                                    ForEach(groupedByDay, id: \.date) { section in
-                                        VStack(alignment: .leading, spacing: 12) {
-                                            Text(Formatters.dayHeader.string(from: section.date))
-                                                .font(Brand.text(16, weight: .semibold))
-                                                .foregroundColor(Brand.ink)
-
-                                            LazyVGrid(columns: layout.columns, spacing: 14) {
-                                                ForEach(section.drawings, id: \.stableId) { drawing in
-                                                    navigationLink(for: drawing) {
-                                                        DrawingTile(
-                                                            drawing: drawing,
-                                                            isFavorite: isFavorite(drawing: drawing),
-                                                            side: layout.tileSide
-                                                        )
-                                                    }
-                                                }
-                                            }
-                                        }
+                            LazyVGrid(columns: layout.columns, spacing: 14) {
+                                ForEach(filteredDrawings, id: \.stableId) { drawing in
+                                    navigationLink(for: drawing) {
+                                        DrawingTile(
+                                            drawing: drawing,
+                                            isFavorite: isFavorite(drawing: drawing),
+                                            side: layout.tileSide
+                                        )
                                     }
                                 }
                             }
@@ -162,19 +87,8 @@ struct HistoryView: View {
         .buttonStyle(.plain)
     }
 
-    private func isSent(drawing: DrawingRecord) -> Bool {
-        guard let me = app.auth.currentUser?.id else { return false }
-        return drawing.fromUserId == me
-    }
-
     private func isFavorite(drawing: DrawingRecord) -> Bool {
         app.favorites.isFavorite(drawing.stableId)
-    }
-
-    private func listSubtitle(for drawing: DrawingRecord) -> String? {
-        let isMixedFilter = filter == .all || filter == .favorites
-        guard isMixedFilter else { return nil }
-        return isSent(drawing: drawing) ? "Sent" : "Received"
     }
 
     private var filteredDrawings: [DrawingRecord] {
@@ -192,16 +106,6 @@ struct HistoryView: View {
         case .favorites:
             return all.filter { app.favorites.isFavorite($0.stableId) }
         }
-    }
-
-    private var groupedByDay: [(date: Date, drawings: [DrawingRecord])] {
-        let calendar = Calendar.current
-        let grouped = Dictionary(grouping: filteredDrawings) { drawing in
-            calendar.startOfDay(for: drawing.createdAt)
-        }
-        return grouped
-            .map { ($0.key, $0.value.sorted { $0.createdAt > $1.createdAt }) }
-            .sorted { $0.date > $1.date }
     }
 
     private func deduped(_ drawings: [DrawingRecord]) -> [DrawingRecord] {
@@ -245,37 +149,6 @@ enum HistoryFilter: String, CaseIterable {
         case .received: "Received"
         case .sent: "Sent"
         case .favorites: "Favorites"
-        }
-    }
-
-    var systemImage: String {
-        switch self {
-        case .all: "square.grid.2x2"
-        case .received: "arrow.down.left.circle"
-        case .sent: "arrow.up.right.circle"
-        case .favorites: "star.fill"
-        }
-    }
-}
-
-enum GalleryViewMode: String, CaseIterable {
-    case grid
-    case list
-    case moments
-
-    var title: String {
-        switch self {
-        case .grid: "Grid"
-        case .list: "List"
-        case .moments: "Moments"
-        }
-    }
-
-    var systemImage: String {
-        switch self {
-        case .grid: "square.grid.2x2"
-        case .list: "list.bullet"
-        case .moments: "calendar"
         }
     }
 }
@@ -333,47 +206,6 @@ struct DrawingTile: View {
                     .padding(8)
             }
         }
-    }
-}
-
-struct DrawingListRow: View {
-    let drawing: DrawingRecord
-    let subtitle: String?
-    let isFavorite: Bool
-    let side: CGFloat
-
-    var body: some View {
-        HStack(spacing: 14) {
-            DrawingPreviewImage(drawing: drawing, side: side, cornerRadius: 16)
-
-            VStack(alignment: .leading, spacing: 6) {
-                Text(Formatters.detailDate.string(from: drawing.createdAt))
-                    .font(Brand.text(14, weight: .semibold))
-                    .foregroundColor(Brand.ink)
-
-                if let subtitle {
-                    Text(subtitle)
-                        .font(Brand.text(12))
-                        .foregroundColor(Brand.inkSoft)
-                }
-            }
-
-            Spacer()
-
-            if isFavorite {
-                Image(systemName: "star.fill")
-                    .foregroundColor(Brand.accent2)
-            }
-        }
-        .padding(12)
-        .background(
-            RoundedRectangle(cornerRadius: 18, style: .continuous)
-                .fill(Color.white.opacity(0.85))
-                .overlay(
-                    RoundedRectangle(cornerRadius: 18, style: .continuous)
-                        .stroke(Brand.ink.opacity(0.08), lineWidth: 1)
-                )
-        )
     }
 }
 
