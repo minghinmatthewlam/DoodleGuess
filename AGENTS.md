@@ -32,6 +32,7 @@ Read `~/dev/agent-guards/AGENTS.md` for global guidelines.
 ## Commit & Pull Request Guidelines
 - Commit messages are imperative and scoped (e.g., “Add Firebase config and Firestore rules”).
 - Keep commits small and focused; avoid bundling unrelated changes.
+- Commit continuously during implementation; do not batch unrelated work.
 - For PRs: include a brief summary, test command(s) run, and screenshots for UI changes.
 
 ## Security & Configuration Tips
